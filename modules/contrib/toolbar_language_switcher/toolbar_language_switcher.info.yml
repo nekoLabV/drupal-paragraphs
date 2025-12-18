@@ -1,0 +1,16 @@
+type: module
+name: 'Admin Toolbar Language Switcher'
+description: 'Provides Toolbar Language Switcher for visualization of the current page language context and possibility to change it.'
+core_version_requirement: ^8 || ^9 || ^10 || ^11
+
+dependencies:
+  - drupal:language
+  - drupal:toolbar
+
+test_dependencies:
+  - drupal:user
+
+# Information added by Drupal.org packaging script on 2025-06-08
+version: '2.0.0'
+project: 'toolbar_language_switcher'
+datestamp: 1749416887
