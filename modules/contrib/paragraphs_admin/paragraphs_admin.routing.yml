@@ -1,0 +1,12 @@
+paragraphs_admin.delete_form:
+  path: '/paragraph/{paragraph}/delete'
+  defaults:
+    _entity_form: 'paragraph.paragraph_delete'
+    _title: 'Delete paragraph'
+  requirements:
+    _entity_access: 'paragraph.delete'
+  options:
+    _admin_route: TRUE
+    parameters:
+      paragraph:
+        type: 'entity:paragraph'

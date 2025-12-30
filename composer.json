@@ -24,7 +24,12 @@
         "drupal/core-vendor-hardening": "^10.6",
         "drupal/devel": "^5.5",
         "drupal/layout_paragraphs": "^2.1",
+        "drupal/mercury_editor": "^2.2",
         "drupal/paragraphs": "^1.19",
+        "drupal/paragraphs_admin": "^1.7",
+        "drupal/paragraphs_ee": "^10.0",
+        "drupal/paragraphs_features": "^2.2",
+        "drupal/style_options": "^1.1",
         "drupal/toolbar_language_switcher": "^2.0"
     },
     "conflict": {
