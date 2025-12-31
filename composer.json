@@ -30,7 +30,8 @@
         "drupal/paragraphs_ee": "^10.0",
         "drupal/paragraphs_features": "^2.2",
         "drupal/style_options": "^1.1",
-        "drupal/toolbar_language_switcher": "^2.0"
+        "drupal/toolbar_language_switcher": "^2.0",
+        "drush/drush": "^13.7"
     },
     "conflict": {
         "drupal/drupal": "*"

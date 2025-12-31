@@ -1,0 +1,17 @@
+name: Base
+type: theme
+base theme: false
+description: 'This is the basic theme for customization.'
+core_version_requirement: ^10
+
+regions:
+  pre_header: Pre-header
+  header: Header
+  highlighted: Highlighted
+  tabs: Tabs
+  content: Content
+  footer: Footer
+
+version: '0.0.1'
+project: 'drupal'
+datestamp: 1767164199
