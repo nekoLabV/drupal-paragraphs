@@ -2,11 +2,6 @@ name: 'Workflow Type Test'
 type: module
 description: 'Provides a workflow type plugin for testing.'
 package: Testing
-# version: VERSION
+version: VERSION
 dependencies:
   - drupal:workflows
-
-# Information added by Drupal.org packaging script on 2025-12-17
-version: '10.6.0'
-project: 'drupal'
-datestamp: 1765965804

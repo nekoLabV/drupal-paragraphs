@@ -1,0 +1,105 @@
+options:
+
+  theme_variant:
+    plugin: css_class
+    label: Theme
+    multiple: false
+    options:
+      - label: None
+      - label: Light
+        class: base-theme-block--light
+      - label: Dark
+        class: base-theme-block--dark
+
+  headline:
+    plugin: css_class
+    label: Headline
+    multiple: false
+    options:
+      - label: None
+      - label: H1
+        class: base-theme-block--headline1
+      - label: H2
+        class: base-theme-block--headline2
+      - label: H3
+        class: base-theme-block--headline3
+      - label: H4
+        class: base-theme-block--headline4
+      - label: H5
+        class: base-theme-block--headline5
+      - label: H6
+        class: base-theme-block--headline6
+
+  padding:
+    plugin: css_class
+    label: Padding
+    multiple: false
+    options:
+      - label: None
+      - label: small
+        class: base-theme-block--padding-small
+      - label: medium
+        class: base-theme-block--padding-medium
+      - label: large
+        class: base-theme-block--padding-large
+
+  margin:
+    plugin: css_class
+    label: Margin
+    multiple: false
+    options:
+      - label: None
+      - label: small
+        class: base-theme-block--margin-small
+      - label: medium
+        class: base-theme-block--margin-medium
+      - label: large
+        class: base-theme-block--margin-large
+
+  bg_color:
+    plugin: background_color
+    label: Background color
+    method: css
+    settings:
+      allowEmpty: TRUE
+      showAlpha: TRUE
+
+  bg_image:
+    plugin: background_image
+    label: Background image
+    method: css
+
+contexts:
+  layout:
+    _defaults:
+      options:
+        theme_variant:
+          layout: true
+          regions: true
+        padding:
+          layout: true
+          regions: true
+        margin:
+          layout: true
+          regions: true
+
+    layout_onecolumn:
+      options:
+        bg_color:
+          layout: true
+        bg_image:
+          layout: true
+
+  paragraphs:
+    _defaults:
+      options:
+        padding: true
+        margin: true
+
+    layout:
+      options:
+        theme_variant: true
+
+    text:
+      options:
+        headline: true

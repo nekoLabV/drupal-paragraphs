@@ -1,0 +1,5 @@
+style-options:
+  css:
+    theme:
+      css/theme.css: {}
+      css/style-options.css: {}
