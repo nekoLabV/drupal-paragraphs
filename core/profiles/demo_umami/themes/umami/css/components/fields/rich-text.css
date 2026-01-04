@@ -1,0 +1,16 @@
+.field--name-field-rich-text-value {
+  ul {
+    padding-left: 1em;
+  }
+
+  table {
+    width: 100%;
+    text-align: center;
+    tbody tr {
+      border-bottom: 1px solid var(--cm-table-border-color);
+    }
+    td {
+      padding: 1em;
+    }
+  }
+}

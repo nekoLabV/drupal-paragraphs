@@ -1,0 +1,6 @@
+.paragraph--type--button {
+  border-radius: 30px;
+  background-color: var(--cm-primary);
+  padding: 10px 20px;
+  cursor: pointer;
+}

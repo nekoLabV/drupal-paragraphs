@@ -109,3 +109,13 @@
 .base-theme-block--dark {
   color: var(--cm-secondary);
 }
+
+.base-theme-block--image-size-small {
+  width: 20%;
+}
+.base-theme-block--image-size-medium {
+  width: 50%;
+}
+.base-theme-block--image-size-large {
+  width: 100%;
+}

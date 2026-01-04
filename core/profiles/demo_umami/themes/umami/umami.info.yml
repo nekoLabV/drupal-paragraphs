@@ -8,7 +8,7 @@ libraries:
   - core/normalize
   - core/drupal.message
   - umami/global
-  - base/style-options
+  - umami/style-options
 
 libraries-override:
   layout_builder/twocol_section:

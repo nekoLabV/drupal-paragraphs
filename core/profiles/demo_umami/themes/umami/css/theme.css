@@ -3,4 +3,6 @@
   --cm-black: #000;
   --cm-primary: #fbf5ee;
   --cm-secondary: #79bd8f;
+
+  --cm-table-border-color: rgba(0, 0, 0, .1);
 }

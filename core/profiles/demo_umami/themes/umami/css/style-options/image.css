@@ -1,0 +1,29 @@
+.base-theme--image-size-small {
+  width: 20%;
+  img {
+    width: 100%;
+  }
+}
+.base-theme--image-size-medium {
+  width: 50%;
+  img {
+    width: 100%;
+  }
+}
+.base-theme--image-size-large {
+  width: 100%;
+  img {
+    width: 100%;
+  }
+}
+
+.base-theme--image-fit-cover {
+  img {
+    object-fit: cover;
+  }
+}
+.base-theme--image-fit-contain {
+  img {
+    object-fit: contain;
+  }
+}

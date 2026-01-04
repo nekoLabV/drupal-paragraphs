@@ -18,17 +18,43 @@ options:
     options:
       - label: None
       - label: H1
-        class: base-theme-block--headline1
+        class: base-theme--typography--h1
       - label: H2
-        class: base-theme-block--headline2
+        class: base-theme--typography--h2
       - label: H3
-        class: base-theme-block--headline3
+        class: base-theme--typography--h3
       - label: H4
-        class: base-theme-block--headline4
+        class: base-theme--typography--h4
       - label: H5
-        class: base-theme-block--headline5
+        class: base-theme--typography--h5
       - label: H6
-        class: base-theme-block--headline6
+        class: base-theme--typography--h6
+
+  block_align:
+    plugin: css_class
+    label: Block align
+    multiple: false
+    options:
+      - label: None
+      - label: left
+        class: base-theme-block--block-align-left
+      - label: center
+        class: base-theme-block--block-align-center
+      - label: right
+        class: base-theme-block--block-align-right
+
+  text_align:
+    plugin: css_class
+    label: Text align
+    multiple: false
+    options:
+      - label: None
+      - label: left
+        class: base-theme-block--text-align-left
+      - label: center
+        class: base-theme-block--text-align-center
+      - label: right
+        class: base-theme-block--text-align-right
 
   padding:
     plugin: css_class
@@ -69,6 +95,30 @@ options:
     label: Background image
     method: css
 
+  image_size:
+    plugin: css_class
+    label: Image size
+    multiple: false
+    options:
+      - label: Default
+      - label: small
+        class: base-theme--image-size-small
+      - label: medium
+        class: base-theme--image-size-medium
+      - label: large
+        class: base-theme--image-size-large
+
+  image_fit:
+    plugin: css_class
+    label: Image fit
+    multiple: false
+    options:
+      - label: Default
+      - label: cover
+        class: base-theme--image-fit-cover
+      - label: contain
+        class: base-theme--image-fit-contain
+
 contexts:
   layout:
     _defaults:
@@ -99,7 +149,14 @@ contexts:
     layout:
       options:
         theme_variant: true
+        block_align: true
 
     text:
       options:
         headline: true
+        text_align: true
+
+    image: 
+      options:
+        image_size: true
+        image_fit: true

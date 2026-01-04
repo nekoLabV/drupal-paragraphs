@@ -21,6 +21,7 @@ global:
       css/components/fields/label-items.css: {}
       css/components/fields/recipe-instruction.css: {}
       css/components/fields/summary.css: {}
+      css/components/fields/rich-text.css: {}
       css/components/forms/buttons.css: {}
       css/components/forms/container-inline.module.css: {}
       css/components/forms/form-items.css: {}
@@ -41,6 +42,8 @@ global:
       css/components/regions/tabs/tabs.css: {}
       css/components/toolbar/toolbar.css: {}
       css/components/layout_builder/layout-builder.css: {}
+      css/components/paragraph/rich-text.css: {}
+      css/components/paragraph/button.css: {}
     layout:
       css/layout/layout.css: {}
 
@@ -189,4 +192,7 @@ style-options:
   css:
     theme:
       css/theme.css: {}
-      css/style-options.css: {}
+      css/style-options/block.css: {}
+      css/style-options/typography.css: {}
+      css/style-options/image.css: {}
+      css/style-options/text.css: {}
