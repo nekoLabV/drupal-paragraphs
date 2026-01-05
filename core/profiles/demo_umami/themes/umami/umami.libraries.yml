@@ -42,8 +42,12 @@ global:
       css/components/regions/tabs/tabs.css: {}
       css/components/toolbar/toolbar.css: {}
       css/components/layout_builder/layout-builder.css: {}
+      css/components/paragraph/layout.css: {}
+      css/components/paragraph/group.css: {}
       css/components/paragraph/rich-text.css: {}
       css/components/paragraph/button.css: {}
+      css/components/paragraph/image.css: {}
+      css/components/paragraph/number.css: {}
     layout:
       css/layout/layout.css: {}
 

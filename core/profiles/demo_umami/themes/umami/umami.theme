@@ -191,3 +191,30 @@ function umami_preprocess_links(&$variables) {
     }
   }
 }
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function umami_preprocess_paragraph(&$variables) {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  // // 1. 获取背景颜色
+  // $bg_color = $paragraph->getBehaviorSetting('style_options', 'bg_color');
+  // if ($bg_color) {
+  //   $variables['bg_color'] = $bg_color;
+  // }
+
+  // // 2. 获取背景图片并转换为 URL
+  // $bg_image_setting = $paragraph->getBehaviorSetting('style_options', 'bg_image');
+  // if ($bg_image_setting) {
+  //   // 假设存储的是 Media ID
+  //   $media = \Drupal\media\Entity\Media::load($bg_image_setting);
+  //   if ($media && $media->hasField('field_media_image')) {
+  //     $file = $media->field_media_image->entity;
+  //     if ($file) {
+  //       $variables['bg_image_url'] = \Drupal\Core\Url::fromUri(\Drupal\service('file_url_generator')->generateAbsoluteString($file->getFileUri()));
+  //     }
+  //   }
+  // }
+}

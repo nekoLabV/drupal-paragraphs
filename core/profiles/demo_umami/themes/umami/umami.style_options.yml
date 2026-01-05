@@ -6,10 +6,22 @@ options:
     multiple: false
     options:
       - label: None
+      - label: White
+        class: base-theme-block--white
+      - label: Black
+        class: base-theme-block--black
       - label: Light
         class: base-theme-block--light
       - label: Dark
         class: base-theme-block--dark
+      - label: Primary
+        class: base-theme-block--primary
+      - label: Secondary
+        class: base-theme-block--secondary
+      - label: Light image
+        class: base-theme-block--light-image
+      - label: Dark image
+        class: base-theme-block--dark-image
 
   headline:
     plugin: css_class
@@ -119,6 +131,17 @@ options:
       - label: contain
         class: base-theme--image-fit-contain
 
+  group_col:
+    plugin: css_class
+    label: Group col
+    multiple: false
+    options:
+      - label: 1
+      - label: 2
+        class: base-theme-block--group-col-2
+      - label: 3
+        class: base-theme-block--group-col-3
+
 contexts:
   layout:
     _defaults:
@@ -150,6 +173,7 @@ contexts:
       options:
         theme_variant: true
         block_align: true
+        bg_image: true
 
     text:
       options:
@@ -160,3 +184,7 @@ contexts:
       options:
         image_size: true
         image_fit: true
+
+    group:
+      options:
+        group_col: true
