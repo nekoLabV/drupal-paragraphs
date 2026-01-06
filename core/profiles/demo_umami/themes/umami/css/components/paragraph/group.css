@@ -1,14 +1,16 @@
-.paragraph--type--group.base-theme-block--group-col-2 {
+.paragraph--type--group {
   .field--name-field-body {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
     gap: var(--layout-grid-gutter);
+  }
+}
+.paragraph--type--group.base-theme-block--group-col-2 {
+  .field--name-field-body {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 .paragraph--type--group.base-theme-block--group-col-3 {
   .field--name-field-body {
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--layout-grid-gutter);
   }
 }

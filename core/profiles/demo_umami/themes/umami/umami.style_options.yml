@@ -68,9 +68,61 @@ options:
       - label: right
         class: base-theme-block--text-align-right
 
+  padding_top:
+    plugin: css_class
+    label: Padding top
+    multiple: false
+    options:
+      - label: None
+      - label: small
+        class: base-theme-block--padding-top-small
+      - label: medium
+        class: base-theme-block--padding-top-medium
+      - label: large
+        class: base-theme-block--padding-top-large
+
+  padding_right:
+    plugin: css_class
+    label: Padding right
+    multiple: false
+    options:
+      - label: None
+      - label: small
+        class: base-theme-block--padding-right-small
+      - label: medium
+        class: base-theme-block--padding-right-medium
+      - label: large
+        class: base-theme-block--padding-right-large
+
+  padding_bottom:
+    plugin: css_class
+    label: Padding bottom
+    multiple: false
+    options:
+      - label: None
+      - label: small
+        class: base-theme-block--padding-bottom-small
+      - label: medium
+        class: base-theme-block--padding-bottom-medium
+      - label: large
+        class: base-theme-block--padding-bottom-large
+
+  padding_left:
+    plugin: css_class
+    label: Padding left
+    multiple: false
+    options:
+      - label: None
+      - label: small
+        class: base-theme-block--padding-left-small
+      - label: medium
+        class: base-theme-block--padding-left-medium
+      - label: large
+        class: base-theme-block--padding-left-large
+
   padding:
     plugin: css_class
-    label: Padding
+    label: Padding All
     multiple: false
     options:
       - label: None
@@ -80,6 +132,58 @@ options:
         class: base-theme-block--padding-medium
       - label: large
         class: base-theme-block--padding-large
+
+  margin_top:
+    plugin: css_class
+    label: Margin top
+    multiple: false
+    options:
+      - label: None
+      - label: small
+        class: base-theme-block--margin-top-small
+      - label: medium
+        class: base-theme-block--margin-top-medium
+      - label: large
+        class: base-theme-block--margin-top-large
+
+  margin_right:
+    plugin: css_class
+    label: Margin right
+    multiple: false
+    options:
+      - label: None
+      - label: small
+        class: base-theme-block--margin-right-small
+      - label: medium
+        class: base-theme-block--margin-right-medium
+      - label: large
+        class: base-theme-block--margin-right-large
+
+  margin_bottom:
+    plugin: css_class
+    label: Margin bottom
+    multiple: false
+    options:
+      - label: None
+      - label: small
+        class: base-theme-block--margin-bottom-small
+      - label: medium
+        class: base-theme-block--margin-bottom-medium
+      - label: large
+        class: base-theme-block--margin-bottom-large
+
+  margin_left:
+    plugin: css_class
+    label: Margin left
+    multiple: false
+    options:
+      - label: None
+      - label: small
+        class: base-theme-block--margin-left-small
+      - label: medium
+        class: base-theme-block--margin-left-medium
+      - label: large
+        class: base-theme-block--margin-left-large
 
   margin:
     plugin: css_class
@@ -142,6 +246,10 @@ options:
       - label: 3
         class: base-theme-block--group-col-3
 
+  input_text:
+    plugin: custom_input_text
+    label: Input text
+
 contexts:
   layout:
     _defaults:
@@ -166,14 +274,37 @@ contexts:
   paragraphs:
     _defaults:
       options:
-        padding: true
-        margin: true
+        padding_top:
+          layout: true
+          regions: true
+        padding_right:
+          layout: true
+          regions: true
+        padding_bottom:
+          layout: true
+          regions: true
+        padding_left:
+          layout: true
+          regions: true
+        margin_top:
+          layout: true
+          regions: true
+        margin_right:
+          layout: true
+          regions: true
+        margin_bottom:
+          layout: true
+          regions: true
+        margin_left:
+          layout: true
+          regions: true
 
     layout:
       options:
         theme_variant: true
         block_align: true
         bg_image: true
+        # input_text: true
 
     text:
       options:

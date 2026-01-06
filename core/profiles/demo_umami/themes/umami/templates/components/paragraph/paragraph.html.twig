@@ -48,11 +48,16 @@
 %}
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
-    <div class="base-theme-block__container">
-      {% block content %}
-        {{ content }}
-      {% endblock %}
-    </div>
+    {% if paragraph.bundle == 'layout' %}
+      <div class="base-theme-block__container">
+        {% block content %}
+          {{ content }}
+        {% endblock %}
+      </div>
+    {% else %}
+      {{ content }}
+    {% endif %}
+
     {% if paragraph.bundle == 'layout' %}
       <div class="base-theme-block--background"></div>
     {% endif %}

@@ -17,6 +17,13 @@
   --cm-light: var(--cm-gray-100);
   --cm-dark: var(--cm-gray-800);
 
+  --cm-container-padding-sm: 10px;
+  --cm-container-padding-md: 20px;
+  --cm-container-padding-lg: 30px;
+  --cm-container-margin-sm: 10px;
+  --cm-container-margin-md: 20px;
+  --cm-container-margin-lg: 30px;
+  --cm-container-padding-x: 20px;
   --layout-grid-gutter: 24px;
 
   --cm-table-border-color: rgba(0, 0, 0, .1);
