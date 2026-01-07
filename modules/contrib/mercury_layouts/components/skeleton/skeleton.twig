@@ -1,0 +1,6 @@
+{% set classes = ['c-skeleton'] %}
+<div {{attributes.addClass(classes)}} style="--skeleton-height: {{minHeight}};">
+  {% if label %}
+  <div class="c-skeleton__label">{{ label }}</div>
+  {% endif %}
+</div>

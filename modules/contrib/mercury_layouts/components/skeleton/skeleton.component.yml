@@ -1,0 +1,12 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+name: Skeleton
+description: A layout placeholder used to visualize layout structure or as a placeholder for lazy loaded content.
+props:
+  type: object
+  properties:
+    minHeight:
+      type: integer
+      title: Minimum Height
+    label:
+      type: string
+      title: Label

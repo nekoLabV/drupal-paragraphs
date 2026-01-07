@@ -1,0 +1,51 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+name: Container
+description: A simple layout container.
+props:
+  type: object
+  properties:
+    tag:
+      type: string
+      title: HTML Tag
+      default: div
+    gutter:
+      type: string
+      title: Gutter
+      enum:
+        - size-0
+        - size-1
+        - size-2
+        - size-3
+        - size-4
+        - size-5
+        - size-6
+        - size-7
+        - size-8
+        - size-9
+        - size-10
+    maxWidth:
+      type: string
+      title: Max Width
+      enum:
+        - none
+        - narrow
+        - normal
+        - wide
+    innerMaxWidth:
+      type: string
+      title: Inner Max Width
+      enum:
+        - none
+        - narrow
+        - normal
+        - wide
+    isDebugging:
+      type: boolean
+      title: Debug
+slots:
+  content: {}
+  inner: {}
+libraryOverrides:
+  dependencies:
+    - mercury_layouts/settings
+    - mercury_layouts/utilities

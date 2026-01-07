@@ -9,7 +9,7 @@
   border-right: none;
   border-bottom: 1px solid #fcece7;
   border-left: none;
-  background-color: #fff;
+  /* background-color: #fff; */
 }
 /* Large */
 @media screen and (min-width: 60rem) {

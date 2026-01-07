@@ -1,0 +1,61 @@
+title: Layout/Cluster
+argTypes:
+  gap:
+    type: string
+    options:
+      - size-0
+      - size-1
+      - size-2
+      - size-3
+      - size-4
+      - size-5
+      - size-6
+      - size-7
+      - size-8
+      - size-9
+      - size-10
+      - size-11
+      - size-12
+      - size-13
+      - size-14
+      - size-15
+    control: select
+  align_items:
+    type: string
+    options:
+      - normal
+      - stretch
+      - center
+      - start
+      - end
+    control: select
+  justify_content:
+    type: string
+    options:
+      - normal
+      - space-around
+      - space-between
+      - space-evenly
+      - stretch
+      - start
+      - end
+    control: select
+args:
+  content: |
+    {{ include('mercury_layouts:skeleton', {minHeight: 3, label: 'A'}) }}
+    {{ include('mercury_layouts:skeleton', {minHeight: 6, label: 'B'}) }}
+    {{ include('mercury_layouts:skeleton', {minHeight: 3, label: 'C'}) }}
+  align_items: normal
+  justify_content: normal
+  isDebugging: false
+stories:
+  - name: Default
+    args:
+      content: |
+        {{ include('mercury_layouts:skeleton', {minHeight: 3, label: 'A'}) }}
+        {{ include('mercury_layouts:skeleton', {minHeight: 6, label: 'BB'}) }}
+        {{ include('mercury_layouts:skeleton', {minHeight: 3, label: 'CCC'}) }}
+        {{ include('mercury_layouts:skeleton', {minHeight: 3, label: 'DDDD'}) }}
+        {{ include('mercury_layouts:skeleton', {minHeight: 6, label: 'EEEEE'}) }}
+        {{ include('mercury_layouts:skeleton', {minHeight: 3, label: 'FFFFFF'}) }}
+      align_items: stretch

@@ -1,0 +1,15 @@
+.c-skeleton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #efefff;
+  border: 1px solid #ababad;
+  min-height: calc(var(--skeleton-height, 3) * 1rem);
+}
+
+.c-skeleton__label {
+  font-family: sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  opacity: .7;
+}

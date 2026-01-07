@@ -1,0 +1,73 @@
+title: Layout/Container
+argTypes:
+  gutter:
+    type: string
+    options:
+      - size-0
+      - size-1
+      - size-2
+      - size-3
+      - size-4
+      - size-5
+      - size-6
+      - size-7
+      - size-8
+      - size-9
+      - size-10
+    control: select
+  maxWidth:
+    type: string
+    options:
+      - none
+      - narrow
+      - normal
+      - wide
+    control: select
+  innerMaxWidth:
+    type: string
+    options:
+      - none
+      - narrow
+      - normal
+      - wide
+    control: select
+  isDebugging:
+    type: boolean
+args:
+  content: |
+    <p>Check out our <strong>highlight reel</strong></p>
+  gutter: size-5
+  maxWidth: none
+  innerMaxWidth: none
+  isDebugging: false
+stories:
+  - name: Default
+    args:
+      content: |
+        {{ include('mercury_layouts:skeleton', {minHeight: 3, label: 'A'}) }}
+        {{ include('mercury_layouts:skeleton', {minHeight: 3, label: 'B'}) }}
+        {{ include('mercury_layouts:skeleton', {minHeight: 3, label: 'C'}) }}
+  - name: Complex Layout
+    args:
+      content: |
+        {% set content_first %}
+          {% set content %}
+            {{ include('mercury_layouts:skeleton', {minHeight: 3, label: 'A'}) }}
+            {{ include('mercury_layouts:skeleton', {minHeight: 6, label: 'B'}) }}
+            {{ include('mercury_layouts:skeleton', {minHeight: 3, label: 'C'}) }}
+          {% endset %}
+          {{ include('mercury_layouts:stack', {spacing: 'size-10'}) }}
+        {% endset %}
+        {% set content_second %}
+          {% set content %}
+            {{ include('mercury_layouts:skeleton', {minHeight: 3, label: 'A'}) }}
+            {{ include('mercury_layouts:skeleton', {minHeight: 6, label: 'B'}) }}
+            {{ include('mercury_layouts:skeleton', {minHeight: 3, label: 'C'}) }}
+          {% endset %}
+          {{ include('mercury_layouts:stack', {spacing: 'size-5'}) }}
+        {% endset %}
+        {{ include('mercury_layouts:columns-2', {
+          column_ratio: [2, 1],
+          align_items: 'center',
+          column_threshold: '40em'
+        }) }}

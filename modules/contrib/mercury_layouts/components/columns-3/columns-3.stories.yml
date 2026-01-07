@@ -1,0 +1,78 @@
+title: Layout/Columns 3
+argTypes:
+  gap:
+    type: string
+    options:
+      - size-0
+      - size-1
+      - size-2
+      - size-3
+      - size-4
+      - size-5
+      - size-6
+      - size-7
+      - size-8
+      - size-9
+      - size-10
+      - size-11
+      - size-12
+      - size-13
+      - size-14
+      - size-15
+    control: select
+  align_items:
+    type: string
+    options:
+      - normal
+      - stretch
+      - center
+      - start
+      - end
+    control: select
+  column_ratio:
+    type: array
+    items:
+      control: number
+args:
+  content_first: |
+    <p>Check out our <strong>highlight reel</strong></p>
+  content_second: |
+    <p>Check out our <strong>highlight reel</strong></p>
+  content_third: |
+    <p>Check out our <strong>highlight reel</strong></p>
+  align_items: normal
+  gap: size-4
+  isDebugging: false
+  column_ratio: [1, 1, 1]
+  column_threshold: '800px'
+stories:
+  - name: Default
+    args:
+      content_first: |
+        {{ include('mercury_layouts:skeleton', {minHeight: 3, label: 'A'}) }}
+        {{ include('mercury_layouts:skeleton', {minHeight: 6, label: 'B'}) }}
+        {{ include('mercury_layouts:skeleton', {minHeight: 3, label: 'C'}) }}
+      content_second: |
+        {{ include('mercury_layouts:skeleton', {minHeight: 3, label: 'A'}) }}
+        {{ include('mercury_layouts:skeleton', {minHeight: 2, label: 'B'}) }}
+        {{ include('mercury_layouts:skeleton', {minHeight: 3, label: 'C'}) }}
+      content_third: |
+        {{ include('mercury_layouts:skeleton', {minHeight: 3, label: 'A'}) }}
+        {{ include('mercury_layouts:skeleton', {minHeight: 2, label: 'B'}) }}
+        {{ include('mercury_layouts:skeleton', {minHeight: 3, label: 'C'}) }}
+      align_items: stretch
+  - name: Nested Stacks
+    args:
+      content_first: |
+        {{ include('mercury_layouts:skeleton', {minHeight: 3, label: 'A'}) }}
+      content_second: |
+        {% set content %}
+          {{ include('mercury_layouts:skeleton', {minHeight: 3, label: 'A'}) }}
+          {{ include('mercury_layouts:skeleton', {minHeight: 6, label: 'B'}) }}
+          {{ include('mercury_layouts:skeleton', {minHeight: 3, label: 'C'}) }}
+        {% endset %}
+        {{ include('mercury_layouts:stack', {spacing: 'size-4'}) }}
+      content_third: |
+        {{ include('mercury_layouts:skeleton', {minHeight: 3, label: 'A'}) }}
+      column_ratio: [2, 1, 1]
+      align_items: stretch

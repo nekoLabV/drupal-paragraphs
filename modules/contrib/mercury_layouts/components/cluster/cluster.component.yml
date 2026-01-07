@@ -1,0 +1,58 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+name: Cluster
+description: A simple layout container that lays content out horizontally.
+props:
+  type: object
+  properties:
+    align_items:
+      type: string
+      title: Align Items
+      enum:
+        - normal
+        - stretch
+        - center
+        - start
+        - end
+    justify_content:
+      type: string
+      title: Justify Content
+      enum:
+        - normal
+        - space-around
+        - space-between
+        - space-evenly
+        - stretch
+        - start
+        - end
+    gap:
+      type: string
+      title: Gap
+      enum:
+        - size-0
+        - size-1
+        - size-2
+        - size-3
+        - size-4
+        - size-5
+        - size-6
+        - size-7
+        - size-8
+        - size-9
+        - size-10
+        - size-11
+        - size-12
+        - size-13
+        - size-14
+        - size-15
+    attributes:
+      type: [object, string]
+      title: Attributes
+    isDebugging:
+      type: boolean
+      title: Debug
+slots:
+  content: {}
+libraryOverrides:
+  dependencies:
+    - mercury_layouts/settings
+    - mercury_layouts/utilities

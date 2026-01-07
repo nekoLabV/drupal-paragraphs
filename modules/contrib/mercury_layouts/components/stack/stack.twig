@@ -1,0 +1,9 @@
+{% set classes = [
+  'l-stack',
+  'l-stack--' ~ spacing|default("size-7"),
+  isDebugging ? 'is-debugging',
+] %}
+
+<div {{attributes.addClass(classes)}}>
+  {{ content }}
+</div>

@@ -1,0 +1,38 @@
+:root {
+  --size-0: 0;
+  --size-1: .125rem;
+  --size-2: .25rem;
+  --size-3: .5rem;
+  --size-4: .75rem;
+  --size-5: 1rem;
+  --size-6: 1.25rem;
+  --size-7: 1.75rem;
+  --size-8: 2rem;
+  --size-9: 2.5rem;
+  --size-10: 3rem;
+  --size-11: 4rem;
+  --size-12: 5rem;
+  --size-13: 7.5rem;
+  --size-14: 10rem;
+  --size-15: 15rem;
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --size-1: .25rem;
+    --size-2: .5rem;
+    --size-3: 1rem;
+    --size-4: 1.25rem;
+    --size-5: 1.5rem;
+    --size-6: 1.75rem;
+    --size-7: 2rem;
+    --size-8: 3rem;
+    --size-9: 4rem;
+    --size-10: 5rem;
+    --size-11: 7.5rem;
+    --size-12: 10rem;
+    --size-13: 15rem;
+    --size-14: 20rem;
+    --size-15: 30rem;
+  }
+}

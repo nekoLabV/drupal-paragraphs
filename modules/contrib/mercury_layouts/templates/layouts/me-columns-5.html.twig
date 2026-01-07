@@ -1,0 +1,40 @@
+{#
+/**
+ * @file
+ * Template for a Mercury 5 Columns Layout.
+ */
+#}
+
+{% if content['#inner_max_width'] is not empty %}
+  {% set max_width_class = 'u-m-x-auto u-mw-' ~ content['#inner_max_width']%}
+{% endif %}
+
+{% if content['#tag'] is not empty %}
+  {% set tag = content['#tag']%}
+{% endif %}
+
+{% embed('mercury_layouts:container') with {
+  attributes: attributes,
+  gutter: content['#gutter']|default('size-0'),
+  tag: tag|default('div'),
+} %}
+  {% block inner %}
+  {{ include('mercury_layouts:columns-5', {
+    attributes: inner_attributes|default(create_attribute()).addClass(max_width_class),
+    gap: content['#spacing']|default('size-8'),
+    column_ratio: content['#column_ratio_5']|default([1,1,1,1,1]),
+    column_threshold: content['#column_threshold']|default('800px'),
+    align_items: content['#align_items']|default('normal'),
+    content_first: content.content_first,
+    content_first_attributes: region_attributes.content_first,
+    content_second: content.content_second,
+    content_second_attributes: region_attributes.content_second,
+    content_third: content.content_third,
+    content_third_attributes: region_attributes.content_third,
+    content_fourth: content.content_fourth,
+    content_fourth_attributes: region_attributes.content_fourth,
+    content_fifth: content.content_fifth,
+    content_fifth_attributes: region_attributes.content_fifth,
+  }) }}
+  {% endblock %}
+{% endembed %}

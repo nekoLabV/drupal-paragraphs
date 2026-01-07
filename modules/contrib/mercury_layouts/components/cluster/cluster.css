@@ -1,0 +1,58 @@
+[class*="l-cluster"] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-gap-x);
+}
+
+[class*="l-cluster"] > * {
+  margin: 0;
+}
+
+.l-cluster--gap-size-0 {
+  --space-gap-x: var(--size-0);
+}
+.l-cluster--gap-size-1 {
+  --space-gap-x: var(--size-1);
+}
+.l-cluster--gap-size-2 {
+  --space-gap-x: var(--size-2);
+}
+.l-cluster--gap-size-3 {
+  --space-gap-x: var(--size-3);
+}
+.l-cluster--gap-size-4 {
+  --space-gap-x: var(--size-4);
+}
+.l-cluster--gap-size-5 {
+  --space-gap-x: var(--size-5);
+}
+.l-cluster--gap-size-6 {
+  --space-gap-x: var(--size-6);
+}
+.l-cluster--gap-size-7 {
+  --space-gap-x: var(--size-7);
+}
+.l-cluster--gap-size-8 {
+  --space-gap-x: var(--size-8);
+}
+.l-cluster--gap-size-9 {
+  --space-gap-x: var(--size-9);
+}
+.l-cluster--gap-size-10 {
+  --space-gap-x: var(--size-10);
+}
+.l-cluster--gap-size-11 {
+  --space-gap-x: var(--size-11);
+}
+.l-cluster--gap-size-12 {
+  --space-gap-x: var(--size-12);
+}
+.l-cluster--gap-size-13 {
+  --space-gap-x: var(--size-13);
+}
+.l-cluster--gap-size-14 {
+  --space-gap-x: var(--size-14);
+}
+.l-cluster--gap-size-15 {
+  --space-gap-x: var(--size-15);
+}

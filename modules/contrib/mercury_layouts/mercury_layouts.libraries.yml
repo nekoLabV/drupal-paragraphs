@@ -1,0 +1,12 @@
+settings:
+  css:
+    base:
+      css/settings.css: {}
+columns:
+  css:
+    component:
+      css/columns.css: {}
+utilities:
+  css:
+    theme:
+      css/utilities.css: {}

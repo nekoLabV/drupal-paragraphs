@@ -1,0 +1,25 @@
+{% set classes = [
+  'l-columns',
+  'l-columns--5',
+  'l-columns--gap-' ~ gap|default("size-7"),
+  'u-align-items-' ~ align_items|default("normal"),
+  isDebugging ? 'is-debugging'
+] %}
+
+<div {{attributes.addClass(classes).setAttribute('style', '--column-threshold: ' ~ column_threshold|default('800px'))}}>
+  <div {{content_first_attributes|default(create_attribute()).addClass('l__column').setAttribute('style', '--column-size: ' ~ column_ratio.0|default(1))}} >
+    {{ content_first }}
+  </div>
+  <div {{content_second_attributes|default(create_attribute()).addClass('l__column').setAttribute('style', '--column-size: ' ~ column_ratio.1|default(1))}} >
+    {{ content_second }}
+  </div>
+  <div {{content_third_attributes|default(create_attribute()).addClass('l__column').setAttribute('style', '--column-size: ' ~ column_ratio.2|default(1))}} >
+    {{ content_third }}
+  </div>
+  <div {{content_fourth_attributes|default(create_attribute()).addClass('l__column').setAttribute('style', '--column-size: ' ~ column_ratio.3|default(1))}} >
+    {{ content_fourth }}
+  </div>
+  <div {{content_fifth_attributes|default(create_attribute()).addClass('l__column').setAttribute('style', '--column-size: ' ~ column_ratio.4|default(1))}} >
+    {{ content_fifth }}
+  </div>
+</div>

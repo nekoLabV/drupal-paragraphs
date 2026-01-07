@@ -1,0 +1,18 @@
+
+{% set classes = [
+  'l-container',
+  'l-container--gutter-' ~ gutter|default('size-5'),
+  'u-mw-' ~ maxWidth|default('none'),
+  isDebugging ? 'is-debugging',
+] %}
+{% set inner_classes = [
+  'u-mw-' ~ innerMaxWidth|default('none'),
+  'u-mx-auto',
+] %}
+<{{tag|default('div')}} {{attributes.addClass(classes)}}>
+  {% block inner %}
+  <div {{inner_attributes|default(create_attribute()).addClass(inner_classes)}}>
+    {{ content }}
+  </div>
+  {% endblock %}
+</{{tag|default('div')}}>

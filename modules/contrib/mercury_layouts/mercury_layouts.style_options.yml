@@ -1,0 +1,351 @@
+options:
+
+  align_items:
+    plugin: property
+    label: Align Items
+    description: The vertical alignment of items within the columns.
+    default: normal
+    options:
+      normal:
+        label: Normal
+      stretch:
+        label: Stretch
+      center:
+        label: Center
+      start:
+        label: Start
+      end:
+        label: End
+
+  justify_content:
+    plugin: property
+    label: Justify Content
+    description: The horizontal alignment of items within the container.
+    default: normal
+    options:
+      normal:
+        label: Normal
+      stretch:
+        label: Stretch
+      center:
+        label: Center
+      start:
+        label: Start
+      end:
+        label: End
+      'space-between':
+        label: Space Between
+      'space-around':
+        label: Space Around
+      'space-evenly':
+        label: Space Evenly
+
+  gutter:
+    plugin: property
+    label: Gutter
+    description: The amount of space between edges of the outer columns and their container.
+    default: 'size-0'
+    options:
+      'size-0':
+        label: '0'
+      'size-1':
+        label: '1'
+      'size-2':
+        label: '2'
+      'size-3':
+        label: '3'
+      'size-4':
+        label: '4'
+      'size-5':
+        label: '5'
+      'size-6':
+        label: '6'
+      'size-7':
+        label: '7'
+      'size-8':
+        label: '8'
+      'size-9':
+        label: '9'
+      'size-10':
+        label: '10'
+
+  column_ratio_2:
+    plugin: me_column_ratio
+    label: Column Ratio
+    column_count: 2
+    default: [1, 1]
+
+  column_ratio_3:
+    plugin: me_column_ratio
+    label: Column Ratio
+    column_count: 3
+    default: [1, 1, 1]
+
+  column_ratio_4:
+    plugin: me_column_ratio
+    label: Column Ratio
+    column_count: 4
+    default: [1, 1, 1, 1]
+
+  column_ratio_5:
+    plugin: me_column_ratio
+    label: Column Ratio
+    column_count: 5
+    default: [1, 1, 1, 1, 1]
+
+  column_threshold:
+    plugin: property
+    label: Threshold
+    default: '800px'
+
+  boxsize:
+    plugin: me_boxsize
+    label: Box Size
+    default:
+      margin:
+        top: 'default'
+        right: 'default'
+        bottom: 'default'
+        left: 'default'
+      padding:
+        top: 'default'
+        right: 'default'
+        bottom: 'default'
+        left: 'default'
+    options:
+      'default':
+        label: 'Default'
+      'auto':
+        label: 'Auto'
+      'size-0':
+        label: '0'
+      'size-1':
+        label: '1'
+      'size-2':
+        label: '2'
+      'size-3':
+        label: '3'
+      'size-4':
+        label: '4'
+      'size-5':
+        label: '5'
+      'size-6':
+        label: '6'
+      'size-7':
+        label: '7'
+      'size-8':
+        label: '8'
+      'size-9':
+        label: '9'
+      'size-10':
+        label: '10'
+      'size-11':
+        label: '11'
+      'size-12':
+        label: '12'
+      'size-13':
+        label: '13'
+      'size-14':
+        label: '14'
+      'size-15':
+        label: '15'
+
+  spacing:
+    plugin: property
+    label: Spacing
+    default: 'size-7'
+    options:
+      'size-0':
+        label: '0'
+      'size-1':
+        label: '1'
+      'size-2':
+        label: '2'
+      'size-3':
+        label: '3'
+      'size-4':
+        label: '4'
+      'size-5':
+        label: '5'
+      'size-6':
+        label: '6'
+      'size-7':
+        label: '7'
+      'size-8':
+        label: '8'
+      'size-9':
+        label: '9'
+      'size-10':
+        label: '10'
+      'size-11':
+        label: '11'
+      'size-12':
+        label: '12'
+      'size-13':
+        label: '13'
+      'size-14':
+        label: '14'
+      'size-15':
+        label: '15'
+
+  tag:
+    plugin: property
+    label: HTML Tag
+    description: The HTML tag to use on the outer element.
+    default: div
+    options:
+      aside:
+        label: <aside>
+      article:
+        label: <article>
+      div:
+        label: <div>
+      header:
+        label: <header>
+      footer:
+        label: <footer>
+      main:
+        label: <main>
+      nav:
+        label: <nav>
+      section:
+        label: <section>
+
+contexts:
+
+  layout:
+
+    me_cluster:
+      _disable:
+       - vertical_spacing
+      options:
+        boxsize:
+          layout: true
+          regions: true
+        spacing:
+          layout: true
+          regions: false
+        gutter:
+          layout: true
+          regions: false
+        align_items:
+          layout: true
+          regions: false
+        justify_content:
+          layout: true
+          regions: false
+        tag:
+          layout: true
+          regions: false
+    me_stack:
+      _disable:
+       - vertical_spacing
+      options:
+        boxsize:
+          layout: true
+          regions: true
+        spacing:
+          layout: true
+          regions: false
+        gutter:
+          layout: true
+          regions: false
+        tag:
+          layout: true
+          regions: false
+    me_columns_2:
+      _disable:
+       - vertical_spacing
+      options:
+        align_items:
+          layout: true
+        boxsize:
+          layout: true
+          regions: true
+        column_ratio_2:
+          layout: true
+          regions: false
+        column_threshold:
+          layout: true
+          regions: false
+        gutter:
+          layout: true
+          regions: false
+        spacing:
+          layout: true
+          regions: false
+        tag:
+          layout: true
+          regions: false
+    me_columns_3:
+      _disable:
+       - vertical_spacing
+      options:
+        align_items:
+          layout: true
+        boxsize:
+          layout: true
+          regions: true
+        column_ratio_3:
+          layout: true
+          regions: false
+        column_threshold:
+          layout: true
+          regions: false
+        gutter:
+          layout: true
+          regions: false
+        spacing:
+          layout: true
+          regions: false
+        tag:
+          layout: true
+          regions: false
+    me_columns_4:
+      _disable:
+       - vertical_spacing
+      options:
+        align_items:
+          layout: true
+        boxsize:
+          layout: true
+          regions: true
+        column_ratio_4:
+          layout: true
+          regions: false
+        column_threshold:
+          layout: true
+          regions: false
+        gutter:
+          layout: true
+          regions: false
+        spacing:
+          layout: true
+          regions: false
+        tag:
+          layout: true
+          regions: false
+    me_columns_5:
+      _disable:
+       - vertical_spacing
+      options:
+        align_items:
+          layout: true
+        boxsize:
+          layout: true
+          regions: true
+        column_ratio_5:
+          layout: true
+          regions: false
+        column_threshold:
+          layout: true
+          regions: false
+        gutter:
+          layout: true
+          regions: false
+        spacing:
+          layout: true
+          regions: false
+        tag:
+          layout: true
+          regions: false

@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Template for a generic layout.
+ */
+#}
+{% if content['#inner_max_width'] is not empty %}
+  {% set max_width_class = 'u-m-x-auto u-mw-' ~ content['#inner_max_width']%}
+{% endif %}
+
+{% if content['#tag'] is not empty %}
+  {% set tag = content['#tag']%}
+{% endif %}
+
+{% embed('mercury_layouts:container') with {
+  attributes: attributes,
+  gutter: content['#gutter']|default('size-0'),
+  tag: tag|default('div'),
+} %}
+  {% block inner %}
+  {{ include('mercury_layouts:cluster', {
+    attributes: region_attributes.content.addClass(max_width_class),
+    content: content,
+    gap: content['#spacing']|default('size-7'),
+    align_items: content['#align_items']|default('normal'),
+    justify_content: content['#justify_content']|default('normal'),
+  }, with_context = false)}}
+  {% endblock %}
+{% endembed %}

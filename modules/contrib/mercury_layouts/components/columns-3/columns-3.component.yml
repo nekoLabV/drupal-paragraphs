@@ -1,0 +1,71 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+name: Columns 3
+description: A 3 column layout that breaks to 1 column.
+props:
+  type: object
+  properties:
+    align_items:
+      type: string
+      title: Align Items
+      enum:
+        - normal
+        - stretch
+        - center
+        - start
+        - end
+    items_justify:
+      type: string
+      title: Align Items
+      enum:
+        - stretch
+        - center
+        - start
+        - end
+        - space-between
+    column_ratio:
+      type: array
+      items:
+        type: number
+    column_threshold:
+      type: string
+    gap:
+      type: string
+      title: Gap
+      enum:
+        - size-0
+        - size-1
+        - size-2
+        - size-3
+        - size-4
+        - size-5
+        - size-6
+        - size-7
+        - size-8
+        - size-9
+        - size-10
+        - size-11
+        - size-12
+        - size-13
+        - size-14
+        - size-15
+    content_first_attributes:
+      type: [object, string]
+      title: Content First Attributes
+    content_second_attributes:
+      type: [object, string]
+      title: Content Second Attributes
+    content_third_attributes:
+      type: [object, string]
+      title: Content Third Attributes
+    isDebugging:
+      type: boolean
+      title: Debug
+slots:
+  content_first: {}
+  content_second: {}
+  content_third: {}
+libraryOverrides:
+  dependencies:
+    - mercury_layouts/settings
+    - mercury_layouts/utilities
+    - mercury_layouts/columns

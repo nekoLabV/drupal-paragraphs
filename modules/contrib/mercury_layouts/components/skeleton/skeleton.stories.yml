@@ -1,0 +1,13 @@
+title: Components/Skeleton
+argTypes:
+  label:
+    type: string
+  minHeight:
+    type: number
+args:
+  minHeight: 2
+stories:
+  - name: Default
+    args:
+      label: Label
+  - name: No Label

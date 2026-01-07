@@ -1,0 +1,11 @@
+{% set classes = [
+  'l-cluster',
+  'l-cluster--gap-' ~ gap|default("size-7"),
+  'u-align-items-' ~ align_items|default("normal"),
+  'u-justify-content-' ~ justify_content|default("normal"),
+  isDebugging ? 'is-debugging'
+] %}
+
+<div {{attributes.addClass(classes)}}>
+  {{ content }}
+</div>

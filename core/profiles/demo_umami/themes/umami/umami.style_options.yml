@@ -250,6 +250,17 @@ options:
     plugin: custom_input_text
     label: Input text
 
+  col_width:
+    plugin: css_class
+    label: Col width
+    multiple: false
+    options:
+      - label: 100%
+      - label: 80%
+        class: base-theme-block--col-width-ratio-80
+      - label: 60%
+        class: base-theme-block--col-width-ratio-60
+
 contexts:
   layout:
     _defaults:
@@ -303,6 +314,7 @@ contexts:
       options:
         theme_variant: true
         block_align: true
+        col_width: true
         bg_image: true
         # input_text: true
 

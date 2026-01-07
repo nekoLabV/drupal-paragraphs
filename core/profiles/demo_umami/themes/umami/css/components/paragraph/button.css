@@ -1,5 +1,6 @@
 .paragraph--type--button {
   width: max-content;
+  color: var(--cm-white);
   border-radius: 30px;
   background-color: var(--cm-primary);
   padding: 10px 20px;

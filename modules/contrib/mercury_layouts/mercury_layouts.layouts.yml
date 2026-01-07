@@ -1,0 +1,95 @@
+me_columns_2:
+  label: 'Mercury 2 Columns'
+  template: templates/layouts/me-columns-2
+  class: '\Drupal\style_options\Plugin\Layout\StyleOptionLayoutPlugin'
+  category: 'Mercury'
+  default_region: content_first
+  icon_map:
+    - [content_first, content_second]
+  regions:
+    content_first:
+      label: First
+    content_second:
+      label: Second
+
+me_columns_3:
+  label: 'Mercury 3 Columns'
+  template: templates/layouts/me-columns-3
+  class: '\Drupal\style_options\Plugin\Layout\StyleOptionLayoutPlugin'
+  category: 'Mercury'
+  default_region: content_first
+  icon_map:
+    - [content_first, content_second, content_third]
+  regions:
+    content_first:
+      label: First
+    content_second:
+      label: Second
+    content_third:
+      label: Third
+
+me_columns_4:
+  label: 'Mercury 4 Columns'
+  template: templates/layouts/me-columns-4
+  class: '\Drupal\style_options\Plugin\Layout\StyleOptionLayoutPlugin'
+  category: 'Mercury'
+  default_region: content_first
+  icon_map:
+    - [content_first, content_second, content_third, content_fourth]
+  regions:
+    content_first:
+      label: First
+    content_second:
+      label: Second
+    content_third:
+      label: Third
+    content_fourth:
+      label: Fourth
+
+me_columns_5:
+  label: 'Mercury 5 Columns'
+  template: templates/layouts/me-columns-5
+  class: '\Drupal\style_options\Plugin\Layout\StyleOptionLayoutPlugin'
+  category: 'Mercury'
+  default_region: content_first
+  icon_map:
+    - [content_first, content_second, content_third, content_fourth, content_fifth]
+  regions:
+    content_first:
+      label: First
+    content_second:
+      label: Second
+    content_third:
+      label: Third
+    content_fourth:
+      label: Fourth
+    content_fifth:
+      label: Fifth
+
+me_stack:
+  label: 'Mercury Stack'
+  template: templates/layouts/me-stack
+  class: '\Drupal\style_options\Plugin\Layout\StyleOptionLayoutPlugin'
+  category: 'Mercury'
+  default_region: content
+  icon_map:
+    - [content_1]
+    - [content_2]
+    - [content_3]
+  regions:
+    content:
+      label: Content
+
+me_cluster:
+  label: 'Mercury Cluster'
+  template: templates/layouts/me-cluster
+  class: '\Drupal\style_options\Plugin\Layout\StyleOptionLayoutPlugin'
+  category: 'Mercury'
+  default_region: content
+  icon_map:
+    - [content_1, content_1, content_2, content_2, content_2]
+    - [content_3, content_3, content_4, content_4, content_5]
+    - [content_6, content_7, content_7, content_8, content_8]
+  regions:
+    content:
+      label: Content

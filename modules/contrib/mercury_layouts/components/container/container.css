@@ -1,0 +1,57 @@
+.l-container {
+  /* Reset the gutter as we don't want it to inherit */
+  --container-gutter: 0;
+}
+
+.l-container > * {
+  width: calc(100% - (var(--container-gutter) * 2));
+}
+
+.l-container--gutter-size-0 {
+  --container-gutter: var(--size-0);
+}
+.l-container--gutter-size-1 {
+  --container-gutter: var(--size-1);
+}
+.l-container--gutter-size-2 {
+  --container-gutter: var(--size-2);
+}
+.l-container--gutter-size-3 {
+  --container-gutter: var(--size-3);
+}
+.l-container--gutter-size-4 {
+  --container-gutter: var(--size-4);
+}
+.l-container--gutter-size-5 {
+  --container-gutter: var(--size-5);
+}
+.l-container--gutter-size-6 {
+  --container-gutter: var(--size-6);
+}
+.l-container--gutter-size-7 {
+  --container-gutter: var(--size-7);
+}
+.l-container--gutter-size-8 {
+  --container-gutter: var(--size-8);
+}
+.l-container--gutter-size-9 {
+  --container-gutter: var(--size-9);
+}
+.l-container--gutter-size-10 {
+  --container-gutter: var(--size-10);
+}
+.l-container--gutter-size-11 {
+  --container-gutter: var(--size-11);
+}
+.l-container--gutter-size-12 {
+  --container-gutter: var(--size-12);
+}
+.l-container--gutter-size-13 {
+  --container-gutter: var(--size-13);
+}
+.l-container--gutter-size-14 {
+  --container-gutter: var(--size-14);
+}
+.l-container--gutter-size-15 {
+  --container-gutter: var(--size-15);
+}
