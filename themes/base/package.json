@@ -1,0 +1,17 @@
+{
+  "name": "base",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "sass scss/index.scss dist/css/index.css",
+    "watch": "sass --watch scss/index.scss dist/css/index.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.7.0",
+  "dependencies": {
+    "sass": "^1.97.2"
+  }
+}

@@ -1,0 +1,17 @@
+.paragraph--type--images {
+  --col: 8;
+}
+.paragraph--type--images .field--name-field-images-upload {
+  display: grid;
+  grid-template-columns: repeat(var(--col), 1fr);
+  gap: var(--layout-grid-gutter);
+  img {
+    border-radius: var(--cm-border-radius);
+  }
+}
+.base-theme-block--images-col-6 {
+  --col: 6;
+}
+.base-theme-block--images-col-8 {
+  --col: 8;
+}

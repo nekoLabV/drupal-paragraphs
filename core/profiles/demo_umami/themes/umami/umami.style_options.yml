@@ -246,6 +246,17 @@ options:
       - label: 3
         class: base-theme-block--group-col-3
 
+  images_col:
+    plugin: css_class
+    label: Images col
+    multiple: false
+    options:
+      - label: Default
+      - label: 6
+        class: base-theme-block--images-col-6
+      - label: 8
+        class: base-theme-block--images-col-8
+
   input_text:
     plugin: custom_input_text
     label: Input text
@@ -260,6 +271,19 @@ options:
         class: base-theme-block--col-width-ratio-80
       - label: 60%
         class: base-theme-block--col-width-ratio-60
+
+  border_radius:
+    plugin: css_class
+    label: Border radius
+    multiple: false
+    options:
+      - label: Default
+      - label: small
+        class: base-theme-block--border-radius-sm
+      - label: medium
+        class: base-theme-block--border-radius-md
+      - label: large
+        class: base-theme-block--border-radius-lg
 
 contexts:
   layout:
@@ -285,6 +309,7 @@ contexts:
   paragraphs:
     _defaults:
       options:
+        border_radius: true
         padding_top:
           layout: true
           regions: true
@@ -327,6 +352,10 @@ contexts:
       options:
         image_size: true
         image_fit: true
+      
+    images:
+      options:
+        images_col: true
 
     group:
       options:

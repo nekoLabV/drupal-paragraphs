@@ -136,7 +136,7 @@
     }
   }
 }
-.base-theme-block .base-theme-block--background {
+.base-theme-block .base-theme-block__background {
   position: absolute;
   left: calc(50% - (100vw - var(--scrollbar-width, 0px)) / 2);
   right: calc(50% - (100vw - var(--scrollbar-width, 0px)) / 2);
@@ -145,4 +145,17 @@
   z-index: -1;
   background: var(--cmt-bg);
   pointer-events: none;
+}
+
+.base-theme-block--border-radius-sm {
+  border-radius: var(--cm-border-radius-sm);
+  overflow: hidden;
+}
+.base-theme-block--border-radius-md {
+  border-radius: var(--cm-border-radius-md);
+  overflow: hidden;
+}
+.base-theme-block--border-radius-lg {
+  border-radius: var(--cm-border-radius-lg);
+  overflow: hidden;
 }

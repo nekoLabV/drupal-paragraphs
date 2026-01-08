@@ -1,0 +1,24 @@
+.paragraph--type--teaser-box {
+  height: 100%;
+  background-color: var(--cm-white);
+  border-radius: 8px;
+  .content-block-teaser-box__primary {
+    display: grid;
+    gap: 8px;
+    padding: 20px;
+    p {
+      margin-bottom: 0;
+    }
+    .field--name-field-title {
+      font-size: var(--cm-h6-font-size);
+      color: var(--cmt-surface-heading-color);
+      font-weight: 700;
+    }
+    .field--name-field-description {
+      color: var(--cmt-surface-color);
+    }
+  }
+  img {
+    border-radius: 8px;
+  }
+}

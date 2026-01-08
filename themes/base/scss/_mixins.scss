@@ -1,0 +1,208 @@
+@use 'sass:math';
+@use 'sass:meta';
+@use 'sass:list';
+@use 'sass:map';
+
+@mixin translate-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin flex-center($inline: false) {
+  display: if(sass($inline == true), inline-flex, flex);
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin absolute-center($width: 100%, $height: 100%) {
+  position: absolute;
+  top: math.div(100% - $height, 2);
+  left: math.div(100% - $width, 2);
+  width: $width;
+  height: $height;
+}
+
+@mixin fixed-center($width: 100%, $height: 100%) {
+  position: fixed;
+  top: math.div(100% - $height, 2);
+  left: math.div(100% - $width, 2);
+  width: $width;
+  height: $height;
+}
+
+@mixin padding-x($num) {
+  padding-left: $num;
+  padding-right: $num;
+}
+
+@mixin padding-y($num) {
+  padding-top: $num;
+  padding-bottom: $num;
+}
+
+@mixin margin-x($num) {
+  margin-left: $num;
+  margin-right: $num;
+}
+
+@mixin margin-y($num) {
+  margin-top: $num;
+  margin-bottom: $num;
+}
+
+@mixin first-last-no-margin {
+  > :first-child {
+    margin-top: 0;
+  }
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+@mixin btn-appearance-none($resetPadding: true) {
+  @if ($resetPadding) {
+    padding: 0;
+  }
+  color: inherit;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  appearance: none;
+}
+
+@mixin hover {
+  @media (hover: hover) {
+    &:not(.no-interactive-style):hover {
+      @content;
+    }
+  }
+  @media (hover: none) {
+    &:not(.no-interactive-style):active {
+      @content;
+    }
+  }
+}
+
+@mixin max-line-ellipsis($num: 2) {
+  @if $num == 1 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $num;
+  }
+  overflow: hidden;
+}
+
+@mixin break-word {
+  word-break: break-word;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+@mixin key-var($key, $val, $prefix: null) {
+  $var: if(sass($prefix != null), --#{$prefix}-#{$key}, -#{$key});
+  #{$var}: #{$val};
+  #{$key}: var(#{$var}, $val);
+}
+
+@mixin min-scrollbar($thumbBg: rgba(0, 0, 0, 0.3)) {
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $thumbBg;
+  }
+}
+
+// 参考 Bootstrap 5
+$transition-base: all 222ms cubic-bezier(0.4, 0, 0.2, 1) !default;
+
+@mixin transition($transition...) {
+  @if list.length($transition) == 0 {
+    // 使用 list.length 替代 length
+    transition: $transition-base;
+  } @else {
+    transition: $transition;
+  }
+}
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+) !default;
+
+// 媒体查询 mixin
+@mixin media-breakpoint-up($breakpoint, $onlyMedia: false) {
+  $min: map.get($grid-breakpoints, $breakpoint); // 使用 map.get 替代 map-get
+  @if $min {
+    @if ($onlyMedia == true) {
+      @media (min-width: $min) {
+        @content;
+      }
+    } @else {
+      @at-root .landing-page-content:not(.display-mobile-style) & {
+        @media (min-width: $min) {
+          @content;
+        }
+      }
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-down($breakpoint) {
+  $max: map.get($grid-breakpoints, $breakpoint);
+  @if $max {
+    // 这里减去0.02px，防止与下一个断点重叠
+    $max-width: if(sass(meta.type-of($max) == 'number'), $max - 0.02px, $max);
+    @media (max-width: $max-width) {
+      @content;
+    }
+    @if $breakpoint == 'md' or $breakpoint == 'sm' {
+      @at-root .display-mobile-style & {
+        @content;
+      }
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin container-breakpoint-up($breakpoint) {
+  $min: map.get($grid-breakpoints, $breakpoint);
+  @if $min {
+    @container (min-width: #{$min}) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin container-breakpoint-down($breakpoint) {
+  $max: map.get($grid-breakpoints, $breakpoint);
+  @if $max {
+    $max-width: if(sass(meta.type-of($max) == 'number'), $max - 0.02px, $max);
+    @container (max-width: #{$max-width}) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin auto-font-size($size) {
+  font-size: $size;
+  @include media-breakpoint-down(lg) {
+    font-size: calc($size * 0.88);
+  }
+}

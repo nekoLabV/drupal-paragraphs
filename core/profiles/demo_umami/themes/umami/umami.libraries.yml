@@ -49,6 +49,8 @@ global:
       css/components/paragraph/image.css: {}
       css/components/paragraph/number.css: {}
       css/components/paragraph/block-side-image.css: {}
+      css/components/paragraph/teaser-box.css: {}
+      css/components/paragraph/images.css: {}
     layout:
       css/layout/layout.css: {}
 
