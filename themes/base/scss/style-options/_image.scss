@@ -1,28 +1,28 @@
-.base-theme--image-size-small {
+.base-theme-block--image-size-sm {
   width: 20%;
   img {
     width: 100%;
   }
 }
-.base-theme--image-size-medium {
+.base-theme-block--image-size-md {
   width: 50%;
   img {
     width: 100%;
   }
 }
-.base-theme--image-size-large {
+.base-theme-block--image-size-lg {
   width: 100%;
   img {
     width: 100%;
   }
 }
 
-.base-theme--image-fit-cover {
+.base-theme-block--image-fit-cover {
   img {
     object-fit: cover;
   }
 }
-.base-theme--image-fit-contain {
+.base-theme-block--image-fit-contain {
   img {
     object-fit: contain;
   }

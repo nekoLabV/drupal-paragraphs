@@ -30,17 +30,17 @@ options:
     options:
       - label: None
       - label: H1
-        class: base-theme-block--typography--h1
+        class: base-theme--typography--h1
       - label: H2
-        class: base-theme-block--typography--h2
+        class: base-theme--typography--h2
       - label: H3
-        class: base-theme-block--typography--h3
+        class: base-theme--typography--h3
       - label: H4
-        class: base-theme-block--typography--h4
+        class: base-theme--typography--h4
       - label: H5
-        class: base-theme-block--typography--h5
+        class: base-theme--typography--h5
       - label: H6
-        class: base-theme-block--typography--h6
+        class: base-theme--typography--h6
 
   block_align:
     plugin: css_class
@@ -49,11 +49,11 @@ options:
     options:
       - label: None
       - label: left
-        class: base-theme-block--block-align-left
+        class: base-theme-block--block-align-start
       - label: center
         class: base-theme-block--block-align-center
       - label: right
-        class: base-theme-block--block-align-right
+        class: base-theme-block--block-align-end
 
   text_align:
     plugin: css_class
@@ -62,11 +62,11 @@ options:
     options:
       - label: None
       - label: left
-        class: base-theme-block--text-align-left
+        class: base-theme-block--text-align-start
       - label: center
         class: base-theme-block--text-align-center
       - label: right
-        class: base-theme-block--text-align-right
+        class: base-theme-block--text-align-end
 
   padding_top:
     plugin: css_class
@@ -218,11 +218,11 @@ options:
     options:
       - label: Default
       - label: small
-        class: base-theme--image-size-small
+        class: base-theme-block--image-size-sm
       - label: medium
-        class: base-theme--image-size-medium
+        class: base-theme-block--image-size-md
       - label: large
-        class: base-theme--image-size-large
+        class: base-theme-block--image-size-lg
 
   image_fit:
     plugin: css_class
@@ -231,9 +231,9 @@ options:
     options:
       - label: Default
       - label: cover
-        class: base-theme--image-fit-cover
+        class: base-theme-block--image-fit-cover
       - label: contain
-        class: base-theme--image-fit-contain
+        class: base-theme-block--image-fit-contain
 
   group_col:
     plugin: css_class
@@ -342,6 +342,13 @@ contexts:
         col_width: true
         bg_image: true
         # input_text: true
+
+    content_block:
+      options:
+        theme_variant: true
+        block_align: true
+        col_width: true
+        bg_image: true
 
     text:
       options:

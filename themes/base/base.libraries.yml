@@ -1,5 +1,6 @@
 style-options:
   css:
     theme:
+      css/base.css: {}
+      css/theme.css: {}
       dist/css/index.css: {}
-      css/temp.css: {}

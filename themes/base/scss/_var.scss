@@ -1,3 +1,41 @@
 $directions: (top, right, bottom, left);
 $aligns: (start, center, end);
 $sizes: (sm, md, lg);
+
+$primary: var(--cm-primary, #2C9A3B);
+$secondary: var(--cm-secondary, #034107);
+$gray-100: var(--cm-gray-100);
+$gray-200: var(--cm-gray-200);
+$gray-300: var(--cm-gray-300);
+$gray-400: var(--cm-gray-400);
+$gray-500: var(--cm-gray-500);
+$gray-600: var(--cm-gray-600);
+$gray-700: var(--cm-gray-700);
+$gray-800: var(--cm-gray-800);
+$gray-900: var(--cm-gray-900);
+$body-color: var(--cm-on-body, #000);
+$link-decoration: none;
+
+$font-family-sans-serif: var(
+  --cm-font-family-base,
+  -apple-system,
+  'Helvetica Neue',
+  Arial,
+  'PingFang SC',
+  'Noto Sans CJK SC',
+  'Microsoft YaHei',
+  'Source Han Sans SC',
+  sans-serif
+);
+
+$font-size-base: 1rem;
+$h1-font-size: var(--cmt-h1-font-size, var(--cm-h1-font-size, $font-size-base * 2.5));
+$h2-font-size: var(--cm-h2-font-size, $font-size-base * 1.75);
+$h3-font-size: var(--cm-h3-font-size, $font-size-base * 1.25);
+$h4-font-size: var(--cm-h4-font-size, $font-size-base * 1.125);
+$h5-font-size: var(--cm-h5-font-size, $font-size-base);
+$h6-font-size: var(--cm-h6-font-size, $font-size-base * 0.875);
+$headings-line-height: var(--cm-heading-line-height, 1.5);
+$headings-margin-bottom: var(--cm-heading-margin-bottom, 1em);
+$headings-font-family: var(--cm-heading-font-family, #{$font-family-sans-serif});
+$headings-font-weight: bold;
