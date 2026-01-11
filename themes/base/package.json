@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "sass scss/index.scss dist/css/index.css",
-    "watch": "sass --watch scss/index.scss dist/css/index.css"
+    "build": "sass assets/scss/index.scss dist/css/index.css",
+    "watch": "sass --watch assets/scss/index.scss dist/css/index.css"
   },
   "keywords": [],
   "author": "",

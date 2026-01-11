@@ -1,0 +1,7 @@
+name: Custom style options
+type: module
+description: 'Custom style options for the site.'
+package: 'Custom'
+core_version_requirement: ^10
+dependencies:
+  - style_options:style_options

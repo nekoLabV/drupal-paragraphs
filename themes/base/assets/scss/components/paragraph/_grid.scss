@@ -1,0 +1,17 @@
+.base-theme-block {
+  --col: 2;
+  $cols: (2, 3, 4);
+  @each $col in $cols {
+    &__grid-col-#{$col} {
+      --col: #{$col};
+    }
+  }
+  &__grid-container {
+    display: grid;
+    grid-template-columns: repeat(var(--col), 1fr);
+    gap: var(--layout-grid-gutter);
+    img {
+      border-radius: var(--cm-border-radius);
+    }
+  }
+}

@@ -40,7 +40,7 @@
 #}
 {%
   set classes = [
-    paragraph.bundle == 'layout' ? 'paragraph base-theme-block' : 'paragraph',
+    paragraph.bundle == 'content_block' ? 'paragraph base-theme-block' : 'paragraph',
     'paragraph--type--' ~ paragraph.bundle|clean_class,
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
     not paragraph.isPublished() ? 'paragraph--unpublished'
@@ -48,7 +48,7 @@
 %}
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
-    {% if paragraph.bundle == 'layout' %}
+    {% if paragraph.bundle == 'content_block' %}
       <div class="base-theme-block__container">
         {% block content %}
           {{ content }}
@@ -58,7 +58,7 @@
       {{ content }}
     {% endif %}
 
-    {% if paragraph.bundle == 'layout' %}
+    {% if paragraph.bundle == 'content_block' %}
       <div class="base-theme-block__background"></div>
     {% endif %}
   </div>

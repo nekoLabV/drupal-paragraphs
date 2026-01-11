@@ -1,6 +1,7 @@
 style-options:
   css:
     theme:
-      css/base.css: {}
-      css/theme.css: {}
+      assets/css/temp.css: {}
+      assets/css/base.css: {}
+      assets/css/theme.css: {}
       dist/css/index.css: {}

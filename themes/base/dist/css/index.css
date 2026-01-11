@@ -41,6 +41,7 @@
 .base-theme-block {
   display: grid;
   position: relative;
+  color: var(--cmt-color);
 }
 .base-theme-block--padding-top-sm {
   padding-top: var(--cm-container-padding-sm);
@@ -161,11 +162,11 @@
   width: 80%;
 }
 @media (max-width: 767.98px) {
-  .base-theme-block--col-width-80 {
+  .base-theme-block--col-width-80 .base-theme-block__container {
     width: 100%;
   }
 }
-.display-mobile-style .base-theme-block--col-width-80 {
+.display-mobile-style .base-theme-block--col-width-80 .base-theme-block__container {
   width: 100%;
 }
 
@@ -173,12 +174,18 @@
   width: 60%;
 }
 @media (max-width: 767.98px) {
-  .base-theme-block--col-width-60 {
+  .base-theme-block--col-width-60 .base-theme-block__container {
     width: 100%;
   }
 }
-.display-mobile-style .base-theme-block--col-width-60 {
+.display-mobile-style .base-theme-block--col-width-60 .base-theme-block__container {
   width: 100%;
+}
+
+.base-theme-block--light-image .base-theme-block__background, .base-theme-block--dark-image .base-theme-block__background {
+  background-image: var(--background-image);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 .node.node--type-landing-page {
@@ -242,7 +249,7 @@
   max-height: 100%;
   overflow: hidden;
 }
-.paragraph--type--block-side-image .field--name-field-side-image, .paragraph--type--block-side-image .media--type-image, .paragraph--type--block-side-image .field--name-field-media-image, .paragraph--type--block-side-image .field__item {
+.paragraph--type--block-side-image .field--name-field-side-image, .paragraph--type--block-side-image .contextual-region, .paragraph--type--block-side-image .media--type-image, .paragraph--type--block-side-image .field--name-field-media-image, .paragraph--type--block-side-image .field__item {
   height: 100%;
 }
 .paragraph--type--block-side-image .field--name-field-side-image {
@@ -281,6 +288,8 @@
 
 .paragraph--type--group {
   --col: 1;
+  display: gird;
+  grid-template-columns: repeat(var(--col), 1fr);
 }
 .paragraph--type--group .field--name-field-body {
   display: grid;
@@ -297,6 +306,27 @@
   --col: 3;
 }
 
+.base-theme-block {
+  --col: 2;
+}
+.base-theme-block__grid-col-2 {
+  --col: 2;
+}
+.base-theme-block__grid-col-3 {
+  --col: 3;
+}
+.base-theme-block__grid-col-4 {
+  --col: 4;
+}
+.base-theme-block__grid-container {
+  display: grid;
+  grid-template-columns: repeat(var(--col), 1fr);
+  gap: var(--layout-grid-gutter);
+}
+.base-theme-block__grid-container img {
+  border-radius: var(--cm-border-radius);
+}
+
 .paragraph--type--image .field--type-image {
   margin-bottom: 0;
 }
@@ -305,21 +335,21 @@
   --col: 8;
 }
 
-.paragraph--type--images .field--name-field-images-upload {
-  display: grid;
-  grid-template-columns: repeat(var(--col), 1fr);
-  gap: var(--layout-grid-gutter);
-}
-.paragraph--type--images .field--name-field-images-upload img {
-  border-radius: var(--cm-border-radius);
-}
-
 .base-theme-block--images-col-6 {
   --col: 6;
 }
 
 .base-theme-block--images-col-8 {
   --col: 8;
+}
+
+.base-theme-block__images {
+  display: grid;
+  grid-template-columns: repeat(var(--col), 1fr);
+  gap: var(--layout-grid-gutter);
+}
+.base-theme-block__images img {
+  border-radius: var(--cm-border-radius);
 }
 
 .paragraph--type--layout {
@@ -528,6 +558,26 @@
   background-color: var(--cm-primary);
   border-radius: var(--cm-border-radius-sm);
 }
+.paragraph--type--rich-text h1, .paragraph--type--rich-text h2, .paragraph--type--rich-text h3, .paragraph--type--rich-text h4, .paragraph--type--rich-text h5, .paragraph--type--rich-text h6, .paragraph--type--rich-text p {
+  margin-top: 0;
+}
+.paragraph--type--rich-text ul {
+  padding-left: 1em;
+}
+.paragraph--type--rich-text table {
+  width: 100%;
+  text-align: center;
+}
+.paragraph--type--rich-text table thead {
+  color: var(--cm-primary);
+  font-weight: 700;
+}
+.paragraph--type--rich-text table tbody tr {
+  border-bottom: 1px solid var(--cm-table-border-color);
+}
+.paragraph--type--rich-text table td {
+  padding: 1em;
+}
 
 .paragraph--type--teaser-box {
   height: 100%;
@@ -552,6 +602,13 @@
 }
 .paragraph--type--teaser-box img {
   border-radius: 8px;
+}
+
+.container {
+  max-width: var(--cm-container-max-width, 1280px);
+  padding-left: var(--cm-container-padding-x, 20px);
+  padding-right: var(--cm-container-padding-x, 20px);
+  margin: auto;
 }
 
 /*# sourceMappingURL=index.css.map */

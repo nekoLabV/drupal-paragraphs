@@ -1,0 +1,27 @@
+@use '../../ckeditor5/content';
+
+.paragraph--type--rich-text {
+  width: 100%;
+  @include content.core-style;
+  h1, h2, h3, h4, h5, h6, p {
+    margin-top: 0;
+  }
+  ul {
+    padding-left: 1em;
+  }
+
+  table {
+    width: 100%;
+    text-align: center;
+    thead {
+      color: var(--cm-primary);
+      font-weight: 700;
+    }
+    tbody tr {
+      border-bottom: 1px solid var(--cm-table-border-color);
+    }
+    td {
+      padding: 1em;
+    }
+  }
+}
