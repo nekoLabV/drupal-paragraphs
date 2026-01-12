@@ -4,23 +4,30 @@
   height: 100%;
   background-color: var(--cm-white);
   border-radius: 8px;
+  overflow: hidden;
+  .field--name-field-cac-teaser-box-image {
+    padding-bottom: 12px;
+    background-color: var(--cm-primary);
+    clip-path: ellipse(calc(120% + 100px) 100% at 48% 0);
+    img {
+      clip-path: ellipse(calc(120% + 100px) 100% at 55% 0);
+    }
+  }
   .content-block-cac-teaser-box__primary {
     display: grid;
     gap: 8px;
     padding: 20px;    
-    // p {
-    //   margin-top: 0;
-    //   margin-bottom: 0;
-    // }
-    .field--name-field-title {
-      font-size: var(--cm-h6-font-size);
-      color: var(--cmt-surface-heading-color);
-      font-weight: 700;
-    }
-    .field--name-field-description {
-      color: var(--cmt-surface-color);
-      --ck-spacing-y: 0;
-      @include content.core-style;
+    .field--name {
+      &-field-title {
+        font-size: var(--cm-h6-font-size);
+        color: var(--cmt-surface-heading-color);
+        font-weight: 700;
+      }
+      &-field-description {
+        color: var(--cmt-surface-color);
+        --ck-spacing-y: 0;
+        @include content.core-style;
+      }
     }
   }
   img {

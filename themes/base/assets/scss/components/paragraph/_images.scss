@@ -1,3 +1,5 @@
+@use '../../mixins';
+
 .paragraph--type--images {
   --col: 8;
 }
@@ -13,5 +15,8 @@
   gap: var(--layout-grid-gutter);
   img {
     border-radius: var(--cm-border-radius);
+  }
+  @include mixins.media-breakpoint-down(md) {
+    --col: 3;
   }
 }
