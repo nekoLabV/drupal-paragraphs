@@ -32,13 +32,13 @@ class CustomBackgroundImage extends BaseBackgroundImage {
     $fid = $this->getValue('fid');
     $this->logDebug('FID retrieved: @fid', ['@fid' => print_r($fid, TRUE)]);
     
-    if (!$this->hasValidImageFile($fid)) {
-      $this->logDebug('No valid image file found');
+    // 获取文件 URL，如果无法获取则返回原样
+    $fileUrl = $this->getFileUrlFromFid($fid);
+    
+    if (empty($fileUrl)) {
+      $this->logDebug('No valid image file found or could not load file');
       return $build;
     }
-    
-    $file = File::load($fid[0]);
-    $fileUrl = $this->getFileUrl($file);
     
     $this->logDebug('Processing file: @url', ['@url' => $fileUrl]);
     $this->logDebug('Configuration method: @method', 
@@ -56,33 +56,54 @@ class CustomBackgroundImage extends BaseBackgroundImage {
   }
 
   /**
-   * Checks if a valid image file ID exists.
+   * Gets the file URL from file ID.
    *
    * @param mixed $fid
    *   The file ID or array of file IDs.
    *
-   * @return bool
-   *   TRUE if valid, FALSE otherwise.
+   * @return string|null
+   *   The file URL or null if not found.
    */
-  protected function hasValidImageFile($fid): bool {
-    return !empty($fid) 
-      && is_array($fid) 
-      && isset($fid[0]) 
-      && is_numeric($fid[0]);
-  }
-
-  /**
-   * Gets the public URL for a file entity.
-   *
-   * @param \Drupal\file\Entity\File $file
-   *   The file entity.
-   *
-   * @return string
-   *   The public URL.
-   */
-  protected function getFileUrl(File $file): string {
+  protected function getFileUrlFromFid($fid): ?string {
+    // 检查 FID 是否有效
+    if (empty($fid)) {
+      return NULL;
+    }
+    
+    // 处理 FID 可能是数组或单个值的情况
+    if (is_array($fid)) {
+      $fid = $fid[0] ?? NULL;
+    }
+    
+    if (empty($fid) || !is_numeric($fid)) {
+      return NULL;
+    }
+    
+    // 尝试加载文件
+    $file = File::load((int) $fid);
+    
+    if (!$file instanceof File) {
+      $this->logDebug('File with FID @fid could not be loaded', ['@fid' => $fid]);
+      return NULL;
+    }
+    
+    // 检查文件是否存在
     $fileUri = $file->getFileUri();
-    return $this->fileUrlGenerator->generate($fileUri)->toString();
+    if (empty($fileUri)) {
+      $this->logDebug('File with FID @fid has no URI', ['@fid' => $fid]);
+      return NULL;
+    }
+    
+    try {
+      return $this->fileUrlGenerator->generate($fileUri)->toString();
+    }
+    catch (\Exception $e) {
+      $this->logDebug('Error generating URL for file @fid: @error', [
+        '@fid' => $fid,
+        '@error' => $e->getMessage(),
+      ]);
+      return NULL;
+    }
   }
 
   /**
@@ -109,16 +130,23 @@ class CustomBackgroundImage extends BaseBackgroundImage {
   protected function buildWithCssMethod(array $build, string $fileUrl): array {
     $this->logDebug('Using CSS method - adding custom property');
     
-    // Ensure style attribute exists.
+    // 确保 style 属性存在
     if (!isset($build['#attributes']['style'])) {
       $build['#attributes']['style'] = [];
     }
     
-    // Add CSS custom property.
-    $build['#attributes']['style'][] = sprintf('--background-image: url(%s);', $fileUrl);
-    
-    // Optional: Add standard property for backward compatibility.
-    // $build['#attributes']['style'][] = sprintf('background-image: url(%s);', $fileUrl);
+    // 如果是数组，添加新的样式规则
+    if (is_array($build['#attributes']['style'])) {
+      $build['#attributes']['style'][] = sprintf('--background-image: url("%s");', $fileUrl);
+    }
+    // 如果是字符串，转换为数组
+    elseif (is_string($build['#attributes']['style'])) {
+      $existingStyle = $build['#attributes']['style'];
+      $build['#attributes']['style'] = [
+        $existingStyle,
+        sprintf('--background-image: url("%s");', $fileUrl),
+      ];
+    }
     
     return $build;
   }
@@ -139,10 +167,10 @@ class CustomBackgroundImage extends BaseBackgroundImage {
   protected function buildWithAttributeMethod(array $build, $value, string $fileUrl): array {
     $this->logDebug('Using attribute method - modifying parent output');
     
-    // Get parent build result.
+    // 获取父类的构建结果
     $build = parent::build($build, $value);
     
-    // Convert standard properties to custom properties.
+    // 将标准属性转换为自定义属性
     $this->convertToCustomProperties($build);
     
     return $build;
@@ -178,7 +206,7 @@ class CustomBackgroundImage extends BaseBackgroundImage {
    *   The style rule to convert.
    */
   protected function convertStyleRule(string &$styleRule): void {
-    // Convert background-image to --background-image.
+    // 将 background-image 转换为 --background-image
     if (strpos($styleRule, 'background-image:') !== FALSE) {
       $styleRule = str_replace('background-image:', '--background-image:', $styleRule);
       $this->logDebug('Converted style rule: @rule', ['@rule' => $styleRule]);

@@ -10,9 +10,9 @@ options:
     label: Theme
     multiple: false
     options:
-      - label: None
       - label: White
-        class: base-theme-block--white
+      # - label: White
+      #   class: base-theme-block--white
       - label: Black
         class: base-theme-block--black
       - label: Light
@@ -289,7 +289,7 @@ options:
     label: Border radius
     multiple: false
     options:
-      - label: Default
+      - label: None
       - label: small
         class: base-theme-block--border-radius-sm
       - label: medium

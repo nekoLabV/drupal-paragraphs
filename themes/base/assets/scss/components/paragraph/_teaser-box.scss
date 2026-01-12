@@ -1,3 +1,5 @@
+@use '../../ckeditor5/content';
+
 .paragraph--type--teaser-box {
   height: 100%;
   background-color: var(--cm-white);
@@ -5,10 +7,11 @@
   .content-block-teaser-box__primary {
     display: grid;
     gap: 8px;
-    padding: 20px;
-    p {
-      margin-bottom: 0;
-    }
+    padding: 20px;    
+    // p {
+    //   margin-top: 0;
+    //   margin-bottom: 0;
+    // }
     .field--name-field-title {
       font-size: var(--cm-h6-font-size);
       color: var(--cmt-surface-heading-color);
@@ -16,6 +19,8 @@
     }
     .field--name-field-description {
       color: var(--cmt-surface-color);
+      --ck-spacing-y: 0;
+      @include content.core-style;
     }
   }
   img {
