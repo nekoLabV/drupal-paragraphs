@@ -2,16 +2,22 @@
   "name": "base",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "build": "sass assets/scss/index.scss dist/css/index.css",
-    "watch": "sass --watch assets/scss/index.scss dist/css/index.css"
+    "build": "vite build",
+    "build:css": "sass assets/scss/index.scss dist/css/index.css"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.7.0",
   "dependencies": {
-    "sass": "^1.97.2"
+    "@vue/reactivity": "^3.5.26",
+    "@vue/runtime-core": "^3.5.26",
+    "@vue/runtime-dom": "^3.5.26"
+  },
+  "devDependencies": {
+    "sass": "^1.97.2",
+    "vite": "^7.3.1"
   }
 }

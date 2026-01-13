@@ -5,3 +5,7 @@ style-options:
       assets/css/base.css: {}
       assets/css/theme.css: {}
       dist/css/index.css: {}
+
+countdown:
+  js:
+    dist/js/countdown.js: {}

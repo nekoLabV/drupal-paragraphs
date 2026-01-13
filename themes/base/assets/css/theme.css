@@ -54,6 +54,7 @@ body {
   --cmt-color: var(--cm-dark);
   --cmt-surface-color: var(--cm-dark);
   --cmt-surface-heading-color: var(--cm-secondary);
+  --cmt-strong-number-color: var(--cm-primary);
 }
 
 .base-theme-block--white {
@@ -61,36 +62,42 @@ body {
   --cmt-color: var(--cm-dark);
   --cmt-surface-color: var(--cm-dark);
   --cmt-surface-heading-color: var(--cm-secondary);
+  --cmt-strong-number-color: var(--cm-primary);
 }
 .base-theme-block--black {
   --cmt-bg: var(--cm-dark);
   --cmt-color: var(--cm-white);
   --cmt-surface-color: var(--cm-dark);
   --cmt-surface-heading-color: var(--cm-secondary);
+  --cmt-strong-number-color: var(--cm-primary);
 }
 .base-theme-block--primary {
   --cmt-bg: var(--cm-primary);
   --cmt-color: var(--cm-on-primary);
   --cmt-surface-color: var(--cm-dark);
   --cmt-surface-heading-color: var(--cm-secondary);
+  --cmt-strong-number-color: var(--cm-primary);
 }
 .base-theme-block--secondary {
   --cmt-bg: var(--cm-secondary);
   --cmt-color: var(--cm-on-secondary);
   --cmt-surface-color: var(--cm-dark);
   --cmt-surface-heading-color: var(--cm-secondary);
+  --cmt-strong-number-color: var(--cm-primary);
 }
 .base-theme-block--light {
   --cmt-bg: var(--cm-light);
   --cmt-color: var(--cm-dark);
   --cmt-surface-color: var(--cm-dark);
   --cmt-surface-heading-color: var(--cm-secondary);
+  --cmt-strong-number-color: var(--cm-primary);
 }
 .base-theme-block--dark {
   --cmt-bg: var(--cm-dark);
   --cmt-color: var(--cm-white);
   --cmt-surface-color: var(--cm-dark);
   --cmt-surface-heading-color: var(--cm-secondary);
+  --cmt-strong-number-color: var(--cm-primary);
 }
 .base-theme-block--light-image {
   --cmt-bg: var(--cm-light);
@@ -99,6 +106,7 @@ body {
   --cmt-heading-color: var(--cm-dark);
   --cmt-surface-color: var(--cm-dark);
   --cmt-surface-heading-color: var(--cm-secondary);
+  --cmt-strong-number-color: var(--cm-primary);
 }
 .base-theme-block--dark-image {
   --cmt-bg: var(--cm-dark);
@@ -107,4 +115,5 @@ body {
   --cmt-heading-color: var(--cm-white);
   --cmt-surface-color: var(--cm-dark);
   --cmt-surface-heading-color: var(--cm-secondary);
+  --cmt-strong-number-color: var(--cm-primary);
 }

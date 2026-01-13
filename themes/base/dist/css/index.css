@@ -29,7 +29,7 @@
   font-size: 1rem;
   line-height: 1.5rem;
 }
-.typography--body2, .paragraph--type--cac-teaser-box .content-block-cac-teaser-box__primary .field--name-field-description figure figcaption, .paragraph--type--teaser-box .content-block-teaser-box__primary .field--name-field-description figure figcaption, .paragraph--type--rich-text figure figcaption {
+.typography--body2, .base-theme-countdown-item__text, .paragraph--type--cac-teaser-box .content-block-cac-teaser-box__primary .field--name-field-description figure figcaption, .paragraph--type--teaser-box .content-block-teaser-box__primary .field--name-field-description figure figcaption, .paragraph--type--rich-text figure figcaption {
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
@@ -988,6 +988,81 @@
 }
 .paragraph--type--cac-teaser-box img {
   border-radius: 8px;
+}
+
+.node--landing-page .field--name-field-datetime {
+  display: none;
+}
+
+.base-theme-countdown__container {
+  display: flex;
+  justify-content: center;
+}
+.base-theme-countdown-item {
+  position: relative;
+}
+@media (max-width: 767.98px) {
+  .base-theme-countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.display-mobile-style .base-theme-countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.base-theme-countdown-item__num {
+  font-size: 68px;
+  font-weight: 700;
+  margin-bottom: 0;
+  color: var(--cmt-strong-number-color);
+}
+@media (max-width: 767.98px) {
+  .base-theme-countdown-item__num {
+    font-size: 48px;
+  }
+}
+.display-mobile-style .base-theme-countdown-item__num {
+  font-size: 48px;
+}
+
+.base-theme-countdown .base-theme-countdown-item ~ .base-theme-countdown-item {
+  padding-left: 36px;
+  margin-left: 36px;
+}
+.base-theme-countdown .base-theme-countdown-item ~ .base-theme-countdown-item::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 34%;
+  bottom: 34%;
+  border: 1px solid;
+  opacity: 0.12;
+}
+@media (max-width: 767.98px) {
+  .base-theme-countdown .base-theme-countdown-item ~ .base-theme-countdown-item {
+    padding-left: 0;
+    margin-left: 0;
+  }
+  .base-theme-countdown .base-theme-countdown-item ~ .base-theme-countdown-item::before {
+    content: none;
+  }
+}
+.display-mobile-style .base-theme-countdown .base-theme-countdown-item ~ .base-theme-countdown-item {
+  padding-left: 0;
+  margin-left: 0;
+}
+.display-mobile-style .base-theme-countdown .base-theme-countdown-item ~ .base-theme-countdown-item::before {
+  content: none;
+}
+
+@media (min-width: 768px) {
+  .landing-page-content:not(.display-mobile-style) .base-theme-countdown .base-theme-countdown-item__text {
+    margin-left: 4px;
+  }
 }
 
 .container {
