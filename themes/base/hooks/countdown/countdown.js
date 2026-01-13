@@ -3,13 +3,6 @@ import { onMounted, onUnmounted } from '@vue/runtime-core'
 import { h, render } from '@vue/runtime-dom'
 
 export const useCountdown = (timestamp) => {
-  onMounted(() => {
-    console.log('onMounted')
-  })
-  onUnmounted(() => {
-    console.log('onUnmounted')
-  })
-
   const countdown = ref(0)
   const timeTexts = ref([])
   const timeTextPlurals = ref([])
@@ -58,28 +51,38 @@ export const useCountdown = (timestamp) => {
   // 当前时间差
   const currentDiff = computed(() => getDiff(countdown.value))
 
-  // 启动定时器
-  const timer = setInterval(() => {
-    if (countdown.value <= 0) {
-      clearInterval(timer)
-      console.warn('倒计时结束')
-    }
-    countdown.value--
-  }, 1000)
-
-  const CountdownComponent = () => {
-    // 这个函数每次countdown变化都会重新执行
-    const diff = currentDiff.value
-    
-    return h('div', { class: 'base-theme-countdown__container' },
-      diff.map((time, index) => {
-        const timeText = getTimeText(time, index)
-        return h('div', { class: 'base-theme-countdown-item' }, [
-          h('span', { class: 'base-theme-countdown-item__num' }, time),
-          h('span', { class: 'base-theme-countdown-item__text' }, timeText)
-        ])
+  const CountdownComponent = {
+    setup() {
+      let timer
+      onMounted(() => {
+        timer = setInterval(() => {
+          if (countdown.value <= 0) {
+            clearInterval(timer)
+            console.warn('倒计时结束')
+          }
+          countdown.value--
+        }, 1000)
       })
-    )
+      onUnmounted(() => {
+        if (timer) {
+          clearInterval(timer)
+        }
+      })
+
+      return () => {
+        const diff = currentDiff.value
+
+        return h('div', { class: 'base-theme-countdown__container' },
+          diff.map((time, index) => {
+            const timeText = getTimeText(time, index)
+            return h('div', { class: 'base-theme-countdown-item' }, [
+              h('span', { class: 'base-theme-countdown-item__num' }, time),
+              h('span', { class: 'base-theme-countdown-item__text' }, timeText)
+            ])
+          })
+        )
+      }
+    }
   }
 
   const renderToContainer = (container) => {
@@ -88,13 +91,10 @@ export const useCountdown = (timestamp) => {
       return () => {}
     }
     
-    // 使用Vue的render函数进行响应式渲染
-    // 这会创建一个响应式应用，当countdown变化时自动更新
     render(h(CountdownComponent), container)
     
-    // 返回清理函数
     return () => {
-      // 卸载Vue应用
+      // 返回清理函数
       render(null, container)
     }
   }
