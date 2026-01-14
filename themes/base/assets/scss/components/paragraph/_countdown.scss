@@ -9,6 +9,9 @@
   &__container {
     display: flex;
     justify-content: center;
+    @include mixins.media-breakpoint-down(md) {
+      gap: 24px;
+    }
   }
   &-item {
     position: relative;
@@ -28,6 +31,7 @@
     }
     &__text {
       @include t.typography(body2);
+      margin-left: 4px;
     }
   }
   .base-theme-countdown-item {
@@ -51,11 +55,6 @@
         &::before {
           content: none;
         }
-      }
-    }
-    &__text {
-      @include mixins.media-breakpoint-up(md) {
-        margin-left: 4px;
       }
     }
   }

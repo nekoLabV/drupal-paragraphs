@@ -9,3 +9,13 @@ style-options:
 countdown:
   js:
     dist/js/countdown.js: {}
+  dependencies:
+    - core/drupalSettings
+    - https://cdn.bootcdn.net/ajax/libs/vue/3.5.13/vue.global.min.js
+
+timeline:
+  js:
+    dist/js/timeline.js: {}
+  dependencies:
+    - core/drupalSettings
+    - https://cdn.bootcdn.net/ajax/libs/vue/3.5.13/vue.global.min.js

@@ -1,0 +1,2 @@
+import{S as i,L as c}from"./reactivity.esm-bundler-Kmopd7S8.js";const r=e=>{console.log("initTimeline",e);const a=i(),s=c(()=>{const t=[...new Set(e?.map(o=>o.date))].filter(Boolean);return a.value=t?.[0],t});console.log("dates",s);const n=i();c(()=>{const t=[...new Set(e?.reduce((o,l)=>o.concat(l.tags),[]))].filter(Boolean);return t?.unshift(props.allTags),n.value=t?.[0],t}),i(!0)};(function(e,a){e.behaviors.timeline={attach:function(s,n){const t=n.timeline;r(t)}}})(Drupal,drupalSettings);
+//# sourceMappingURL=timeline.js.map

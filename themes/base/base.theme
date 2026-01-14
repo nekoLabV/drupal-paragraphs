@@ -1,0 +1,70 @@
+<?php
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function base_preprocess_paragraph(&$variables) {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+  
+  // 只针对time-line类型的段落
+  if ($paragraph->bundle() == 'time_line') {
+    
+    // 获取日期字段
+    $date_value = '';
+    if ($paragraph->hasField('field_date') && !$paragraph->get('field_date')->isEmpty()) {
+      $date = $paragraph->get('field_date')->date;
+      $date_value = $date->format('Y-m-d');
+    }
+    
+    // 获取时间范围字段
+    $time_range = '';
+    if ($paragraph->hasField('field_time_range') && !$paragraph->get('field_time_range')->isEmpty()) {
+      $start = $paragraph->get('field_time_range')->start_date;
+      $end = $paragraph->get('field_time_range')->end_date;
+      $time_range = $start->format('H:i') . ' - ' . $end->format('H:i');
+    }
+    
+    // 获取标题
+    $title = '';
+    if ($paragraph->hasField('field_title') && !$paragraph->get('field_title')->isEmpty()) {
+      $title = $paragraph->get('field_title')->value;
+    }
+    
+    // 获取副标题
+    $subtitle = '';
+    if ($paragraph->hasField('field_subtitle') && !$paragraph->get('field_subtitle')->isEmpty()) {
+      $subtitle = $paragraph->get('field_subtitle')->value;
+    }
+    
+    // 获取描述
+    $description = '';
+    if ($paragraph->hasField('field_description') && !$paragraph->get('field_description')->isEmpty()) {
+      $description = $paragraph->get('field_description')->value;
+    }
+    
+    // 获取标签
+    $tags = [];
+    if ($paragraph->hasField('field_tags') && !$paragraph->get('field_tags')->isEmpty()) {
+      foreach ($paragraph->get('field_tags')->getValue() as $tag) {
+        $tags[] = $tag['value'];
+      }
+    }
+    
+    // 将数据添加到变量中
+    list($start_time, $end_time) = array_map('trim', explode(' - ', $time_range));
+    $variables['timeline_data'] = [
+      'date' => $date_value,
+      'start_time' => $start_time,
+      'end_time' => $end_time,
+      'title' => $title,
+      'subtitle' => $subtitle,
+      'description' => strip_tags($description),
+      'tags' => $tags,
+      'paragraph_id' => $paragraph->id(),
+    ];
+    
+    // $variables['#attached']['library'][] = 'base/timeline';
+    // // 传递给JavaScript
+    // $variables['#attached']['drupalSettings']['timeline'][] = $variables['timeline_data'];
+  }
+}
