@@ -63,8 +63,8 @@ function base_preprocess_paragraph(&$variables) {
       'paragraph_id' => $paragraph->id(),
     ];
     
-    // $variables['#attached']['library'][] = 'base/timeline';
-    // // 传递给JavaScript
-    // $variables['#attached']['drupalSettings']['timeline'][] = $variables['timeline_data'];
+    $variables['#attached']['library'][] = 'base/themeHooks';
+    // 传递给JavaScript
+    $variables['#attached']['drupalSettings']['timeline'][] = $variables['timeline_data'];
   }
 }

@@ -1,3 +1,11 @@
+vue:
+  version: 3.5.13
+  js:
+    https://cdn.bootcdn.net/ajax/libs/vue/3.5.13/vue.global.min.js: 
+      type: external
+      # attributes:
+        # defer: true
+
 style-options:
   css:
     theme:
@@ -6,16 +14,16 @@ style-options:
       assets/css/theme.css: {}
       dist/css/index.css: {}
 
-countdown:
+themeHooks:
   js:
-    dist/js/countdown.js: {}
+    dist/js/hooks.iife.js: {}
   dependencies:
     - core/drupalSettings
-    - https://cdn.bootcdn.net/ajax/libs/vue/3.5.13/vue.global.min.js
+    - base/vue
 
-timeline:
-  js:
-    dist/js/timeline.js: {}
-  dependencies:
-    - core/drupalSettings
-    - https://cdn.bootcdn.net/ajax/libs/vue/3.5.13/vue.global.min.js
+# timeline:
+#   js:
+#     dist/js/timeline.js: {}
+#   dependencies:
+#     - core/drupalSettings
+#     - base/vue

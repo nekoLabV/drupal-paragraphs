@@ -1,6 +1,4 @@
-import { ref, computed } from '@vue/reactivity'
-import { onMounted, onUnmounted } from '@vue/runtime-core'
-import { h, render } from '@vue/runtime-dom'
+import { ref, computed, onMounted, onUnmounted, h, render } from 'vue'
 
 export const useCountdown = (timestamp) => {
   const countdown = ref(0)
@@ -103,6 +101,3 @@ export const useCountdown = (timestamp) => {
     render: renderToContainer
   }
 }
-
-window.useCountdown = useCountdown
-window.dispatchEvent(new Event('useCountdown:load'))

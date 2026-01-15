@@ -1,4 +1,3 @@
-import { ref, computed } from '@vue/reactivity'
 import { initTimeline } from './timeline'
 
 (function(Drupal, drupalSettings) {
@@ -7,6 +6,7 @@ import { initTimeline } from './timeline'
   Drupal.behaviors.timeline = {
     attach: function(context, settings) {
       const timelines = settings.timeline
+      // console.log('behaviors timelines', timelines)
       initTimeline(timelines)
     }
   }
