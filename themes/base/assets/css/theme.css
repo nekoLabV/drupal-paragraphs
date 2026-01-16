@@ -10,10 +10,17 @@
   --cm-gray-900: #111;
   --cm-white: #fff;
   --cm-black: #000;
+  --cm-light: var(--cm-gray-100);
+  --cm-muted: var(--cm-gray-600);
+  --cm-dark: var(--cm-gray-800);
   --cm-primary: #2c9a3b;
   --cm-on-primary: #fff;
   --cm-secondary: #034107;
   --cm-on-secondary: #fff;
+  --cm-gradient1: linear-gradient(270deg, #033707 0%, #028613 100%);
+  --cm-gradient2: linear-gradient(270deg, #107928 0%, #71c242 100%);
+  --cm-on-gradient1: #fff;
+  --cm-on-gradient2: var(--cm-on-gradient1);
   --cm-light: var(--cm-gray-100);
   --cm-dark: var(--cm-gray-800);
 
@@ -47,65 +54,80 @@
   --cm-border-radius: 12px;
   --cm-border-radius-sm: 8px;
   --cm-border-radius-md: 12px;
-  --cm-border-radius-ld: 24px;
+  --cm-border-radius-lg: 24px;
 }
+
+/* 全局默认主题配色 */
 body {
   --cmt-bg: var(--cm-white);
   --cmt-color: var(--cm-dark);
+  --cmt-muted-color: var(--cm-muted);
   --cmt-surface-color: var(--cm-dark);
   --cmt-surface-heading-color: var(--cm-secondary);
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-white);
 }
-
+/* 白色主题配色 */
 .base-theme-block--white {
   --cmt-bg: var(--cm-white);
   --cmt-color: var(--cm-dark);
+  --cmt-muted-color: var(--cm-muted);
   --cmt-surface-color: var(--cm-dark);
   --cmt-surface-heading-color: var(--cm-secondary);
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-gray-100);
 }
+/* 黑色主题配色 */
 .base-theme-block--black {
   --cmt-bg: var(--cm-dark);
   --cmt-color: var(--cm-white);
+  --cmt-muted-color: var(--cm-muted);
   --cmt-surface-color: var(--cm-dark);
   --cmt-surface-heading-color: var(--cm-secondary);
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-white);
 }
+/* 主色主题配色 */
 .base-theme-block--primary {
   --cmt-bg: var(--cm-primary);
   --cmt-color: var(--cm-on-primary);
+  --cmt-muted-color: var(--cm-muted);
   --cmt-surface-color: var(--cm-dark);
   --cmt-surface-heading-color: var(--cm-secondary);
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-white);
 }
+/* 辅色主题配色 */
 .base-theme-block--secondary {
   --cmt-bg: var(--cm-secondary);
   --cmt-color: var(--cm-on-secondary);
+  --cmt-muted-color: var(--cm-muted);
   --cmt-surface-color: var(--cm-dark);
   --cmt-surface-heading-color: var(--cm-secondary);
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-white);
 }
+/* 浅色主题配色 */
 .base-theme-block--light {
   --cmt-bg: var(--cm-light);
   --cmt-color: var(--cm-dark);
+  --cmt-muted-color: var(--cm-muted);
   --cmt-surface-color: var(--cm-dark);
   --cmt-surface-heading-color: var(--cm-secondary);
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-white);
 }
+/* 深色主题配色 */
 .base-theme-block--dark {
   --cmt-bg: var(--cm-dark);
   --cmt-color: var(--cm-white);
+  --cmt-muted-color: var(--cm-muted);
   --cmt-surface-color: var(--cm-dark);
   --cmt-surface-heading-color: var(--cm-secondary);
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-white);
 }
+/* 浅色背景图片主题配色 */
 .base-theme-block--light-image {
   --cmt-bg: var(--cm-light);
   --cmt-color: var(--cm-dark);
@@ -116,6 +138,7 @@ body {
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-white);
 }
+/* 深色背景图片主题配色 */
 .base-theme-block--dark-image {
   --cmt-bg: var(--cm-dark);
   --cmt-color: var(--cm-white);

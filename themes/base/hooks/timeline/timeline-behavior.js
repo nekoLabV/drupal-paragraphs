@@ -1,4 +1,4 @@
-import { initTimeline } from './timeline'
+import { getTimeline } from './timeline-bridge'
 
 (function(Drupal, drupalSettings) {
   'use strict'
@@ -6,8 +6,7 @@ import { initTimeline } from './timeline'
   Drupal.behaviors.timeline = {
     attach: function(context, settings) {
       const timelines = settings.timeline
-      // console.log('behaviors timelines', timelines)
-      initTimeline(timelines)
+      getTimeline(timelines)
     }
   }
 

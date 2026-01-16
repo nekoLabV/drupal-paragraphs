@@ -4,7 +4,8 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "build": "vite build",
+    "build": "pnpm run build:js & pnpm run build:css",
+    "build:js": "vite build",
     "build:css": "sass assets/scss/index.scss dist/css/index.css"
   },
   "keywords": [],

@@ -63,7 +63,6 @@
   {% else %}
     {% for item in items %}
       <div{{ attributes.addClass(classes, 'field__item') }}>{{ item.content }}</div>
-      <div id="base-theme-countdown"></div>
     {% endfor %}
   {% endif %}
 {% else %}
@@ -81,6 +80,8 @@
   </div>
 {% endif %}
 
+<div class="base-theme-countdown-app"></div>
+
 {{ attach_library('base/themeHooks') }}
 
 <script>
@@ -88,16 +89,14 @@ window.addEventListener('baseThemeHooks:load', () => {
   const timeNode = document.querySelector('.paragraph--type--count-down .field--name-field-datetime time')
   const datetime = timeNode?.getAttribute('datetime')
 
-  // const countdownNode = document.querySelector('.base-theme-countdown')
-  // const { render } = baseThemeHooks?.countdown?.useCountdown(datetime)
-  // render(countdownNode)
-
-  const countdownNode = document.getElementById('base-theme-countdown')
-  if (countdownNode) {
-    baseThemeHooks?.countdown?.createCountdownApp(countdownNode, {
-      timestamp: datetime,
-      hintText: '天|时|分|秒'
-    })
+  const countdownNode = document.querySelectorAll('.base-theme-countdown-app')
+  for (let i = 0; i < countdownNode.length; i++) {
+    if (countdownNode[i]) {
+      baseThemeHooks?.countdown?.createCountdownApp(countdownNode[i], {
+        timestamp: datetime,
+        hintText: '天|时|分|秒'
+      })
+    }
   }
 })
 </script>
