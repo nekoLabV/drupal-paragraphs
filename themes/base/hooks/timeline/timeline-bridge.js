@@ -4,6 +4,7 @@ import { Timeline } from './timeline.jsx'
 const items = ref([])
 export const getTimeline = (timeline) => {
   items.value = timeline
+  console.log('getTimeline', items.value)
 }
 
 // 导出供 Twig 使用的函数
@@ -13,8 +14,8 @@ export const createTimelineApp = (element, options) => {
     return null
   }
   
-  // const app = createApp(Timeline, options)
-  const app = createApp(Timeline, { ...options, items: items.value })
+  const app = createApp(Timeline, options)
+  // const app = createApp(Timeline, { ...options, items: items.value })
   const vm = app.mount(element)
   
   return {
