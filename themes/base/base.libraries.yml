@@ -9,9 +9,9 @@ vue:
 style-options:
   css:
     theme:
-      assets/css/temp.css: {}
-      assets/css/base.css: {}
-      assets/css/theme.css: {}
+      src/assets/css/temp.css: {}
+      src/assets/css/base.css: {}
+      src/assets/css/theme.css: {}
       dist/css/index.css: {}
 
 themeHooks:

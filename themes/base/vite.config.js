@@ -7,13 +7,13 @@ export default defineConfig({
   plugins: [vueJsx()],
   resolve: {
     alias: {
-      '@scss': resolve(__dirname, './assets/scss'),
+      '@scss': resolve(__dirname, './src/assets/scss'),
     }
   },
   build: {
     outDir: 'dist/js',
     lib: {
-      entry: resolve(__dirname, './hooks/index.js'),
+      entry: resolve(__dirname, './src/hooks/index.js'),
       name: 'BaseThemeHooks', // 全局变量名
       formats: ['iife'],
       fileName: 'hooks'    // 输出文件名

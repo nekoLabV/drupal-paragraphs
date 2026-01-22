@@ -4,7 +4,7 @@ import { Timeline } from './timeline.jsx'
 const items = ref([])
 export const getTimeline = (timeline) => {
   items.value = timeline
-  console.log('getTimeline', items.value)
+  // console.log('getTimeline', items.value)
 }
 
 // 导出供 Twig 使用的函数

@@ -1,0 +1,39 @@
+<div{{ attributes.addClass(classes) }} style="width: 100%;">
+  {# 隐藏原始字段渲染 #}
+  <div style="display: none;">
+    {{ content }}
+  </div>
+  {% if embed_data is defined %}
+  <div 
+    id="base-theme-text-with-embedding-{{ paragraph.id.value }}"
+    data-text-with-embedding="{{ embed_data_json|e('html_attr') }}">
+  </div>
+  {% else %}
+    {# Fallback: 如果没有数据，显示原始内容 #}
+    {{ content }}
+  {% endif %}
+</div>
+
+{% if embed_data is defined %}
+  {{ attach_library('base/themeHooks') }}
+
+  <script>
+    window.addEventListener('baseThemeHooks:load', () => {
+      const textWithEmbeddingNode = document.getElementById('base-theme-text-with-embedding-{{ paragraph.id.value }}')
+      let textWithEmbedding = []
+      try {
+        const itemsStr = textWithEmbeddingNode.dataset.textWithEmbedding
+        if (itemsStr) {
+          textWithEmbedding = JSON.parse(itemsStr)
+        }
+        console.log('textWithEmbedding', itemsStr)
+      } catch (error) {
+        console.error('Failed to parse textWithEmbedding data:', error)
+      }
+      
+      // baseThemeHooks?.timeline?.createTimelineApp(textWithEmbeddingNode, {
+        // items: timelineItems
+      // })
+    })
+  </script>
+{% endif %}
