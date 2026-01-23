@@ -17,11 +17,11 @@ class TextWithEmbedPreprocessor {
     
     // 初始化变量
     $embed_data = [
-      'embed_html' => '',
-      'load_js' => [],
-      'run_js' => '',
+      'embedHtml' => '',
+      'loadJS' => '',
+      'runJS' => '',
       'richtext' => '',
-      'unique_id' => '',
+      'uniqueId' => '',
     ];
     
     // 获取嵌入的HTML
@@ -35,34 +35,30 @@ class TextWithEmbedPreprocessor {
       
       if ($div_elements->length > 0) {
         $container_id = $div_elements->item(0)->getAttribute('id');
-        $embed_data['unique_id'] = $container_id;
+        $embed_data['uniqueId'] = $container_id;
         
         // 替换容器ID为唯一ID
         $unique_id = 'embed-container-' . $paragraph->id();
         $embed_html = str_replace($container_id, $unique_id, $embed_html);
-        $embed_data['unique_id'] = $unique_id;
+        $embed_data['uniqueId'] = $unique_id;
       }
       
-      $embed_data['embed_html'] = $embed_html;
+      $embed_data['embedHtml'] = $embed_html;
     }
     
     // 获取需要加载的JS文件
     if ($paragraph->hasField('field_load_js') && !$paragraph->get('field_load_js')->isEmpty()) {
-      $js_urls = [];
+      $js_urls = '';
       $field_values = $paragraph->get('field_load_js')->getValue();
       
       foreach ($field_values as $value) {
         $js_url = trim($value['value'] ?? '');
         if (!empty($js_url)) {
-          // 确保URL格式正确
-          if (!preg_match('/^https?:\/\//', $js_url)) {
-            $js_url = 'https://' . ltrim($js_url, '/');
-          }
-          $js_urls[] = $js_url;
+          $js_urls = $js_url;
         }
       }
       
-      $embed_data['load_js'] = $js_urls;
+      $embed_data['loadJS'] = $js_urls;
       
       // 添加JS库到页面附加
       if (!empty($js_urls)) {
@@ -86,19 +82,19 @@ class TextWithEmbedPreprocessor {
       $run_js = $paragraph->get('field_run_js')->getValue()[0]['value'] ?? '';
       
       // 如果存在容器ID，替换为唯一ID
-      if (!empty($embed_data['unique_id']) && !empty($run_js)) {
+      if (!empty($embed_data['uniqueId']) && !empty($run_js)) {
         // 查找并替换所有可能的容器ID引用
-        $run_js = preg_replace('/[\'"](mapContainer-\d+)[\'"]/', "'" . $embed_data['unique_id'] . "'", $run_js);
+        $run_js = preg_replace('/[\'"](mapContainer-\d+)[\'"]/', "'" . $embed_data['uniqueId'] . "'", $run_js);
       }
       
-      $embed_data['run_js'] = $run_js;
+      $embed_data['runJS'] = $run_js;
       
       // 添加内联JS到页面附加
       if (!empty($run_js)) {
         $js_settings = [
           'text_with_embed' => [
-            $embed_data['unique_id'] => [
-              'run_js' => $run_js,
+            $embed_data['uniqueId'] => [
+              'runJS' => $run_js,
             ],
           ],
         ];
@@ -124,7 +120,7 @@ class TextWithEmbedPreprocessor {
     // 设置模板变量
     $variables['embed_data'] = $embed_data;
     $variables['embed_data_json'] = $embed_json;
-    $variables['embed_container_id'] = $embed_data['unique_id'];
+    $variables['embed_container_id'] = $embed_data['uniqueId'];
     
     // 添加CSS类
     if (isset($variables['attributes']['class'])) {

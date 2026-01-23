@@ -1,0 +1,189 @@
+{
+  "id": "debug_69730754bae418.42379194",
+  "timestamp": 1769146196.765504,
+  "datetime": "2026-01-23 13:29:56.000000",
+  "label": "Paragraph Object",
+  "caller": "ParagraphPreprocessor.php:61",
+  "full_backtrace": null,
+  "data_type": "object",
+  "data": {
+    "__type__": "Entity",
+    "class": "Drupal\\paragraphs\\Entity\\Paragraph",
+    "id": "181",
+    "bundle": "content_block",
+    "label": "Home \u003E landing_page_body",
+    "fields": {
+      "id": {
+        "type": "integer",
+        "label": "ID",
+        "is_empty": false,
+        "value": [
+          {
+            "value": "181"
+          }
+        ]
+      },
+      "uuid": {
+        "type": "uuid",
+        "label": "UUID",
+        "is_empty": false,
+        "value": [
+          {
+            "value": "c23fb727-f4c3-4a65-90f1-030f3d8fc105"
+          }
+        ]
+      },
+      "revision_id": {
+        "type": "integer",
+        "label": "Revision ID",
+        "is_empty": false,
+        "value": [
+          {
+            "value": "6515"
+          }
+        ]
+      },
+      "langcode": {
+        "type": "language",
+        "label": "Language code",
+        "is_empty": false,
+        "value": [
+          {
+            "value": "en"
+          }
+        ]
+      },
+      "type": {
+        "type": "entity_reference",
+        "label": "Paragraph type",
+        "is_empty": false,
+        "value": [
+          {
+            "target_id": "content_block"
+          }
+        ]
+      },
+      "status": {
+        "type": "boolean",
+        "label": "Published",
+        "is_empty": false,
+        "value": [
+          {
+            "value": "1"
+          }
+        ]
+      },
+      "created": {
+        "type": "created",
+        "label": "Authored on",
+        "is_empty": false,
+        "value": [
+          {
+            "value": "1767860421"
+          }
+        ]
+      },
+      "parent_id": {
+        "type": "string",
+        "label": "Parent ID",
+        "is_empty": false,
+        "value": [
+          {
+            "value": "23"
+          }
+        ]
+      },
+      "parent_type": {
+        "type": "string",
+        "label": "Parent type",
+        "is_empty": false,
+        "value": [
+          {
+            "value": "node"
+          }
+        ]
+      },
+      "parent_field_name": {
+        "type": "string",
+        "label": "Parent field name",
+        "is_empty": false,
+        "value": [
+          {
+            "value": "field_landing_page_body"
+          }
+        ]
+      },
+      "behavior_settings": {
+        "type": "string_long",
+        "label": "Behavior settings",
+        "is_empty": false,
+        "value": [
+          {
+            "value": "a:2:{s:17:\u0022layout_paragraphs\u0022;a:4:{s:6:\u0022layout\u0022;s:13:\u0022layout_onecol\u0022;s:6:\u0022config\u0022;a:1:{s:5:\u0022label\u0022;s:0:\u0022\u0022;}s:11:\u0022parent_uuid\u0022;N;s:6:\u0022region\u0022;N;}s:13:\u0022style_options\u0022;a:3:{s:11:\u0022padding_top\u0022;a:1:{s:9:\u0022css_class\u0022;s:1:\u00223\u0022;}s:14:\u0022padding_bottom\u0022;a:1:{s:9:\u0022css_class\u0022;s:1:\u00223\u0022;}s:11:\u0022block_align\u0022;a:1:{s:9:\u0022css_class\u0022;s:1:\u00222\u0022;}}}"
+          }
+        ]
+      },
+      "default_langcode": {
+        "type": "boolean",
+        "label": "Default translation",
+        "is_empty": false,
+        "value": [
+          {
+            "value": "1"
+          }
+        ]
+      },
+      "revision_default": {
+        "type": "boolean",
+        "label": "Default revision",
+        "is_empty": false,
+        "value": [
+          {
+            "value": "1"
+          }
+        ]
+      },
+      "revision_translation_affected": {
+        "type": "boolean",
+        "label": "Revision translation affected",
+        "is_empty": true,
+        "value": null
+      },
+      "content_translation_source": {
+        "type": "language",
+        "label": "Translation source",
+        "is_empty": false,
+        "value": [
+          {
+            "value": "und"
+          }
+        ]
+      },
+      "content_translation_outdated": {
+        "type": "boolean",
+        "label": "Translation outdated",
+        "is_empty": false,
+        "value": [
+          {
+            "value": "0"
+          }
+        ]
+      },
+      "content_translation_changed": {
+        "type": "changed",
+        "label": "Translation changed time",
+        "is_empty": false,
+        "value": [
+          {
+            "value": "1768373113"
+          }
+        ]
+      }
+    }
+  },
+  "raw_data": {},
+  "memory_usage": 25165824,
+  "peak_memory": 25223168,
+  "request_uri": "\/en\/node\/23",
+  "user": "admin"
+}

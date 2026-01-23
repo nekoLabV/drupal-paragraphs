@@ -20,20 +20,19 @@
   <script>
     window.addEventListener('baseThemeHooks:load', () => {
       const textWithEmbeddingNode = document.getElementById('base-theme-text-with-embedding-{{ paragraph.id.value }}')
-      let textWithEmbedding = []
+      let textWithEmbedding = {}
       try {
         const itemsStr = textWithEmbeddingNode.dataset.textWithEmbedding
         if (itemsStr) {
           textWithEmbedding = JSON.parse(itemsStr)
         }
-        console.log('textWithEmbedding', itemsStr)
+
+        console.log('textWithEmbedding', textWithEmbedding)
       } catch (error) {
         console.error('Failed to parse textWithEmbedding data:', error)
       }
       
-      // baseThemeHooks?.timeline?.createTimelineApp(textWithEmbeddingNode, {
-        // items: timelineItems
-      // })
+      vueMountComponent('textWithEmbed', textWithEmbeddingNode, textWithEmbedding)
     })
   </script>
 {% endif %}

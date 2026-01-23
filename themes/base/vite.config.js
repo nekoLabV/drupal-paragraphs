@@ -1,12 +1,14 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
+import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 
 export default defineConfig({
   base: './',
-  plugins: [vueJsx()],
+  plugins: [vue(), vueJsx()],
   resolve: {
     alias: {
+      '@': resolve(__dirname, './src'),
       '@scss': resolve(__dirname, './src/assets/scss'),
     }
   },

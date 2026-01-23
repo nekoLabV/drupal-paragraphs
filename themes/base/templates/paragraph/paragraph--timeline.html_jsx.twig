@@ -30,7 +30,7 @@
         console.error('Failed to parse timeline data:', error)
       }
       
-      vueMountComponent('timeline', timelineNode, {
+      baseThemeHooks?.timeline?.createTimelineApp(timelineNode, {
         items: timelineItems
       })
     })

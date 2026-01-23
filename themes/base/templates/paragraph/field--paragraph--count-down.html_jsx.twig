@@ -92,9 +92,9 @@ window.addEventListener('baseThemeHooks:load', () => {
   const countdownNode = document.querySelectorAll('.base-theme-countdown-app')
   for (let i = 0; i < countdownNode.length; i++) {
     if (countdownNode[i]) {
-      vueMountComponent('countdown', countdownNode[i], {
-        end: datetime,
-        text: '天|时|分|秒'
+      baseThemeHooks?.countdown?.createCountdownApp(countdownNode[i], {
+        timestamp: datetime,
+        hintText: '天|时|分|秒'
       })
     }
   }

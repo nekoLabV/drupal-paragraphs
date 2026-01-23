@@ -1,4 +1,5 @@
 import { defineComponent, computed, onMounted } from 'vue'
+import Richtext from '@/viewComponents/Richtext.vue'
 
 export const TextWithEmbed = defineComponent({
   name: 'TextWithEmbed',
