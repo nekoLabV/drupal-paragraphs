@@ -4,6 +4,34 @@ if (typeof window !== 'undefined') {
   window.vueMountComponent = mountComponent
 }
 
-setTimeout(() => {
-  window.dispatchEvent(new Event('baseThemeHooks:load'))
-}, 300)
+const customEvent = (name, data) => {
+  if (!name) {
+    throw new Error('customEvent: name is required.')
+  }
+  return new CustomEvent(name, {
+    detail: data
+  })
+}
+
+(function(Drupal, _) {
+  'use strict'
+
+  Drupal.behaviors.countdown = {
+    attach: function(_, settings) {
+      window.dispatchEvent(customEvent('countdown:load', settings.countdown))
+    }
+  }
+
+  Drupal.behaviors.timeline = {
+    attach: function(_, settings) {
+      window.dispatchEvent(customEvent('timeline:load', settings.timeline))
+    }
+  }
+
+  Drupal.behaviors.textWithEmbed = {
+    attach: function(_, settings) {
+      window.dispatchEvent(customEvent('textWithEmbed:load', settings.textWithEmbed))
+    }
+  }
+
+})(Drupal, drupalSettings)

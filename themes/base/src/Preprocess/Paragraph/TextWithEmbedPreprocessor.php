@@ -116,21 +116,16 @@ class TextWithEmbedPreprocessor {
     // 生成JSON数据
     $json_options = JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT;
     $embed_json = json_encode($embed_data, $json_options);
+
+    $paragraph_id = $paragraph->id() ?? microtime();
     
     // 设置模板变量
     $variables['embed_data'] = $embed_data;
     $variables['embed_data_json'] = $embed_json;
-    $variables['embed_container_id'] = $embed_data['uniqueId'];
-    
-    // 添加CSS类
-    if (isset($variables['attributes']['class'])) {
-      $variables['attributes']['class'][] = 'text-with-embed-paragraph';
-      $variables['attributes']['class'][] = 'text-with-embed-' . $paragraph->bundle();
-    }
+    $variables['embed_id'] = $paragraph_id;
     
     // 添加库
     $variables['#attached']['library'][] = 'base/themeHooks';
-
-    \Drupal::logger('TextWithEmbedPreprocessor')->debug('embed_data');
+    $variables['#attached']['drupalSettings']['textWithEmbed'][$paragraph_id] = $embed_data;
   }
 }

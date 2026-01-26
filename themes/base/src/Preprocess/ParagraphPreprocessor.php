@@ -2,6 +2,7 @@
 
 namespace Drupal\base\Preprocess;
 
+use Drupal\base\Preprocess\Paragraph\CountdownPreprocessor;
 use Drupal\base\Preprocess\Paragraph\TimelinePreprocessor;
 use Drupal\base\Preprocess\Paragraph\TextWithEmbedPreprocessor;
 
@@ -21,6 +22,7 @@ class ParagraphPreprocessor {
   public function __construct() {
     // 注册所有段落类型的预处理器
     $this->preprocessors = [
+      'count_down' => new CountdownPreprocessor(),
       'timeline' => new TimelinePreprocessor(),
       'text_with_embedding' => new TextWithEmbedPreprocessor()
     ];

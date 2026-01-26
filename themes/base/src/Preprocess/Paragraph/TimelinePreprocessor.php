@@ -81,10 +81,13 @@ class TimelinePreprocessor {
     // 转换为 JSON
     $json_options = JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT;
     $timeline_json = json_encode($timeline_items, $json_options);
+
+    $paragraph_id = $paragraph->id() ?? microtime();
     
     $variables['timeline_data'] = $timeline_items;
     $variables['timeline_data_json'] = $timeline_json;
-    $variables['timeline_id'] = 'base-theme-timeline-' . $paragraph->id();
+    $variables['timeline_id'] = $paragraph_id;
     $variables['#attached']['library'][] = 'base/themeHooks';
+    $variables['#attached']['drupalSettings']['timeline'][$paragraph_id] = $timeline_items;
   }
 }

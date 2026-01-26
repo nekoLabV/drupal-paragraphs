@@ -3,10 +3,9 @@
   <div style="display: none;">
     {{ content }}
   </div>
-  {% if embed_data is defined %}
+  {% if embed_id is defined %}
   <div 
-    id="base-theme-text-with-embedding-{{ paragraph.id.value }}"
-    data-text-with-embedding="{{ embed_data_json|e('html_attr') }}">
+    id="base-theme-text-with-embedding-{{ embed_id }}">
   </div>
   {% else %}
     {# Fallback: 如果没有数据，显示原始内容 #}
@@ -14,25 +13,16 @@
   {% endif %}
 </div>
 
-{% if embed_data is defined %}
+{% if embed_id is defined %}
   {{ attach_library('base/themeHooks') }}
 
   <script>
-    window.addEventListener('baseThemeHooks:load', () => {
-      const textWithEmbeddingNode = document.getElementById('base-theme-text-with-embedding-{{ paragraph.id.value }}')
-      let textWithEmbedding = {}
-      try {
-        const itemsStr = textWithEmbeddingNode.dataset.textWithEmbedding
-        if (itemsStr) {
-          textWithEmbedding = JSON.parse(itemsStr)
-        }
-
-        console.log('textWithEmbedding', textWithEmbedding)
-      } catch (error) {
-        console.error('Failed to parse textWithEmbedding data:', error)
-      }
-      
-      vueMountComponent('textWithEmbed', textWithEmbeddingNode, textWithEmbedding)
+    window.addEventListener('textWithEmbed:load', (data) => {
+      const textWithEmbedId = '{{ embed_id }}'
+      const textWithEmbedNode = document.getElementById(`base-theme-text-with-embedding-${textWithEmbedId}`)
+      const textWithEmbed = data?.detail?.[textWithEmbedId]
+      console.log('textWithEmbed', textWithEmbed)
+      vueMountComponent('textWithEmbed', textWithEmbedNode, textWithEmbed)
     })
   </script>
 {% endif %}

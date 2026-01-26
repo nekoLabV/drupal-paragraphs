@@ -3,10 +3,9 @@
   <div style="display: none;">
     {{ content }}
   </div>
-  {% if timeline_data is defined %}
+  {% if timeline_id is defined %}
   <div 
-    id="base-theme-timeline-{{ paragraph.id.value }}"
-    data-timeline-items="{{ timeline_data_json|e('html_attr') }}">
+    id="base-theme-timeline-{{ timeline_id }}">
   </div>
   {% else %}
     {# Fallback: 如果没有数据，显示原始内容 #}
@@ -14,21 +13,14 @@
   {% endif %}
 </div>
 
-{% if timeline_data is defined %}
+{% if timeline_id is defined %}
   {{ attach_library('base/themeHooks') }}
 
   <script>
-    window.addEventListener('baseThemeHooks:load', () => {
-      const timelineNode = document.getElementById('base-theme-timeline-{{ paragraph.id.value }}')
-      let timelineItems = []
-      try {
-        const itemsStr = timelineNode.dataset.timelineItems
-        if (itemsStr) {
-          timelineItems = JSON.parse(itemsStr)
-        }
-      } catch (error) {
-        console.error('Failed to parse timeline data:', error)
-      }
+    window.addEventListener('timeline:load', (data) => {
+      const paragraphId = '{{ timeline_id }}'
+      const timelineNode = document.getElementById(`base-theme-timeline-${paragraphId}`)
+      const timelineItems = data?.detail?.[paragraphId]
       
       vueMountComponent('timeline', timelineNode, {
         items: timelineItems
