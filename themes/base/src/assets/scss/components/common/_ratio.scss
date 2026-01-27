@@ -1,0 +1,23 @@
+@use '../../var';
+
+.el-ratio {
+  position: relative;
+  width: 100%;
+  > * {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &::before {
+    content: '';
+    display: block;
+    padding-top: var(--el-aspect-ratio);
+  }
+
+  @each $key, $ratio in var.$aspect-ratios {
+    &--#{$key} {
+      --el-aspect-ratio: #{$ratio};
+    }
+  }
+}

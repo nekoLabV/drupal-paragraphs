@@ -13,6 +13,9 @@
     grid-gap: var(--layout-grid-gutter);
     width: 100%;
     border-radius: 12px;
+    @include mixins.media-breakpoint-up(lg) {
+      grid-template-columns: 60% auto;
+    }
     @at-root #{$root}--embed-float-left & {
       @include mixins.media-breakpoint-up(lg) {
         grid-template-columns: 60% auto;
@@ -86,7 +89,7 @@
     '3x4': calc(4 / 3 * 100%),
   );
   @each $key, $ratio in $aspect-ratios {
-    &--embed-ratio-#{$key} {
+    &--embed-radio-#{$key} {
       --el-aspect-ratio: #{$ratio};
     }
   }

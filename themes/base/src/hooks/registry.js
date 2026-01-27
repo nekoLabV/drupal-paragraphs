@@ -1,19 +1,29 @@
-import { createApp } from 'vue'
+import { createApp, h } from 'vue'
 
 const components = {
-  'countdown': () => import('./components/countdown.vue'),
-  'timeline': () => import('./components/timeline.vue'),
+  'swiper': () => import('./components/common/Swiper.vue'),
+  'countdown': () => import('./components/Countdown.vue'),
+  'timeline': () => import('./components/Timeline.vue'),
   'textWithEmbed': () => import('./components/TextWithEmbed.vue'),
 }
 
-export const mountComponent = async (componentName, element, props) => {
+export const mountComponent = async (componentName, element, props = {}, slots = {}) => {
   if (!components[componentName]) {
     console.error(`组件 ${componentName} 未注册`)
     return
   }
-  
+
   const component = await components[componentName]()
-  const app = createApp(component.default || component, props)
+
+  const wrapper = {
+    render() {
+      return h(component.default || component, props, h('div', {
+        innerHTML: slots
+      }))
+    }
+  }
+
+  const app = createApp(wrapper)
   app.mount(element)
   
   return app

@@ -229,6 +229,17 @@ options:
       - label: large
         class: base-theme-block--image-size-lg
 
+  image_radio:
+    plugin: css_class
+    label: Image radio
+    multiple: false
+    options:
+      - label: 4x3
+      - label: 1x1
+        class: base-theme-block--image-radio-1x1
+      - label: 16x9
+        class: base-theme-block--image-radio-16x9
+
   image_fit:
     plugin: css_class
     label: Image fit
@@ -239,6 +250,18 @@ options:
         class: base-theme-block--image-fit-cover
       - label: contain
         class: base-theme-block--image-fit-contain
+
+  # text width embedding
+  embed_radio:
+    plugin: css_class
+    label: Embed radio
+    multiple: false
+    options:
+      - label: Default
+      - label: 16x9
+        class: base-theme-text-with-embedding--embed-radio-16x9
+      - label: 1x1
+        class: base-theme-text-with-embedding--embed-radio-1x1
 
   group_col:
     plugin: css_class
@@ -382,3 +405,7 @@ contexts:
     paragraphs_grid:
       options:
         grid_col: true
+
+    text_with_embedding:
+      options:
+        embed_radio: true

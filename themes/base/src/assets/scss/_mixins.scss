@@ -143,16 +143,8 @@ $grid-breakpoints: (
 @mixin media-breakpoint-up($breakpoint, $onlyMedia: false) {
   $min: map.get($grid-breakpoints, $breakpoint); // 使用 map.get 替代 map-get
   @if $min {
-    @if ($onlyMedia == true) {
-      @media (min-width: $min) {
-        @content;
-      }
-    } @else {
-      @at-root .landing-page-content:not(.display-mobile-style) & {
-        @media (min-width: $min) {
-          @content;
-        }
-      }
+    @media (min-width: $min) {
+      @content;
     }
   } @else {
     @content;
@@ -167,11 +159,11 @@ $grid-breakpoints: (
     @media (max-width: $max-width) {
       @content;
     }
-    @if $breakpoint == 'md' or $breakpoint == 'sm' {
-      @at-root .display-mobile-style & {
-        @content;
-      }
-    }
+    // @if $breakpoint == 'md' or $breakpoint == 'sm' {
+    //   @at-root .display-mobile-style & {
+    //     @content;
+    //   }
+    // }
   } @else {
     @content;
   }

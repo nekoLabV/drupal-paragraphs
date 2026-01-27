@@ -5,6 +5,7 @@ namespace Drupal\base\Preprocess;
 use Drupal\base\Preprocess\Paragraph\CountdownPreprocessor;
 use Drupal\base\Preprocess\Paragraph\TimelinePreprocessor;
 use Drupal\base\Preprocess\Paragraph\TextWithEmbedPreprocessor;
+use Drupal\base\Preprocess\Paragraph\SwiperPreprocessor;
 
 /**
  * 段落预处理器管理器
@@ -24,7 +25,8 @@ class ParagraphPreprocessor {
     $this->preprocessors = [
       'count_down' => new CountdownPreprocessor(),
       'timeline' => new TimelinePreprocessor(),
-      'text_with_embedding' => new TextWithEmbedPreprocessor()
+      'text_with_embedding' => new TextWithEmbedPreprocessor(),
+      'swiper' => new SwiperPreprocessor()
     ];
   }
 

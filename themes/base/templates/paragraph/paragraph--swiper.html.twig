@@ -1,0 +1,15 @@
+<div class="base-theme-swiper">
+  <div class="base-theme-swiper__content-{{ swiper_id }}" style="display: none;">
+    {{ content }}
+  </div>
+  <div id="base-theme-swiper-{{ swiper_id }}"></div>
+</div>
+
+<script>
+  window.addEventListener('swiper:load', () => {
+    const swiperId = '{{ swiper_id }}'
+    const swiperNode = document.getElementById(`base-theme-swiper-${swiperId}`)
+    const swiperContent = document.querySelector(`.base-theme-swiper__content-${swiperId}`)
+    vueMountComponent('swiper', swiperNode, null, swiperContent?.innerHTML)
+  })
+</script>

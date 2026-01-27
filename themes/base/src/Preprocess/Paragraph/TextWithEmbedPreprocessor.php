@@ -20,28 +20,12 @@ class TextWithEmbedPreprocessor {
       'embedHtml' => '',
       'loadJS' => '',
       'runJS' => '',
-      'richtext' => '',
-      'uniqueId' => '',
+      'richtext' => ''
     ];
     
     // 获取嵌入的HTML
     if ($paragraph->hasField('field_embed_html') && !$paragraph->get('field_embed_html')->isEmpty()) {
       $embed_html = $paragraph->get('field_embed_html')->getValue()[0]['value'] ?? '';
-      
-      // 解析HTML，提取容器ID
-      $dom = Html::load($embed_html);
-      $xpath = new \DOMXPath($dom);
-      $div_elements = $xpath->query('//div[@id]');
-      
-      if ($div_elements->length > 0) {
-        $container_id = $div_elements->item(0)->getAttribute('id');
-        $embed_data['uniqueId'] = $container_id;
-        
-        // 替换容器ID为唯一ID
-        $unique_id = 'embed-container-' . $paragraph->id();
-        $embed_html = str_replace($container_id, $unique_id, $embed_html);
-        $embed_data['uniqueId'] = $unique_id;
-      }
       
       $embed_data['embedHtml'] = $embed_html;
     }
@@ -81,27 +65,7 @@ class TextWithEmbedPreprocessor {
     if ($paragraph->hasField('field_run_js') && !$paragraph->get('field_run_js')->isEmpty()) {
       $run_js = $paragraph->get('field_run_js')->getValue()[0]['value'] ?? '';
       
-      // 如果存在容器ID，替换为唯一ID
-      if (!empty($embed_data['uniqueId']) && !empty($run_js)) {
-        // 查找并替换所有可能的容器ID引用
-        $run_js = preg_replace('/[\'"](mapContainer-\d+)[\'"]/', "'" . $embed_data['uniqueId'] . "'", $run_js);
-      }
-      
       $embed_data['runJS'] = $run_js;
-      
-      // 添加内联JS到页面附加
-      if (!empty($run_js)) {
-        $js_settings = [
-          'text_with_embed' => [
-            $embed_data['uniqueId'] => [
-              'runJS' => $run_js,
-            ],
-          ],
-        ];
-        
-        $variables['#attached']['drupalSettings'] = $js_settings;
-        $variables['#attached']['library'][] = 'base/embed-scripts';
-      }
     }
     
     // 获取富文本内容

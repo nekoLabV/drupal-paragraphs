@@ -81,7 +81,9 @@
   onMounted(async () => {
     try {
       if (props.loadJS) await requestJS(props.loadJS)
-      if (props.runJS) new Function(props.runJS)()
+      setTimeout(() => {
+        if (props.runJS) new Function(props.runJS)()
+      }, 300)
     } catch (error) {
       console.error('脚本执行失败:', error)
     }

@@ -29,8 +29,16 @@ const customEvent = (name, data) => {
   }
 
   Drupal.behaviors.textWithEmbed = {
+    attach: function(context, settings) {
+      if (context === document) {
+        window.dispatchEvent(customEvent('textWithEmbed:load', settings.textWithEmbed))
+      }
+    }
+  }
+
+  Drupal.behaviors.swiper = {
     attach: function(_, settings) {
-      window.dispatchEvent(customEvent('textWithEmbed:load', settings.textWithEmbed))
+      window.dispatchEvent(customEvent('swiper:load'))
     }
   }
 

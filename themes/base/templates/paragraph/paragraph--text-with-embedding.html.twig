@@ -21,7 +21,6 @@
       const textWithEmbedId = '{{ embed_id }}'
       const textWithEmbedNode = document.getElementById(`base-theme-text-with-embedding-${textWithEmbedId}`)
       const textWithEmbed = data?.detail?.[textWithEmbedId]
-      console.log('textWithEmbed', textWithEmbed)
       vueMountComponent('textWithEmbed', textWithEmbedNode, textWithEmbed)
     })
   </script>

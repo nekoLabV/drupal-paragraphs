@@ -1,3 +1,5 @@
+@use './common';
+
 @use './paragraph/block-side-image.scss';
 @use './paragraph/button.scss';
 @use './paragraph/group.scss';
@@ -13,4 +15,5 @@
 @use './paragraph/business-card.scss';
 @use './paragraph/timeline.scss';
 @use './paragraph/text-with-embedding.scss';
+
 @use './landing-page.scss';

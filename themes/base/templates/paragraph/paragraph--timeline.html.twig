@@ -18,9 +18,9 @@
 
   <script>
     window.addEventListener('timeline:load', (data) => {
-      const paragraphId = '{{ timeline_id }}'
-      const timelineNode = document.getElementById(`base-theme-timeline-${paragraphId}`)
-      const timelineItems = data?.detail?.[paragraphId]
+      const timelineId = '{{ timeline_id }}'
+      const timelineNode = document.getElementById(`base-theme-timeline-${timelineId}`)
+      const timelineItems = data?.detail?.[timelineId]
       
       vueMountComponent('timeline', timelineNode, {
         items: timelineItems

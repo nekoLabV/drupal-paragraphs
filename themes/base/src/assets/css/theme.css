@@ -65,7 +65,8 @@ body {
   --cmt-surface-color: var(--cm-dark);
   --cmt-surface-heading-color: var(--cm-secondary);
   --cmt-strong-number-color: var(--cm-primary);
-  --cmt-surface-bg: var(--cm-white);
+  /* --cmt-surface-bg: var(--cm-white); */
+  --cmt-surface-bg: var(--cm-gray-100);
 }
 /* 白色主题配色 */
 .base-theme-block--white {
