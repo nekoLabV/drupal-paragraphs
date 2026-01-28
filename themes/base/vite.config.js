@@ -10,7 +10,8 @@ export default defineConfig({
     alias: {
       '@': resolve(__dirname, './src'),
       '@scss': resolve(__dirname, './src/assets/scss'),
-      '@node': resolve(__dirname, './node_modules')
+      '@node': resolve(__dirname, './node_modules'),
+      '@library': resolve(__dirname, './src/assets/scss/library')
     }
   },
   build: {

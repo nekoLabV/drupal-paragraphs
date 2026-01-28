@@ -13,7 +13,7 @@ class SwiperPreprocessor {
   public function preprocess(array &$variables): void {
     $paragraph = $variables['paragraph'];
 
-    $paragraph_id = $paragraph->id() ?? microtime();
+    $paragraph_id = $paragraph->id() ?? time();
     $variables['swiper_id'] = $paragraph_id;
     
     // 添加库

@@ -17,9 +17,13 @@ export const mountComponent = async (componentName, element, props = {}, slots =
 
   const wrapper = {
     render() {
-      return h(component.default || component, props, h('div', {
-        innerHTML: slots
-      }))
+      const slotContent = {
+        default: () => h('div', {
+          innerHTML: slots
+        })
+      }
+        
+      return h(component.default || component, props, slotContent)
     }
   }
 

@@ -48,6 +48,9 @@
     (1440px + var(--cm-container-padding-x, 20px) - var(--cm-container-max-width, 1280px)) / 2
   );
   --layout-grid-gutter: 24px;
+  --cm-grid-gutter-width-phone: 12px;
+  --cm-grid-gutter-width-tablet: 16px;
+  --cm-grid-gutter-width-desktop: 24px;
 
   --cm-table-border-color: rgba(0, 0, 0, .1);
 
