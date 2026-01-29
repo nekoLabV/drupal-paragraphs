@@ -32,8 +32,7 @@
   z-index: 1;
   display: flex;
   transition-property: transform;
-  // box-sizing: content-box;
-  box-sizing: border-box;
+  box-sizing: content-box;
   &.uninitialized {
     opacity: 0;
   }

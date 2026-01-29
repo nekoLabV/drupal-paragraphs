@@ -23,13 +23,13 @@ class CustomBackgroundImage extends BackgroundImage {
    * {@inheritdoc}
    */
   public function build(array $build, $value = '') {
-    $this->logDebug('CustomBackgroundImage build started');
+    // $this->logDebug('CustomBackgroundImage build started');
 
     $fid = $this->getValue('fid');
 
-    $this->logDebug('FID value: @fid', [
-      '@fid' => print_r($fid, TRUE),
-    ]);
+    // $this->logDebug('FID value: @fid', [
+    //   '@fid' => print_r($fid, TRUE),
+    // ]);
 
     if (empty($fid) || empty($fid[0])) {
       return $build;
@@ -58,9 +58,9 @@ class CustomBackgroundImage extends BackgroundImage {
       $build['#attributes']['style'][] =
         '--background-image: url(' . $file_url . ');';
 
-      $this->logDebug('CSS variable added: @url', [
-        '@url' => $file_url,
-      ]);
+      // $this->logDebug('CSS variable added: @url', [
+      //   '@url' => $file_url,
+      // ]);
     }
     else {
       // 非 css method 时，保持父类行为

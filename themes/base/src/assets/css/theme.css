@@ -70,6 +70,14 @@ body {
   --cmt-strong-number-color: var(--cm-primary);
   /* --cmt-surface-bg: var(--cm-white); */
   --cmt-surface-bg: var(--cm-gray-100);
+
+  --cmt-swiper-button-color: var(--cm-dark);
+  --cmt-swiper-button-bg: var(--cm-white);
+  --cmt-swiper-button-hover-color: var(--cm-primary);
+  --cmt-swiper-button-hover-bg: var(--cm-white);
+  --cmt-swiper-pagination-bg: var(--cm-gray-600);
+  --cmt-swiper-pagination-active-bg: var(--cm-gray-600);
+  --cmt-swiper-button-box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
 }
 /* 白色主题配色 */
 .base-theme-block--white {
@@ -80,6 +88,14 @@ body {
   --cmt-surface-heading-color: var(--cm-secondary);
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-gray-100);
+
+  --cmt-swiper-button-color: var(--cm-dark);
+  --cmt-swiper-button-bg: var(--cm-white);
+  --cmt-swiper-button-hover-color: var(--cm-primary);
+  --cmt-swiper-button-hover-bg: var(--cm-white);
+  --cmt-swiper-pagination-bg: var(--cm-gray-600);
+  --cmt-swiper-pagination-active-bg: var(--cm-gray-600);
+  --cmt-swiper-button-box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
 }
 /* 黑色主题配色 */
 .base-theme-block--black {
@@ -90,6 +106,14 @@ body {
   --cmt-surface-heading-color: var(--cm-secondary);
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-white);
+
+  --cmt-swiper-button-color: var(--cm-dark);
+  --cmt-swiper-button-bg: var(--cm-white);
+  --cmt-swiper-button-hover-color: var(--cm-primary);
+  --cmt-swiper-button-hover-bg: var(--cm-white);
+  --cmt-swiper-pagination-bg: var(--cm-white);
+  --cmt-swiper-pagination-active-bg: var(--cm-white);
+  --cmt-swiper-button-box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
 }
 /* 主色主题配色 */
 .base-theme-block--primary {
@@ -100,6 +124,14 @@ body {
   --cmt-surface-heading-color: var(--cm-secondary);
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-white);
+
+  --cmt-swiper-button-color: var(--cm-dark);
+  --cmt-swiper-button-bg: var(--cm-white);
+  --cmt-swiper-button-hover-color: var(--cm-primary);
+  --cmt-swiper-button-hover-bg: var(--cm-white);
+  --cmt-swiper-pagination-bg: var(--cm-white);
+  --cmt-swiper-pagination-active-bg: var(--cm-white);
+  --cmt-swiper-button-box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
 }
 /* 辅色主题配色 */
 .base-theme-block--secondary {
@@ -110,6 +142,14 @@ body {
   --cmt-surface-heading-color: var(--cm-secondary);
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-white);
+
+  --cmt-swiper-button-color: var(--cm-dark);
+  --cmt-swiper-button-bg: var(--cm-white);
+  --cmt-swiper-button-hover-color: var(--cm-primary);
+  --cmt-swiper-button-hover-bg: var(--cm-white);
+  --cmt-swiper-pagination-bg: var(--cm-white);
+  --cmt-swiper-pagination-active-bg: var(--cm-white);
+  --cmt-swiper-button-box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
 }
 /* 浅色主题配色 */
 .base-theme-block--light {
@@ -120,6 +160,14 @@ body {
   --cmt-surface-heading-color: var(--cm-secondary);
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-white);
+
+  --cmt-swiper-button-color: var(--cm-dark);
+  --cmt-swiper-button-bg: var(--cm-white);
+  --cmt-swiper-button-hover-color: var(--cm-primary);
+  --cmt-swiper-button-hover-bg: var(--cm-white);
+  --cmt-swiper-pagination-bg: var(--cm-gray-600);
+  --cmt-swiper-pagination-active-bg: var(--cm-gray-600);
+  --cmt-swiper-button-box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
 }
 /* 深色主题配色 */
 .base-theme-block--dark {
@@ -130,6 +178,14 @@ body {
   --cmt-surface-heading-color: var(--cm-secondary);
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-white);
+
+  --cmt-swiper-button-color: var(--cm-dark);
+  --cmt-swiper-button-bg: var(--cm-white);
+  --cmt-swiper-button-hover-color: var(--cm-primary);
+  --cmt-swiper-button-hover-bg: var(--cm-white);
+  --cmt-swiper-pagination-bg: var(--cm-white);
+  --cmt-swiper-pagination-active-bg: var(--cm-white);
+  --cmt-swiper-button-box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
 }
 /* 浅色背景图片主题配色 */
 .base-theme-block--light-image {
@@ -141,6 +197,14 @@ body {
   --cmt-surface-heading-color: var(--cm-secondary);
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-white);
+
+  --cmt-swiper-button-color: var(--cm-dark);
+  --cmt-swiper-button-bg: var(--cm-white);
+  --cmt-swiper-button-hover-color: var(--cm-primary);
+  --cmt-swiper-button-hover-bg: var(--cm-white);
+  --cmt-swiper-pagination-bg: var(--cm-gray-600);
+  --cmt-swiper-pagination-active-bg: var(--cm-gray-600);
+  --cmt-swiper-button-box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
 }
 /* 深色背景图片主题配色 */
 .base-theme-block--dark-image {
@@ -152,4 +216,12 @@ body {
   --cmt-surface-heading-color: var(--cm-secondary);
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-white);
+
+  --cmt-swiper-button-color: var(--cm-dark);
+  --cmt-swiper-button-bg: var(--cm-white);
+  --cmt-swiper-button-hover-color: var(--cm-primary);
+  --cmt-swiper-button-hover-bg: var(--cm-white);
+  --cmt-swiper-pagination-bg: var(--cm-white);
+  --cmt-swiper-pagination-active-bg: var(--cm-white);
+  --cmt-swiper-button-box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
 }

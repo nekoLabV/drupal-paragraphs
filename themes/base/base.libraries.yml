@@ -6,6 +6,11 @@ vue:
       # attributes:
         # defer: true
 
+font:
+  css:
+    theme:
+      src/assets/fonts/remixicon.css: {}
+
 style-options:
   css:
     theme:

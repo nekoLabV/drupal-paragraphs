@@ -55,6 +55,7 @@
         }
         img {
           object-fit: cover;
+          border-radius: var(--cm-border-radius);
         }
       }
     }

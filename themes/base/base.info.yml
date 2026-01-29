@@ -18,4 +18,5 @@ datestamp: 1767164199
 
 libraries:
   - base/global-styling
+  - base/font
   - base/style-options
