@@ -17,10 +17,10 @@ export default defineConfig({
   build: {
     outDir: 'dist/js',
     lib: {
-      entry: resolve(__dirname, './src/hooks/index.js'),
-      name: 'BaseThemeHooks', // 全局变量名
+      entry: resolve(__dirname, './src/vue-components/index.js'),
+      name: 'BaseThemeComponents', // 全局变量名
       formats: ['iife'],
-      fileName: 'hooks'    // 输出文件名
+      fileName: 'components'    // 输出文件名
     },
     rollupOptions: {
       external: ['vue'],

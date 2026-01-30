@@ -52,7 +52,7 @@ class CountdownPreprocessor {
     ], $json_options);
     
     // 添加库
-    $variables['#attached']['library'][] = 'base/themeHooks';
+    $variables['#attached']['library'][] = 'base/theme-components';
     $variables['#attached']['drupalSettings']['countdown'][$paragraph_id] = $target_datetime_iso;
   }
 }

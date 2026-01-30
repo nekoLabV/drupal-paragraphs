@@ -1,12 +1,10 @@
 <script setup>
-import { onMounted, computed, shallowRef, ref, h } from 'vue'
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Navigation, Pagination, Scrollbar, Grid, Autoplay } from 'swiper'
+import { onMounted, computed, shallowRef, h } from 'vue'
 
 const props = defineProps({
   items: {
     type: String,
-    default: '' // html 字符串
+    default: [] // html 字符串
   },
   cols: {
     type: Number,
@@ -28,36 +26,34 @@ const props = defineProps({
 
 // 仅在客户端导入Swiper
 const swiperComponents = shallowRef({
-  // Swiper: {
-  //   setup(_, { slots }) {
-  //     return () =>
-  //       h('div', { class: 'swiper swiper-container', style: { overflow: 'hidden' } }, [
-  //         h('div', { class: 'swiper-wrapper' }, slots.default?.())
-  //       ])
-  //   },
-  // },
-  // SwiperSlide: {
-  //   setup(_, { slots }) {
-  //     return () =>
-  //       h(
-  //         'div',
-  //         { class: 'swiper-slide' },
-  //         slots.default?.()
-  //       )
-  //   },
-  // },
+  Swiper: {
+    setup(_, { slots }) {
+      return () =>
+        h('div', {}, h('div', { class: 'swiper-wrapper uninitialized' }, slots.default?.()))
+    },
+  },
+  SwiperSlide: {
+    setup(_, { slots }) {
+      return () =>
+        h(
+          'div',
+          { class: 'swiper-slide', style: { width: 100 / props.cols + '%' } },
+          slots.default?.()
+        )
+    },
+  },
   modules: [],
 })
 const swiperParams = shallowRef({})
 
-onMounted(() => {
+onMounted(async () => {
   setSwiperParams()
 
-  // const { Swiper, SwiperSlide } = await import('swiper/vue')
-  // const { Navigation, Pagination, Scrollbar, Grid, Autoplay } = await import('swiper')
+  const { Swiper, SwiperSlide } = await import('swiper/vue')
+  const { Navigation, Pagination, Scrollbar, Grid, Autoplay } = await import('swiper')
   swiperComponents.value = {
-    // Swiper,
-    // SwiperSlide,
+    Swiper,
+    SwiperSlide,
     modules: [Navigation, Pagination, Scrollbar, Grid, Autoplay],
   }
 })
@@ -167,8 +163,8 @@ const responsiveCols = computed(() => {
 })
 
 function setChildHeight(swiper) {
-  swiper.el?.style.removeProperty('--childHeight')
-  swiper.slides?.forEach(el => {
+  swiper.el.style.removeProperty('--childHeight')
+  swiper.slides.forEach(el => {
     let childHeight = el.firstElementChild?.offsetHeight || 0
     let cssVarChildHeight = swiper.el.style.getPropertyValue('--childHeight') || 0
     if (parseInt(cssVarChildHeight) < childHeight) {
@@ -180,28 +176,16 @@ function setChildHeight(swiper) {
 function swiperGirdInit(swiper) {
   if (swiper.params?.grid?.rows) {
     swiper.el.style.setProperty('--rows', swiper.params.grid.rows)
+  } else {
+    swiper.el.style.setProperty('--rows', 1)
   }
   setChildHeight(swiper)
 }
-
-const slides = computed(() => {
-  if (!props.items) return []
-
-  const parser = new DOMParser()
-  const doc = parser.parseFromString(props.items, 'text/html')
-
-  return Array.from(
-    doc.querySelectorAll('.base-theme-swiper__item')
-  ).map((el, i) => ({
-    id: i,
-    html: el.outerHTML,
-  }))
-})
 </script>
 
 <template>
   <div class="base-theme-swiper swiper-overflow-wrap">
-    <!-- <component
+    <component
       class="swiper-container"
       v-bind="swiperParams"
       :is="swiperComponents.Swiper"
@@ -215,30 +199,11 @@ const slides = computed(() => {
     >
       <component
         :is="swiperComponents.SwiperSlide"
-        v-for="(slide, i) in slides"
+        v-for="(slide, i) in items"
         :key="i"
       >
-        <div class="swiper-slide__content" v-html="slide.html"></div>
+        <div v-inline-html="slide"></div>
       </component>
-    </component> -->
-
-    <Swiper
-      class="swiper-container"
-      v-bind="swiperParams"
-      :modules="swiperComponents.modules"
-      :class="{
-        'swiper--grid': rows > 1,
-        'swiper-pagination--visible': swiperParams.pagination?.visible,
-      }"
-      @init="swiperGirdInit"
-      @resize="setChildHeight"
-    >
-      <SwiperSlide
-        v-for="(slide, i) in slides"
-        :key="i"
-      >
-        <div class="swiper-slide__content" v-html="slide.html"></div>
-      </SwiperSlide>
-    </Swiper>
+    </component>
   </div>
 </template>

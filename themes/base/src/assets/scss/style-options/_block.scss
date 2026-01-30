@@ -6,7 +6,7 @@
   $container: #{&}__container;
   $background: #{&}__background;
 
-  display: grid;
+  // display: grid;
   position: relative;
   color: var(--cmt-color);
 
@@ -30,6 +30,13 @@
         place-items: $align;
       }
     }
+  }
+
+  &,
+  *,
+  ::after,
+  ::before {
+    box-sizing: border-box;
   }
 
   &__background {

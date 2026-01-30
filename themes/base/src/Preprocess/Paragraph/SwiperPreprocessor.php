@@ -17,7 +17,7 @@ class SwiperPreprocessor {
     $variables['swiper_id'] = $paragraph_id;
     
     // 添加库
-    $variables['#attached']['library'][] = 'base/themeHooks';
+    $variables['#attached']['library'][] = 'base/theme-components';
     $variables['#attached']['drupalSettings']['swiper'][$paragraph_id] = $paragraph_id;
   }
 }

@@ -19,9 +19,9 @@ style-options:
       src/assets/css/theme.css: {}
       dist/css/index.css: {}
 
-themeHooks:
+theme-components:
   js:
-    dist/js/hooks.iife.js: {}
+    dist/js/components.iife.js: {}
   dependencies:
     - core/drupalSettings
     - base/vue

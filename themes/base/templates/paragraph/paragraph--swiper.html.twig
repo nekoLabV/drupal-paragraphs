@@ -1,7 +1,4 @@
-<div{{ attributes.addClass(classes) }} class="base-theme-swiper" style="width: 100%;">
-  {# <div class="base-theme-swiper__content-{{ swiper_id }}">
-    {{ content }}
-  </div> #}
+<div style="width: 100%;">
   {# 隐藏原始字段渲染 #}
   <div class="base-theme-swiper__content-{{ swiper_id }}" style="display: none;">
     {{ content }}
@@ -19,8 +16,14 @@
     const swiperId = '{{ swiper_id }}'
     const swiperNode = document.getElementById(`base-theme-swiper-${swiperId}`)
     const swiperContent = document.querySelector(`.base-theme-swiper__content-${swiperId}`)
+
+    const swiperItems = []
+    for(let i = 0; i < swiperContent?.children?.length; i++) {
+      swiperItems.push(swiperContent.children[i].outerHTML)
+    }
+
     vueMountComponent('swiper', swiperNode, {
-      items: swiperContent?.innerHTML
+      items: swiperItems
     })
   })
 </script>

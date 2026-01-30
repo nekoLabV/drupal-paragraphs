@@ -89,7 +89,7 @@ class TextWithEmbedPreprocessor {
     $variables['embed_id'] = $paragraph_id;
     
     // 添加库
-    $variables['#attached']['library'][] = 'base/themeHooks';
+    $variables['#attached']['library'][] = 'base/theme-components';
     $variables['#attached']['drupalSettings']['textWithEmbed'][$paragraph_id] = $embed_data;
   }
 }

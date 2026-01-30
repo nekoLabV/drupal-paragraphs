@@ -1,10 +1,11 @@
 import { createApp, h } from 'vue'
+import { inlineHtml } from '@/directives'
 
 const components = {
-  'swiper': () => import('./components/common/Swiper.vue'),
-  'countdown': () => import('./components/Countdown.vue'),
-  'timeline': () => import('./components/Timeline.vue'),
-  'textWithEmbed': () => import('./components/TextWithEmbed.vue'),
+  'swiper': () => import('./common/Swiper.vue'),
+  'countdown': () => import('./Countdown.vue'),
+  'timeline': () => import('./Timeline.vue'),
+  'textWithEmbed': () => import('./TextWithEmbed.vue'),
 }
 
 export const mountComponent = async (componentName, element, props = {}, slots = {}) => {
@@ -15,6 +16,7 @@ export const mountComponent = async (componentName, element, props = {}, slots =
 
   const component = await components[componentName]()
 
+  // 插槽
   const wrapper = {
     render() {
       const slotContent = {
@@ -28,6 +30,10 @@ export const mountComponent = async (componentName, element, props = {}, slots =
   }
 
   const app = createApp(wrapper)
+
+  // 自定义指令
+  app.directive('inline-html', inlineHtml)
+
   app.mount(element)
   
   return app

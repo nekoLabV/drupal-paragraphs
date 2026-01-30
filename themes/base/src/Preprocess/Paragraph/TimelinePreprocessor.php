@@ -87,7 +87,7 @@ class TimelinePreprocessor {
     $variables['timeline_data'] = $timeline_items;
     $variables['timeline_data_json'] = $timeline_json;
     $variables['timeline_id'] = $paragraph_id;
-    $variables['#attached']['library'][] = 'base/themeHooks';
+    $variables['#attached']['library'][] = 'base/theme-components';
     $variables['#attached']['drupalSettings']['timeline'][$paragraph_id] = $timeline_items;
   }
 }
