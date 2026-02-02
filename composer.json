@@ -26,6 +26,7 @@
         "drupal/entity_browser": "^2.15",
         "drupal/entity_usage": "^2.0@beta",
         "drupal/field_group": "^4.0",
+        "drupal/layout_options": "^1.7",
         "drupal/layout_paragraphs": "^2.1",
         "drupal/mercury_editor": "^2.2",
         "drupal/mercury_layouts": "^1.3",
