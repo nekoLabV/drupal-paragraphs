@@ -1,0 +1,411 @@
+options:
+
+  cm_bg_image:
+    plugin: custom_background_image
+    label: Background image
+    method: css
+
+  theme_variant:
+    plugin: css_class
+    label: Theme
+    multiple: false
+    options:
+      - label: White
+      # - label: White
+      #   class: paragraph-theme-block--white
+      - label: Black
+        class: paragraph-theme-block--black
+      - label: Light
+        class: paragraph-theme-block--light
+      - label: Dark
+        class: paragraph-theme-block--dark
+      - label: Primary
+        class: paragraph-theme-block--primary
+      - label: Secondary
+        class: paragraph-theme-block--secondary
+      - label: Light image
+        class: paragraph-theme-block--light-image
+      - label: Dark image
+        class: paragraph-theme-block--dark-image
+
+  headline:
+    plugin: css_class
+    label: Headline
+    multiple: false
+    options:
+      - label: None
+      - label: H1
+        class: paragraph-theme-block--typography--h1
+      - label: H2
+        class: paragraph-theme-block--typography--h2
+      - label: H3
+        class: paragraph-theme-block--typography--h3
+      - label: H4
+        class: paragraph-theme-block--typography--h4
+      - label: H5
+        class: paragraph-theme-block--typography--h5
+      - label: H6
+        class: paragraph-theme-block--typography--h6
+
+  block_align:
+    plugin: css_class
+    label: Block align
+    multiple: false
+    options:
+      - label: None
+      - label: left
+        class: paragraph-theme-block--block-align-start
+      - label: center
+        class: paragraph-theme-block--block-align-center
+      - label: right
+        class: paragraph-theme-block--block-align-end
+
+  text_align:
+    plugin: css_class
+    label: Text align
+    multiple: false
+    options:
+      - label: None
+      - label: left
+        class: paragraph-theme-block--text-align-start
+      - label: center
+        class: paragraph-theme-block--text-align-center
+      - label: right
+        class: paragraph-theme-block--text-align-end
+
+  padding_top:
+    plugin: css_class
+    label: Padding top
+    multiple: false
+    options:
+      - label: None
+      - label: small
+        class: paragraph-theme-block--padding-top-sm
+      - label: medium
+        class: paragraph-theme-block--padding-top-md
+      - label: large
+        class: paragraph-theme-block--padding-top-lg
+
+  padding_right:
+    plugin: css_class
+    label: Padding right
+    multiple: false
+    options:
+      - label: None
+      - label: small
+        class: paragraph-theme-block--padding-right-sm
+      - label: medium
+        class: paragraph-theme-block--padding-right-md
+      - label: large
+        class: paragraph-theme-block--padding-right-lg
+
+  padding_bottom:
+    plugin: css_class
+    label: Padding bottom
+    multiple: false
+    options:
+      - label: None
+      - label: small
+        class: paragraph-theme-block--padding-bottom-sm
+      - label: medium
+        class: paragraph-theme-block--padding-bottom-md
+      - label: large
+        class: paragraph-theme-block--padding-bottom-lg
+
+  padding_left:
+    plugin: css_class
+    label: Padding left
+    multiple: false
+    options:
+      - label: None
+      - label: small
+        class: paragraph-theme-block--padding-left-sm
+      - label: medium
+        class: paragraph-theme-block--padding-left-md
+      - label: large
+        class: paragraph-theme-block--padding-left-lg
+
+  padding:
+    plugin: css_class
+    label: Padding All
+    multiple: false
+    options:
+      - label: None
+      - label: small
+        class: paragraph-theme-block--padding-sm
+      - label: medium
+        class: paragraph-theme-block--padding-md
+      - label: large
+        class: paragraph-theme-block--padding-lg
+
+  margin_top:
+    plugin: css_class
+    label: Margin top
+    multiple: false
+    options:
+      - label: None
+      - label: small
+        class: paragraph-theme-block--margin-top-sm
+      - label: medium
+        class: paragraph-theme-block--margin-top-md
+      - label: large
+        class: paragraph-theme-block--margin-top-lg
+
+  margin_right:
+    plugin: css_class
+    label: Margin right
+    multiple: false
+    options:
+      - label: None
+      - label: small
+        class: paragraph-theme-block--margin-right-sm
+      - label: medium
+        class: paragraph-theme-block--margin-right-md
+      - label: large
+        class: paragraph-theme-block--margin-right-lg
+
+  margin_bottom:
+    plugin: css_class
+    label: Margin bottom
+    multiple: false
+    options:
+      - label: None
+      - label: small
+        class: paragraph-theme-block--margin-bottom-sm
+      - label: medium
+        class: paragraph-theme-block--margin-bottom-md
+      - label: large
+        class: paragraph-theme-block--margin-bottom-lg
+
+  margin_left:
+    plugin: css_class
+    label: Margin left
+    multiple: false
+    options:
+      - label: None
+      - label: small
+        class: paragraph-theme-block--margin-left-sm
+      - label: medium
+        class: paragraph-theme-block--margin-left-md
+      - label: large
+        class: paragraph-theme-block--margin-left-lg
+
+  margin:
+    plugin: css_class
+    label: Margin
+    multiple: false
+    options:
+      - label: None
+      - label: small
+        class: paragraph-theme-block--margin-sm
+      - label: medium
+        class: paragraph-theme-block--margin-md
+      - label: large
+        class: paragraph-theme-block--margin-lg
+
+  bg_color:
+    plugin: background_color
+    label: Background color
+    method: css
+    settings:
+      allowEmpty: TRUE
+      showAlpha: TRUE
+
+  bg_image:
+    plugin: background_image
+    label: Background image
+    method: css
+
+  image_size:
+    plugin: css_class
+    label: Image size
+    multiple: false
+    options:
+      - label: Default
+      - label: small
+        class: paragraph-theme-block--image-size-sm
+      - label: medium
+        class: paragraph-theme-block--image-size-md
+      - label: large
+        class: paragraph-theme-block--image-size-lg
+
+  image_radio:
+    plugin: css_class
+    label: Image radio
+    multiple: false
+    options:
+      - label: 4x3
+      - label: 1x1
+        class: paragraph-theme-block--image-radio-1x1
+      - label: 16x9
+        class: paragraph-theme-block--image-radio-16x9
+
+  image_fit:
+    plugin: css_class
+    label: Image fit
+    multiple: false
+    options:
+      - label: Default
+      - label: cover
+        class: paragraph-theme-block--image-fit-cover
+      - label: contain
+        class: paragraph-theme-block--image-fit-contain
+
+  # text width embedding
+  embed_radio:
+    plugin: css_class
+    label: Embed radio
+    multiple: false
+    options:
+      - label: Default
+      - label: 16x9
+        class: paragraph-theme-text-with-embedding--embed-radio-16x9
+      - label: 1x1
+        class: paragraph-theme-text-with-embedding--embed-radio-1x1
+
+  group_col:
+    plugin: css_class
+    label: Group col
+    multiple: false
+    options:
+      - label: 1
+      - label: 2
+        class: paragraph-theme-block--group-col-2
+      - label: 3
+        class: paragraph-theme-block--group-col-3
+
+  grid_col:
+    plugin: css_class
+    label: Grid col
+    multiple: false
+    options:
+      - label: 2
+      - label: 3
+        class: paragraph-theme-block__grid-col-3
+      - label: 4
+        class: paragraph-theme-block__grid-col-4
+
+  images_col:
+    plugin: css_class
+    label: Images col
+    multiple: false
+    options:
+      - label: Default
+      - label: 6
+        class: paragraph-theme-block--images-col-6
+      - label: 8
+        class: paragraph-theme-block--images-col-8
+
+  col_width:
+    plugin: css_class
+    label: Col width
+    multiple: false
+    options:
+      - label: 100%
+      - label: 80%
+        class: paragraph-theme-block--col-width-80
+      - label: 60%
+        class: paragraph-theme-block--col-width-60
+
+  border_radius:
+    plugin: css_class
+    label: Border radius
+    multiple: false
+    options:
+      - label: None
+      - label: small
+        class: paragraph-theme-block--border-radius-sm
+      - label: medium
+        class: paragraph-theme-block--border-radius-md
+      - label: large
+        class: paragraph-theme-block--border-radius-lg
+
+contexts:
+  layout:
+    _defaults:
+      options:
+        theme_variant:
+          layout: true
+          regions: true
+        padding:
+          layout: true
+          regions: true
+        margin:
+          layout: true
+          regions: true
+
+    layout_onecolumn:
+      options:
+        bg_color:
+          layout: true
+        # bg_image:
+        #   layout: true
+
+  paragraphs:
+    _defaults:
+      options:
+        border_radius: true
+        padding_top:
+          layout: true
+          regions: true
+        padding_right:
+          layout: true
+          regions: true
+        padding_bottom:
+          layout: true
+          regions: true
+        padding_left:
+          layout: true
+          regions: true
+        margin_top:
+          layout: true
+          regions: true
+        margin_right:
+          layout: true
+          regions: true
+        margin_bottom:
+          layout: true
+          regions: true
+        margin_left:
+          layout: true
+          regions: true
+
+    layout:
+      options:
+        theme_variant: true
+        block_align: true
+        col_width: true
+        # bg_image: true
+
+    content_block:
+      options:
+        theme_variant: true
+        block_align: true
+        col_width: true
+        cm_bg_image: true
+
+    text:
+      options:
+        headline: true
+        text_align: true
+
+    image: 
+      options:
+        image_size: true
+        image_fit: true
+      
+    images:
+      options:
+        images_col: true
+
+    group:
+      options:
+        group_col: true
+
+    paragraphs_grid:
+      options:
+        grid_col: true
+
+    text_with_embedding:
+      options:
+        embed_radio: true

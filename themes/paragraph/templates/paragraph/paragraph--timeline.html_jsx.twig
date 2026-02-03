@@ -1,0 +1,38 @@
+<div{{ attributes.addClass(classes) }} style="width: 100%;">
+  {# 隐藏原始字段渲染 #}
+  <div style="display: none;">
+    {{ content }}
+  </div>
+  {% if timeline_data is defined %}
+  <div 
+    id="paragraph-theme-timeline-{{ paragraph.id.value }}"
+    data-timeline-items="{{ timeline_data_json|e('html_attr') }}">
+  </div>
+  {% else %}
+    {# Fallback: 如果没有数据，显示原始内容 #}
+    {{ content }}
+  {% endif %}
+</div>
+
+{% if timeline_data is defined %}
+  {{ attach_library('paragraph/theme-components') }}
+
+  <script>
+    window.addEventListener('paragraphThemeHooks:load', () => {
+      const timelineNode = document.getElementById('paragraph-theme-timeline-{{ paragraph.id.value }}')
+      let timelineItems = []
+      try {
+        const itemsStr = timelineNode.dataset.timelineItems
+        if (itemsStr) {
+          timelineItems = JSON.parse(itemsStr)
+        }
+      } catch (error) {
+        console.error('Failed to parse timeline data:', error)
+      }
+      
+      paragraphThemeHooks?.timeline?.createTimelineApp(timelineNode, {
+        items: timelineItems
+      })
+    })
+  </script>
+{% endif %}

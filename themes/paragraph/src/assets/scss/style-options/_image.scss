@@ -1,0 +1,29 @@
+.paragraph-theme-block--image-size-sm {
+  width: 20%;
+  img {
+    width: 100%;
+  }
+}
+.paragraph-theme-block--image-size-md {
+  width: 50%;
+  img {
+    width: 100%;
+  }
+}
+.paragraph-theme-block--image-size-lg {
+  width: 100%;
+  img {
+    width: 100%;
+  }
+}
+
+.paragraph-theme-block--image-fit-cover {
+  img {
+    object-fit: cover;
+  }
+}
+.paragraph-theme-block--image-fit-contain {
+  img {
+    object-fit: contain;
+  }
+}

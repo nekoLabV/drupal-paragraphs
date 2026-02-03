@@ -1,0 +1,20 @@
+services:
+  _defaults:
+    autowire: true # 自动注入依赖
+    autoconfigure: true
+
+  # Drupal\paragraph_assets\Preprocess\Paragraph\:
+  #   resource: '../src/Preprocess/Paragraph/*'
+  #   exclude: '../src/Preprocess/Paragraph/BaseParagraphPreprocessor.php'
+
+  Drupal\paragraph_assets\Preprocess\Paragraph\CountdownPreprocessor: ~
+  Drupal\paragraph_assets\Preprocess\Paragraph\ImagePreprocessor: ~
+  Drupal\paragraph_assets\Preprocess\Paragraph\ImagesPreprocessor: ~
+  Drupal\paragraph_assets\Preprocess\Paragraph\SwiperPreprocessor: ~
+  Drupal\paragraph_assets\Preprocess\Paragraph\TextWithEmbedPreprocessor: ~
+  Drupal\paragraph_assets\Preprocess\Paragraph\TimelinePreprocessor: ~
+
+  paragraph_assets.manager:
+    class: Drupal\paragraph_assets\ParagraphManager
+    public: true
+    

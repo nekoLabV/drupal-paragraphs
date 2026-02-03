@@ -1,0 +1,22 @@
+@use '../../mixins';
+
+.paragraph--type--images {
+  --col: 8;
+}
+.paragraph-theme-block--images-col-6 {
+  --col: 6;
+}
+.paragraph-theme-block--images-col-8 {
+  --col: 8;
+}
+.paragraph-theme-block__images {
+  display: grid;
+  grid-template-columns: repeat(var(--col), 1fr);
+  gap: var(--layout-grid-gutter);
+  img {
+    border-radius: var(--cm-border-radius);
+  }
+  @include mixins.media-breakpoint-down(md) {
+    --col: 3;
+  }
+}

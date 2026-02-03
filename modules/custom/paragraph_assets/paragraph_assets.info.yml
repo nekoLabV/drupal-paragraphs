@@ -1,0 +1,5 @@
+name: Paragraph assets
+type: module
+description: 'Custom Paragraph assets.'
+package: 'Custom'
+core_version_requirement: ^10

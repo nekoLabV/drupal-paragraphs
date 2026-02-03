@@ -1,0 +1,9 @@
+<?php
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function paragraph_assets_preprocess_paragraph(&$variables) {
+  $preprocessor = \Drupal::service('paragraph_assets.manager');
+  $preprocessor->preprocess($variables);
+}

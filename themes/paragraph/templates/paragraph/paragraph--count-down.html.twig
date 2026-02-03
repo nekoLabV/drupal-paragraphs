@@ -1,0 +1,29 @@
+<div{{ attributes.addClass(classes) }} style="width: 100%;">
+  {# 隐藏原始字段渲染 #}
+  <div style="display: none;">
+    {{ content }}
+  </div>
+  {% if countdown_id is defined %}
+    <div 
+      id="paragraph-count-down-{{ countdown_id }}">
+    </div>
+  {% else %}
+    {# Fallback: 如果没有数据，显示原始内容 #}
+    {{ content }}
+  {% endif %}
+</div>
+
+{% if countdown_id is defined %}
+  <script>
+    window.addEventListener('countdown:load', (data) => {
+      const countdownId = '{{ countdown_id }}'
+      const timestamp = data?.detail?.[countdownId]
+      const countdownNode = document.getElementById(`paragraph-count-down-${countdownId}`)
+      
+      vueMountComponent('countdown', countdownNode, {
+        end: timestamp,
+        text: '天|时|分|秒'
+      })
+    })
+  </script>
+{% endif %}

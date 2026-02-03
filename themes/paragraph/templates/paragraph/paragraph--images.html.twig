@@ -1,0 +1,27 @@
+<div{{ attributes.addClass(classes) }}>
+  {# 隐藏原始字段渲染 #}
+  {{ content }}
+  {# <div style="display: none;">
+    {{ content }}
+  </div> #}
+  {% if images_id is defined %}
+    <div 
+      id="paragraph-theme-images-{{ images_id }}">
+    </div>
+  {% else %}
+    {# Fallback: 如果没有数据，显示原始内容 #}
+    {{ content }}
+  {% endif %}
+</div>
+
+{% if images_id is defined %}
+  <script>
+    window.addEventListener('images:load', (data) => {
+      const imagesId = '{{ images_id }}'
+      const imagesNode = document.getElementById(`paragraph-theme-images-${imagesId}`)
+      const images = data?.detail?.[imagesId]
+
+      // vueMountComponent('images', imagesNode, images)
+    })
+  </script>
+{% endif %}
