@@ -36,7 +36,7 @@ const customEvent = (name, data) => {
 
   Drupal.behaviors.swiper = {
     attach: function(_, settings) {
-      window.dispatchEvent(customEvent('swiper:load'))
+      window.dispatchEvent(customEvent('swiper:load', settings.swiper))
     }
   }
 

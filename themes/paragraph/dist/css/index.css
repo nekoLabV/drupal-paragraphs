@@ -798,6 +798,15 @@
   margin-bottom: 0;
 }
 
+.paragraph-theme-image img {
+  border-radius: var(--cm-border-radius);
+}
+.paragraph-theme-image__caption {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
 .paragraph--type--images {
   --col: 8;
 }

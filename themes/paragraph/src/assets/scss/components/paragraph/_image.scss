@@ -3,3 +3,14 @@
     margin-bottom: 0;
   }
 }
+
+.paragraph-theme-image {
+  img {
+    border-radius: var(--cm-border-radius);
+  }
+  &__caption {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+  }
+}

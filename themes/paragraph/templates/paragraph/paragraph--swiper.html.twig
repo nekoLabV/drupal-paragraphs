@@ -13,7 +13,7 @@
 
 {% if swiper_id is defined %}
   <script>
-    window.addEventListener('swiper:load', () => {
+    window.addEventListener('swiper:load', (data) => {
       const swiperId = '{{ swiper_id }}'
       const swiperNode = document.getElementById(`paragraph-theme-swiper-${swiperId}`)
       const swiperContent = document.querySelector(`.paragraph-theme-swiper__content-${swiperId}`)
@@ -23,8 +23,11 @@
         swiperItems.push(swiperContent.children[i].outerHTML)
       }
 
+      const setting = data.detail?.[swiperId]
+
       vueMountComponent('swiper', swiperNode, {
-        items: swiperItems
+        items: swiperItems,
+        cols: setting?.cols || 3
       })
     })
   </script>

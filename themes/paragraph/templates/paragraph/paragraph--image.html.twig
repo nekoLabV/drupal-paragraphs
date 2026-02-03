@@ -7,20 +7,17 @@
     <div 
       id="paragraph-theme-image-{{ image_id }}">
     </div>
+    <script>
+      window.addEventListener('image:load', (data) => {
+        const imageId = '{{ image_id }}'
+        const imageNode = document.getElementById(`paragraph-theme-image-${imageId}`)
+        const image = data?.detail?.[imageId]
+
+        vueMountComponent('image', imageNode, image)
+      })
+    </script>
   {% else %}
     {# Fallback: 如果没有数据，显示原始内容 #}
     {{ content }}
   {% endif %}
 </div>
-
-{% if image_id is defined %}
-  <script>
-    window.addEventListener('image:load', (data) => {
-      const imageId = '{{ image_id }}'
-      const imageNode = document.getElementById(`paragraph-theme-image-${imageId}`)
-      const image = data?.detail?.[imageId]
-
-      vueMountComponent('image', imageNode, image)
-    })
-  </script>
-{% endif %}
