@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, computed, shallowRef, h } from 'vue'
+import { onMounted, computed, shallowRef, h, watch } from 'vue'
 
 const props = defineProps({
   items: {
@@ -181,6 +181,16 @@ function swiperGirdInit(swiper) {
   }
   setChildHeight(swiper)
 }
+
+watch(
+  () => props.items,
+  () => {
+    console.log('swiper js: prop', props.items)
+  },
+  {
+    immediate: true
+  }
+)
 </script>
 
 <template>

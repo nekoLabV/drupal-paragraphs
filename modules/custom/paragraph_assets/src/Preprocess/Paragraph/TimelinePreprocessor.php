@@ -2,18 +2,21 @@
 
 namespace Drupal\paragraph_assets\Preprocess\Paragraph;
 
+use Drupal\paragraph_assets\Preprocess\Paragraph\BaseParagraphPreprocessor;
+
 /**
  * Timeline 段落预处理器
  */
-class TimelinePreprocessor {
+class TimelinePreprocessor extends BaseParagraphPreprocessor {
   
   /**
    * 预处理 Timeline 段落
    */
   public function preprocess(array &$variables): void {
     $paragraph = $variables['paragraph'];
+    $id = $paragraph->id() ?? uniqid('timeline_', true);
     
-    // 收集时间线数据
+    // 收集数据
     $timeline_items = [];
     
     if ($paragraph->hasField('field_timeline_items')) {
@@ -31,38 +34,26 @@ class TimelinePreprocessor {
         ];
         
         // 获取日期
-        if ($item->hasField('field_date') && !$item->get('field_date')->isEmpty()) {
-          $date_value = $item->get('field_date')->value;
-          $item_data['date'] = \Drupal::service('date.formatter')->format(strtotime($date_value), 'custom', 'Y-m-d');
-        }
+        $date_value = $this->getFieldValue($item, 'field_date');
+        $item_data['date'] = \Drupal::service('date.formatter')->format(strtotime($date_value), 'custom', 'Y-m-d');
         
         // 获取时间范围
-        if ($item->hasField('field_time_range') && !$item->get('field_time_range')->isEmpty()) {
-          $time_range = $item->get('field_time_range')->getValue()[0];
-          if (!empty($time_range['value'])) {
-            $item_data['startTime'] = \Drupal::service('date.formatter')->format(strtotime($time_range['value']), 'custom', 'H:i');
-          }
-          if (!empty($time_range['end_value'])) {
-            $item_data['endTime'] = \Drupal::service('date.formatter')->format(strtotime($time_range['end_value']), 'custom', 'H:i');
-          }
+        $time_range = $this->getFieldValue($item, 'field_time_range');
+        if (!empty($time_range['value'])) {
+          $item_data['startTime'] = \Drupal::service('date.formatter')->format(strtotime($time_range['value']), 'custom', 'H:i');
+        }
+        if (!empty($time_range['end_value'])) {
+          $item_data['endTime'] = \Drupal::service('date.formatter')->format(strtotime($time_range['end_value']), 'custom', 'H:i');
         }
         
         // 获取标题
-        if ($item->hasField('field_title') && !$item->get('field_title')->isEmpty()) {
-          $item_data['title'] = $item->get('field_title')->value;
-        }
+        $item_data['title'] = $this->getFieldValue($item, 'field_title');
         
         // 获取副标题
-        if ($item->hasField('field_subtitle') && !$item->get('field_subtitle')->isEmpty()) {
-          $item_data['subtitle'] = $item->get('field_subtitle')->value;
-        }
+        $item_data['subtitle'] = $this->getFieldValue($item, 'field_subtitle');
         
         // 获取描述
-        if ($item->hasField('field_description') && !$item->get('field_description')->isEmpty()) {
-          $description = $item->get('field_description')->getValue()[0];
-          // 处理文本格式
-          $item_data['description'] = check_markup($description['value'] ?? '', $description['format'] ?? 'basic_html');
-        }
+        $item_data['description'] = $this->getFieldValue($item, 'field_description');
         
         // 获取标签
         if ($item->hasField('field_timeline_item_tags') && !$item->get('field_timeline_item_tags')->isEmpty()) {
@@ -78,9 +69,7 @@ class TimelinePreprocessor {
       }
     }
     
-    $paragraph_id = $paragraph->id() ?? microtime();
-    
-    $variables['timeline_id'] = $paragraph_id;
-    $variables['#attached']['drupalSettings']['timeline'][$paragraph_id] = $timeline_items;
+    $variables['timeline_id'] = $id;
+    $variables['#attached']['drupalSettings']['timeline'][$id] = $timeline_items;
   }
 }

@@ -45,8 +45,6 @@ class ParagraphManager {
    * 预处理段落
    */
   public function preprocess(array &$variables): void {
-    $variables['#attached']['library'][] = 'paragraph/theme-components';
-
     $paragraph = $variables['paragraph'];
     $type = $paragraph->getType();
 

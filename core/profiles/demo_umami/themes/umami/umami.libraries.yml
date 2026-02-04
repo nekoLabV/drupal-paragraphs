@@ -194,12 +194,3 @@ drupal.node.preview:
   css:
     theme:
       css/components/content/node-preview.css: {}
-
-style-options:
-  css:
-    theme:
-      css/theme.css: {}
-      css/style-options/block.css: {}
-      css/style-options/typography.css: {}
-      css/style-options/image.css: {}
-      css/style-options/text.css: {}

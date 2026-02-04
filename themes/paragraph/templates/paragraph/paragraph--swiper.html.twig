@@ -14,21 +14,25 @@
 {% if swiper_id is defined %}
   <script>
     window.addEventListener('swiper:load', (data) => {
-      const swiperId = '{{ swiper_id }}'
-      const swiperNode = document.getElementById(`paragraph-theme-swiper-${swiperId}`)
-      const swiperContent = document.querySelector(`.paragraph-theme-swiper__content-${swiperId}`)
+      // 等待 Swiper 里的 parapraph 挂载完
+      setTimeout(() => {
+        const swiperId = '{{ swiper_id }}'
+        const swiperNode = document.getElementById(`paragraph-theme-swiper-${swiperId}`)
+        const swiperContent = document.querySelector(`.paragraph-theme-swiper__content-${swiperId}`)
 
-      const swiperItems = []
-      for(let i = 0; i < swiperContent?.children?.length; i++) {
-        swiperItems.push(swiperContent.children[i].outerHTML)
-      }
+        const swiperItems = []
+        for(let i = 0; i < swiperContent?.children?.length; i++) {
+          swiperItems.push(swiperContent.children[i].outerHTML)
+        }
 
-      const setting = data.detail?.[swiperId]
+        const setting = data.detail?.[swiperId]
 
-      vueMountComponent('swiper', swiperNode, {
-        items: swiperItems,
-        cols: setting?.cols || 3
-      })
+        vueMountComponent('swiper', swiperNode, {
+          items: swiperItems,
+          ...setting,
+          cols: setting?.cols || 3
+        })
+      }, 300)
     })
   </script>
 {% endif %}

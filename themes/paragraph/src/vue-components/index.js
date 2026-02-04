@@ -41,9 +41,19 @@ const customEvent = (name, data) => {
   }
 
   Drupal.behaviors.image = {
-    attach: function(_, settings) {
-      console.log('settings.image', settings.image)
-      window.dispatchEvent(customEvent('image:load', settings.image))
+    attach: function(context, settings) {
+      // window.dispatchEvent(customEvent('image:load', settings.image));
+
+      const elements = context.querySelectorAll('[data-vue-compontent="image"]')
+    
+      elements.forEach(el => {
+        const id = el.getAttribute('data-id')
+        const data = settings.image?.[id]
+        if (data && typeof mountComponent === 'function') {
+          mountComponent('image', el, data)
+          // el.setAttribute('data-once', 'true')
+        }
+      })
     }
   }
 

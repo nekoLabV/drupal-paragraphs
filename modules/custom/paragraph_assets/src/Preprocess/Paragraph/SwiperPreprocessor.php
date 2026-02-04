@@ -2,31 +2,30 @@
 
 namespace Drupal\paragraph_assets\Preprocess\Paragraph;
 
+use Drupal\paragraph_assets\Preprocess\Paragraph\BaseParagraphPreprocessor;
+
 /**
  * Swiper 段落预处理器
  */
-class SwiperPreprocessor {
+class SwiperPreprocessor extends BaseParagraphPreprocessor {
   
   /**
    * 预处理 Swiper 段落
    */
   public function preprocess(array &$variables): void {
     $paragraph = $variables['paragraph'];
+    $id = $paragraph->id() ?? uniqid('swiper_', true);
 
+    // 收集数据
     $swiper_data = [
-      'cols' => ''
+      // Swiper 列数
+      'cols' => Number_format($this->getFieldValue($paragraph, 'field_swiper_cols')),
+      // Swiper 行数
+      'rows' => $this->getFieldValue($paragraph, 'field_swiper_rows')
     ];
 
-    // 获取 Swiper 列数
-    if ($paragraph->hasField('field_swiper_cols') && !$paragraph->get('field_swiper_cols')->isEmpty()) {
-      $swiper_cols = $paragraph->get('field_swiper_cols')->getValue()[0]['value'] ?? '';
-      
-      $swiper_data['cols'] = $swiper_cols;
-    }
-
-    $paragraph_id = $paragraph->id() ?? time();
-    $variables['swiper_id'] = $paragraph_id;
+    $variables['swiper_id'] = $id;
     
-    $variables['#attached']['drupalSettings']['swiper'][$paragraph_id] = $swiper_data;
+    $variables['#attached']['drupalSettings']['swiper'][$id] = $swiper_data;
   }
 }

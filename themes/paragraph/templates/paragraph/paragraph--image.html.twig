@@ -5,9 +5,11 @@
   </div>
   {% if image_id is defined %}
     <div 
-      id="paragraph-theme-image-{{ image_id }}">
+      id="paragraph-theme-image-{{ image_id }}"
+      data-id="{{ image_id }}"
+      data-vue-compontent="image">
     </div>
-    <script>
+    {# <script>
       window.addEventListener('image:load', (data) => {
         const imageId = '{{ image_id }}'
         const imageNode = document.getElementById(`paragraph-theme-image-${imageId}`)
@@ -15,7 +17,7 @@
 
         vueMountComponent('image', imageNode, image)
       })
-    </script>
+    </script> #}
   {% else %}
     {# Fallback: 如果没有数据，显示原始内容 #}
     {{ content }}
