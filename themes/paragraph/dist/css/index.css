@@ -1720,7 +1720,7 @@
 }
 .paragraph-theme-timeline-item__tail {
   position: absolute;
-  left: 6px;
+  left: 4px;
   top: 24px;
   height: calc(100% - 24px);
   border-left: 2px solid var(--timeline-node-color);
