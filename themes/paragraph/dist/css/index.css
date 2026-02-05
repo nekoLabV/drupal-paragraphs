@@ -270,6 +270,20 @@
   --el-aspect-ratio: 42.8571428571%;
 }
 
+.paragraph-theme-image {
+  --image-size: 100%;
+  width: var(--image-size);
+}
+.paragraph-theme-image.image-size--100 {
+  --image-size: 100%;
+}
+.paragraph-theme-image.image-size--50 {
+  --image-size: 50%;
+}
+.paragraph-theme-image.image-size--20 {
+  --image-size: 20%;
+}
+
 :root {
   --swiper-navigation-size: 44px;
   /*
@@ -1047,6 +1061,7 @@
 .paragraph--type--rich-text table {
   width: 100%;
   text-align: center;
+  border-collapse: collapse;
 }
 .paragraph--type--rich-text table thead {
   color: var(--cm-primary);

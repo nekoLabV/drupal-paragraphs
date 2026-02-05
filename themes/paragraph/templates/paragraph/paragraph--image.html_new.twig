@@ -4,11 +4,12 @@
     {{ content }}
   </div> #}
   {% if image_id is defined %}
-    <div 
+    {# <div 
       style="display: flex; justify-content: center;"
       data-id="{{ image_id }}"
       data-vue-component="image">
-    </div>
+    </div> #}
+    <paragraph-image></paragraph-image>
   {% else %}
     {# Fallback: 如果没有数据，显示原始内容 #}
     {{ content }}

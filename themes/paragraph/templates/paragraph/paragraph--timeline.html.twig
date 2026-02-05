@@ -1,11 +1,12 @@
 <div{{ attributes.addClass(classes) }} style="width: 100%;">
   {# 隐藏原始字段渲染 #}
-  <div style="display: none;">
+  {# <div style="display: none;">
     {{ content }}
-  </div>
+  </div> #}
   {% if timeline_id is defined %}
   <div 
-    id="paragraph-theme-timeline-{{ timeline_id }}">
+    data-id="{{ timeline_id }}"
+    data-vue-component="timeline">
   </div>
   {% else %}
     {# Fallback: 如果没有数据，显示原始内容 #}
@@ -13,16 +14,3 @@
   {% endif %}
 </div>
 
-{% if timeline_id is defined %}
-  <script>
-    window.addEventListener('timeline:load', (data) => {
-      const timelineId = '{{ timeline_id }}'
-      const timelineNode = document.getElementById(`paragraph-theme-timeline-${timelineId}`)
-      const timelineItems = data?.detail?.[timelineId]
-      
-      vueMountComponent('timeline', timelineNode, {
-        items: timelineItems
-      })
-    })
-  </script>
-{% endif %}

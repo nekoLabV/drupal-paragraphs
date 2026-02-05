@@ -1,5 +1,8 @@
 <template>
-  <div class="paragraph-theme-image">
+  <div :class="[
+    'paragraph-theme-image',
+    `image-size--${imageSize}`
+  ]">
     <div
       v-if="image?.url"
       class="el-ratio"
@@ -33,6 +36,10 @@
     imageFit: {
       type: String,
       default: 'contain'
+    },
+    imageSize: {
+      type: String,
+      default: '100%'
     },
     caption: {
       type: String,

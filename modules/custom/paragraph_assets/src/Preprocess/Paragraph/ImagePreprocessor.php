@@ -23,6 +23,7 @@ class ImagePreprocessor extends BaseParagraphPreprocessor {
       'image' => $this->getMediaImageData($media),
       'imageRatio' => $this->getFieldValue($paragraph, 'field_image_ratio'),
       'imageFit' => $this->getFieldValue($paragraph, 'field_image_fit'),
+      'imageSize' => $this->getFieldValue($paragraph, 'field_image_size'),
       'caption' => $this->getFieldValue($paragraph, 'field_image_caption')
     ];
 

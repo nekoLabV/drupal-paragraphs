@@ -25,7 +25,8 @@ class SwiperPreprocessor extends BaseParagraphPreprocessor {
     ];
 
     $variables['swiper_id'] = $id;
-    
+    $variables['swiper_cols'] = $swiper_data['cols'];
+    $variables['swiper_rows'] = $swiper_data['rows'];
     $variables['#attached']['drupalSettings']['swiper'][$id] = $swiper_data;
   }
 }

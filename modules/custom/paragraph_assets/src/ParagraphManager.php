@@ -2,6 +2,7 @@
 
 namespace Drupal\paragraph_assets;
 
+use Drupal\paragraph_assets\Preprocess\Paragraph\ContentBlockPreprocessor;
 use Drupal\paragraph_assets\Preprocess\Paragraph\CountdownPreprocessor;
 use Drupal\paragraph_assets\Preprocess\Paragraph\ImagePreprocessor;
 use Drupal\paragraph_assets\Preprocess\Paragraph\ImagesPreprocessor;
@@ -23,6 +24,7 @@ class ParagraphManager {
    * 构造函数
    */
   public function __construct(
+    ContentBlockPreprocessor $contentBlockPreprocessor,
     CountdownPreprocessor $countdown,
     ImagePreprocessor $image,
     ImagesPreprocessor $images,
@@ -32,6 +34,7 @@ class ParagraphManager {
   ) {
     // 注册所有段落类型的预处理器
     $this->preprocessors = [
+      'content_block' => $contentBlockPreprocessor,
       'count_down' => $countdown,
       'image' => $image,
       'images' => $images,

@@ -1,9 +1,11 @@
 <script setup>
-import { onMounted, computed, shallowRef, ref, watch } from 'vue'
-import Swiper from 'swiper'
-import { Navigation, Pagination, Scrollbar, Grid, Autoplay } from 'swiper'
+import { onMounted, computed, shallowRef, h } from 'vue'
 
 const props = defineProps({
+  items: {
+    type: String,
+    default: [] // html 字符串
+  },
   cols: {
     type: Number,
     default: 3
@@ -22,35 +24,39 @@ const props = defineProps({
   },
 })
 
+// 仅在客户端导入Swiper
+const swiperComponents = shallowRef({
+  Swiper: {
+    setup(_, { slots }) {
+      return () =>
+        h('div', {}, h('div', { class: 'swiper-wrapper uninitialized' }, slots.default?.()))
+    },
+  },
+  SwiperSlide: {
+    setup(_, { slots }) {
+      return () =>
+        h(
+          'div',
+          { class: 'swiper-slide', style: { width: 100 / props.cols + '%' } },
+          slots.default?.()
+        )
+    },
+  },
+  modules: [],
+})
 const swiperParams = shallowRef({})
 
 onMounted(async () => {
   setSwiperParams()
-  initSwiper()
-})
 
-const swiperRef = ref(null)
-let swiperInstance = null
-const initSwiper = () => {
-  if (swiperInstance) {
-    swiperInstance.destroy() // 如果存在旧实例，先销毁
-  }
-  swiperInstance = new Swiper(swiperRef.value, {
+  const { Swiper, SwiperSlide } = await import('swiper/vue')
+  const { Navigation, Pagination, Scrollbar, Grid, Autoplay } = await import('swiper')
+  swiperComponents.value = {
+    Swiper,
+    SwiperSlide,
     modules: [Navigation, Pagination, Scrollbar, Grid, Autoplay],
-    observer: true,
-    observeParents: true,
-    ...swiperParams.value, 
-    
-    on: {
-      init: (swiper) => {
-        swiperGirdInit(swiper)
-      },
-      resize: (swiper) => {
-        setChildHeight(swiper)
-      }
-    }
-  })
-}
+  }
+})
 
 function setSwiperParams() {
   const params = {
@@ -65,37 +71,6 @@ function setSwiperParams() {
     scrollbar: true,
     createElements: true,
     simulateTouch: false
-  }
-  params.breakpoints = {
-    320: {
-      slidesPerView: responsiveCols.value.xs,
-      slidesPerGroup: responsiveCols.value.xs,
-      spaceBetween: parseInt(getRootCssVar('--cm-grid-gutter-width-phone') || 12),
-    },
-    768: {
-      slidesPerView: responsiveCols.value.md,
-      slidesPerGroup: responsiveCols.value.md,
-      spaceBetween: parseInt(getRootCssVar('--cm-grid-gutter-width-tablet') || 16),
-    },
-    1024: {
-      slidesPerView: responsiveCols.value.lg,
-      slidesPerGroup: responsiveCols.value.lg,
-      spaceBetween: parseInt(getRootCssVar('--cm-grid-gutter-width-tablet') || 16),
-    },
-    1200: {
-      slidesPerView: props.cols,
-      slidesPerGroup: props.cols,
-      spaceBetween: parseInt(getRootCssVar('--cm-grid-gutter-width-desktop') || 24),
-    },
-  }
-  if (props.rows === 1 && props.cols === 1) params.autoHeight = true
-  if (props.rows > 1) {
-    params.grid = { rows: props.rows, fill: 'row' }
-    if (params.breakpoints) {
-      for (let val of Object.values(params.breakpoints)) {
-        val.grid = { rows: props.rows, fill: 'row' }
-      }
-    }
   }
 
   if (props.swiperOptions?.autoplay) {
@@ -206,19 +181,29 @@ function swiperGirdInit(swiper) {
   }
   setChildHeight(swiper)
 }
-
-watch(() => [props.cols, props.rows], () => {
-  setSwiperParams()
-  initSwiper()
-}, { deep: true })
 </script>
 
 <template>
   <div class="paragraph-theme-swiper swiper-overflow-wrap">
-    <div ref="swiperRef" class="swiper">
-      <div class="swiper-wrapper">
-        <slot></slot>
-      </div>
-    </div>
+    <component
+      class="swiper-container"
+      v-bind="swiperParams"
+      :is="swiperComponents.Swiper"
+      :modules="swiperComponents.modules"
+      :class="{
+        'swiper--grid': rows > 1,
+        'swiper-pagination--visible': swiperParams.pagination?.visible,
+      }"
+      @init="swiperGirdInit"
+      @resize="setChildHeight"
+    >
+      <component
+        :is="swiperComponents.SwiperSlide"
+        v-for="(slide, i) in items"
+        :key="i"
+      >
+        <div v-inline-html="slide"></div>
+      </component>
+    </component>
   </div>
 </template>

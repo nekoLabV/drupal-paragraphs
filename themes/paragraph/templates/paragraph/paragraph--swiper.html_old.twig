@@ -1,0 +1,38 @@
+<div{{ attributes.addClass(classes) }} style="width: 100%;">
+  {# 隐藏原始字段渲染 #}
+  <div class="paragraph-theme-swiper__content-{{ swiper_id }}" style="display: none;">
+    {{ content }}
+  </div>
+  {% if swiper_id is defined %}
+    <div id="paragraph-theme-swiper-{{ swiper_id }}"></div>
+  {% else %}
+    {# Fallback: 如果没有数据，显示原始内容 #}
+    {{ content }}
+  {% endif %}
+</div>
+
+{% if swiper_id is defined %}
+  <script>
+    window.addEventListener('swiper:load', (data) => {
+      // 等待 Swiper 里的 parapraph 挂载完
+      setTimeout(() => {
+        const swiperId = '{{ swiper_id }}'
+        const swiperNode = document.getElementById(`paragraph-theme-swiper-${swiperId}`)
+        const swiperContent = document.querySelector(`.paragraph-theme-swiper__content-${swiperId}`)
+
+        const swiperItems = []
+        for(let i = 0; i < swiperContent?.children?.length; i++) {
+          swiperItems.push(swiperContent.children[i].outerHTML)
+        }
+
+        const setting = data.detail?.[swiperId]
+
+        vueMountComponent('swiper', swiperNode, {
+          items: swiperItems,
+          ...setting,
+          cols: setting?.cols || 3
+        })
+      }, 300)
+    })
+  </script>
+{% endif %}
