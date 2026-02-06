@@ -1,8 +1,8 @@
 <div{{ attributes.addClass(classes) }}>
   {# 隐藏原始字段渲染 #}
-  {# <div style="display: none;">
+  <div style="display: none;">
     {{ content }}
-  </div> #}
+  </div>
   {% if countdown_id is defined %}
     <div
       data-id="{{ countdown_id }}"

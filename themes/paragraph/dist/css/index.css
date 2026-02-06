@@ -270,18 +270,22 @@
   --el-aspect-ratio: 42.8571428571%;
 }
 
-.paragraph-theme-image {
-  --image-size: 100%;
-  width: var(--image-size);
+.object-fit--contain img, .object-fit--cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
-.paragraph-theme-image.image-size--100 {
-  --image-size: 100%;
+.object-fit--contain,
+.object-fit--contain img {
+  object-fit: contain;
 }
-.paragraph-theme-image.image-size--50 {
-  --image-size: 50%;
+.object-fit--cover,
+.object-fit--cover img {
+  object-fit: cover;
 }
-.paragraph-theme-image.image-size--20 {
-  --image-size: 20%;
+.object-fit--none,
+.object-fit--none img {
+  object-fit: none;
 }
 
 :root {
@@ -711,6 +715,41 @@
   height: var(--childHeight, 120px);
 }
 
+.paragraph-theme-block {
+  position: relative;
+  color: var(--cmt-color);
+  font-family: var(--cm-font-family-base);
+}
+.paragraph-theme-block--align-left .paragraph-theme-block__container {
+  margin-right: auto;
+}
+.paragraph-theme-block--align-center .paragraph-theme-block__container {
+  margin-left: auto;
+  margin-right: auto;
+}
+.paragraph-theme-block--align-right .paragraph-theme-block__container {
+  margin-left: auto;
+}
+.paragraph-theme-block__background {
+  position: absolute;
+  left: calc(50% - (100vw - var(--scrollbar-width, 0px)) / 2);
+  right: calc(50% - (100vw - var(--scrollbar-width, 0px)) / 2);
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  background: var(--cmt-bg);
+  pointer-events: none;
+}
+.paragraph-theme-block__background img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .paragraph--type--block-side-image {
   position: absolute;
   right: calc(50% - (100vw - var(--scrollbar-width, 0px)) / 2);
@@ -812,6 +851,19 @@
   margin-bottom: 0;
 }
 
+.paragraph-theme-image {
+  --image-size: 100%;
+  width: var(--image-size);
+}
+.paragraph-theme-image.image-size--100 {
+  --image-size: 100%;
+}
+.paragraph-theme-image.image-size--50 {
+  --image-size: 50%;
+}
+.paragraph-theme-image.image-size--20 {
+  --image-size: 20%;
+}
 .paragraph-theme-image img {
   border-radius: var(--cm-border-radius);
 }

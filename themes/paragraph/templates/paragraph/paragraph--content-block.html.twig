@@ -1,25 +1,15 @@
-{%
-  set classes = [
-    paragraph.bundle == 'content_block' ? 'paragraph paragraph-theme-block' : 'paragraph',
-    'paragraph--type--' ~ paragraph.bundle|clean_class,
-    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-    not paragraph.isPublished() ? 'paragraph--unpublished'
-  ]
-%}
-{% block paragraph %}
-  <div{{ attributes.addClass(classes) }}>
-    {% if paragraph.bundle == 'content_block' %}
-      <div class="paragraph-theme-block__container">
-        {% block content %}
-          {{ content }}
-        {% endblock %}
-      </div>
-    {% else %}
+<div{{ attributes.addClass(classes) }}>
+  {# 隐藏原始字段渲染 #}
+  {# <div style="display: none;">
+    {{ content }}
+  </div> #}
+  {% if content_block_id is defined %}
+    <paragraph-block
+      data-id="{{ content_block_id }}">
       {{ content }}
-    {% endif %}
-
-    {% if paragraph.bundle == 'content_block' %}
-      <div class="paragraph-theme-block__background"></div>
-    {% endif %}
-  </div>
-{% endblock paragraph %}
+    </paragraph-block>
+  {% else %}
+    {# Fallback: 如果没有数据，显示原始内容 #}
+    {{ content }}
+  {% endif %}
+</div>

@@ -5,6 +5,16 @@
 }
 
 .paragraph-theme-image {
+  --image-size: 100%;
+  width: var(--image-size);
+  &.image {
+    $sizes: (100, 50, 20);
+    @each $size in $sizes {
+      &-size--#{$size} {
+        --image-size: #{$size * 1%};
+      }
+    }
+  }
   img {
     border-radius: var(--cm-border-radius);
   }

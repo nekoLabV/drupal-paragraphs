@@ -15,7 +15,7 @@
 
 <script setup>
   import { computed } from 'vue'
-  import LongText from './common/LongText.vue'
+  import LongText from '../common/LongText.vue'
 
   // 定义组件 props
   const props = defineProps({

@@ -1,0 +1,25 @@
+{%
+  set classes = [
+    paragraph.bundle == 'content_block' ? 'paragraph paragraph-theme-block' : 'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished'
+  ]
+%}
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    {% if paragraph.bundle == 'content_block' %}
+      <div class="paragraph-theme-block__container">
+        {% block content %}
+          {{ content }}
+        {% endblock %}
+      </div>
+    {% else %}
+      {{ content }}
+    {% endif %}
+
+    {% if paragraph.bundle == 'content_block' %}
+      <div class="paragraph-theme-block__background"></div>
+    {% endif %}
+  </div>
+{% endblock paragraph %}

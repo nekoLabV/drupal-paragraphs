@@ -110,8 +110,8 @@
 </template>
 
 <script setup>
-  import CallToActionBtn from './common/CallToActionBtn.vue'
-  import { ref, computed } from 'vue'
+  import CallToActionBtn from '../common/CallToActionBtn.vue'
+  import { ref, computed, watch } from 'vue'
 
   const props = defineProps({
     items: {

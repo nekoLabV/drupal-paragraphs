@@ -1,10 +1,7 @@
-import { defineCustomElement } from 'vue'
+import './customElements'
 import { mountComponent } from './registry'
 import { modulePropsMap } from '@/jsUtils/paragraphPropsProcessor'
-import Swiper from './common/Swiper.vue'
-
-const SwiperElement = defineCustomElement({ ...Swiper, shadowRoot: false })
-customElements.define('paragraph-swiper', SwiperElement)
+import { toKebabCase } from '@/jsUtils/string'
 
 if (typeof window !== 'undefined') {
   window.vueMountComponent = mountComponent
@@ -33,6 +30,27 @@ const createComponent = (type, context, data) => {
 
 (function(Drupal, _) {
   'use strict'
+
+  Drupal.behaviors.content_block = {
+    attach: function(context, settings) {
+      const blocks = context.querySelectorAll('paragraph-block')
+      blocks.forEach(el => {
+        const id = el.getAttribute('data-id')
+        if (settings.contentBlock && settings.contentBlock[id]) {
+          const data = settings.contentBlock[id]
+          el.theme = toKebabCase(data?.theme)
+          el.blockAlign = data?.blockAlign
+          el.colWidth = data?.colWidth
+          el.paddingTop = data?.paddingTop
+          el.paddingBottom = data?.paddingBottom
+          el.marginTop = data?.marginTop
+          el.marginBottom = data?.marginBottom
+          el.backgroundImageSrc = data?.backgroundImageSrc?.url
+          el.backgroundImageMobileSrc = data?.backgroundImageMobileSrc?.url
+        }
+      })
+    }
+  }
 
   Drupal.behaviors.countdown = {
     attach: function(context, settings) {

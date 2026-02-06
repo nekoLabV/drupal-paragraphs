@@ -2,11 +2,11 @@ import { createApp, h } from 'vue'
 import { inlineHtml } from '@/directives'
 
 const components = {
-  'swiper': () => import('./common/Swiper.vue'),
-  'countdown': () => import('./Countdown.vue'),
-  'image': () => import('./Image.vue'),
-  'timeline': () => import('./Timeline.vue'),
-  'textWithEmbed': () => import('./TextWithEmbed.vue'),
+  // 'swiper': () => import('./paragraphs/Swiper.vue'),
+  'countdown': () => import('./paragraphs/Countdown.vue'),
+  'image': () => import('./paragraphs/Image.vue'),
+  'timeline': () => import('./paragraphs/Timeline.vue'),
+  'textWithEmbed': () => import('./paragraphs/TextWithEmbed.vue'),
 }
 
 export const mountComponent = async (componentName, element, props = {}, slots = {}) => {

@@ -33,7 +33,7 @@
   import { onMounted, computed } from 'vue'
   import { kebabCase } from '@/jsUtils/string'
   import Richtext from './Richtext.vue'
-  import CallToActionBtn from './common/CallToActionBtn.vue'
+  import CallToActionBtn from '../common/CallToActionBtn.vue'
 
   const props = defineProps({
     loadJS: String,

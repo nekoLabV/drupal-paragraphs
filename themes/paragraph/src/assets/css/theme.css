@@ -80,6 +80,7 @@ body {
   --cmt-swiper-button-box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
 }
 /* 白色主题配色 */
+.paragraph-theme-white,
 .paragraph-theme-block--white {
   --cmt-bg: var(--cm-white);
   --cmt-color: var(--cm-dark);
@@ -98,6 +99,7 @@ body {
   --cmt-swiper-button-box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
 }
 /* 黑色主题配色 */
+.paragraph-theme-black,
 .paragraph-theme-block--black {
   --cmt-bg: var(--cm-dark);
   --cmt-color: var(--cm-white);
@@ -116,6 +118,7 @@ body {
   --cmt-swiper-button-box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
 }
 /* 主色主题配色 */
+.paragraph-theme-primary,
 .paragraph-theme-block--primary {
   --cmt-bg: var(--cm-primary);
   --cmt-color: var(--cm-on-primary);
@@ -134,6 +137,7 @@ body {
   --cmt-swiper-button-box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
 }
 /* 辅色主题配色 */
+.paragraph-theme-secondary,
 .paragraph-theme-block--secondary {
   --cmt-bg: var(--cm-secondary);
   --cmt-color: var(--cm-on-secondary);
@@ -152,6 +156,7 @@ body {
   --cmt-swiper-button-box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
 }
 /* 浅色主题配色 */
+.paragraph-theme-light,
 .paragraph-theme-block--light {
   --cmt-bg: var(--cm-light);
   --cmt-color: var(--cm-dark);
@@ -170,6 +175,7 @@ body {
   --cmt-swiper-button-box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
 }
 /* 深色主题配色 */
+.paragraph-theme-dark,
 .paragraph-theme-block--dark {
   --cmt-bg: var(--cm-dark);
   --cmt-color: var(--cm-white);
@@ -188,6 +194,7 @@ body {
   --cmt-swiper-button-box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
 }
 /* 浅色背景图片主题配色 */
+.paragraph-theme-light-image,
 .paragraph-theme-block--light-image {
   --cmt-bg: var(--cm-light);
   --cmt-color: var(--cm-dark);
@@ -207,6 +214,7 @@ body {
   --cmt-swiper-button-box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
 }
 /* 深色背景图片主题配色 */
+.paragraph-theme-dark-image,
 .paragraph-theme-block--dark-image {
   --cmt-bg: var(--cm-dark);
   --cmt-color: var(--cm-white);

@@ -23,3 +23,17 @@ export const camelCase = str => {
     .replace(/[_-](\w)/g, (_, letter) => letter.toUpperCase())
     .replace(/^\w/, c => c.toLowerCase())
 }
+
+/**
+ * 
+ * @param {string} str 
+ * @returns {string}
+ * @example
+ * toKebabCase('block_align') // 'block-align'
+ */
+export const toKebabCase = str => {
+  return str
+    .replace(/_/g, '-')  // 先替换下划线
+    .replace(/([a-z])([A-Z])/g, '$1-$2')  // 驼峰转连字符
+    .toLowerCase()  // 转为小写
+}

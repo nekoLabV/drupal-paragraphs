@@ -1,13 +1,29 @@
-.paragraph-theme-image {
-  --image-size: 100%;
-  width: var(--image-size);
-  &.image {
-    $sizes: (100, 50, 20);
-    @each $size in $sizes {
-      &-size--#{$size} {
-        --image-size: #{$size * 1%};
-      }
+.object-fit {
+  &--contain,
+  &--cover {
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &--contain {
+    &,
+    img {
+      object-fit: contain;
+    }
+  }
+  &--cover {
+    &,
+    img {
+      object-fit: cover;
+    }
+  }
+  &--none {
+    &,
+    img {
+      object-fit: none;
     }
   }
 }
-

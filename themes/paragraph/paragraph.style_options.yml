@@ -345,30 +345,30 @@ contexts:
     _defaults:
       options:
         border_radius: true
-        padding_top:
-          layout: true
-          regions: true
-        padding_right:
-          layout: true
-          regions: true
-        padding_bottom:
-          layout: true
-          regions: true
-        padding_left:
-          layout: true
-          regions: true
-        margin_top:
-          layout: true
-          regions: true
-        margin_right:
-          layout: true
-          regions: true
-        margin_bottom:
-          layout: true
-          regions: true
-        margin_left:
-          layout: true
-          regions: true
+        # padding_top:
+        #   layout: true
+        #   regions: true
+        # padding_right:
+        #   layout: true
+        #   regions: true
+        # padding_bottom:
+        #   layout: true
+        #   regions: true
+        # padding_left:
+        #   layout: true
+        #   regions: true
+        # margin_top:
+        #   layout: true
+        #   regions: true
+        # margin_right:
+        #   layout: true
+        #   regions: true
+        # margin_bottom:
+        #   layout: true
+        #   regions: true
+        # margin_left:
+        #   layout: true
+        #   regions: true
 
     layout:
       options:
