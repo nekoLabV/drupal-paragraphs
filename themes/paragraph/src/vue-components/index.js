@@ -1,7 +1,8 @@
 import './customElements'
 import { mountComponent } from './registry'
 import { modulePropsMap } from '@/jsUtils/paragraphPropsProcessor'
-import { toKebabCase } from '@/jsUtils/string'
+import { kebabCase } from '@/jsUtils/string'
+import { setElementAttr } from '@/jsUtils/ele'
 
 if (typeof window !== 'undefined') {
   window.vueMountComponent = mountComponent
@@ -17,9 +18,9 @@ const customEvent = (name, data) => {
 }
 
 const createComponent = (type, context, data) => {
-  const elements = context.querySelectorAll(`[data-vue-component="${type}"]`)
+  const eles = context.querySelectorAll(`[data-vue-component="${type}"]`)
   
-  elements.forEach(el => {
+  eles.forEach(el => {
     const id = el.getAttribute('data-id')
     const handle = modulePropsMap?.[type] ?? modulePropsMap.default
     const props = handle(data?.[id])
@@ -28,27 +29,38 @@ const createComponent = (type, context, data) => {
   })
 }
 
+const customElementData = (type, context, data) => {
+  const eles = context.querySelectorAll(`paragraph-${kebabCase(type)}`)
+  eles.forEach(el => {
+    const id = el.getAttribute('data-id')
+    const handle = modulePropsMap?.[type] ?? modulePropsMap.default
+    if (data) {
+      const props = handle(data[id])
+      for (const key in props) {
+        setElementAttr(el, key, props[key])
+      }
+    }
+  })
+}
+
 (function(Drupal, _) {
   'use strict'
 
   Drupal.behaviors.content_block = {
     attach: function(context, settings) {
-      const blocks = context.querySelectorAll('paragraph-block')
-      blocks.forEach(el => {
-        const id = el.getAttribute('data-id')
-        if (settings.contentBlock && settings.contentBlock[id]) {
-          const data = settings.contentBlock[id]
-          el.theme = toKebabCase(data?.theme)
-          el.blockAlign = data?.blockAlign
-          el.colWidth = data?.colWidth
-          el.paddingTop = data?.paddingTop
-          el.paddingBottom = data?.paddingBottom
-          el.marginTop = data?.marginTop
-          el.marginBottom = data?.marginBottom
-          el.backgroundImageSrc = data?.backgroundImageSrc?.url
-          el.backgroundImageMobileSrc = data?.backgroundImageMobileSrc?.url
-        }
-      })
+      customElementData('contentBlock', context, settings.contentBlock)
+    }
+  }
+
+  Drupal.behaviors.button = {
+    attach: function(context, settings) {
+      createComponent('button', context, settings.button)
+    }
+  }
+
+  Drupal.behaviors.buttons = {
+    attach: function(context, settings) {
+      customElementData('buttons', context, settings.buttons)
     }
   }
 
@@ -72,15 +84,7 @@ const createComponent = (type, context, data) => {
 
   Drupal.behaviors.swiper = {
     attach: function(context, settings) {
-      const swipers = context.querySelectorAll('paragraph-swiper')
-      swipers.forEach(el => {
-        const id = el.getAttribute('data-id')
-        if (settings.swiper && settings.swiper[id]) {
-          const data = settings.swiper[id]
-          el.cols = Number(data?.cols)
-          el.rows = Number(data?.rows)
-        }
-      })
+      customElementData('swiper', context, settings.swiper)
     }
   }
 

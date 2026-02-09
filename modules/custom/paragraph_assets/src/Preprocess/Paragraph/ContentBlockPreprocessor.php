@@ -28,8 +28,8 @@ class ContentBlockPreprocessor extends BaseParagraphPreprocessor {
       'paddingBottom' => $this->getFieldValue($paragraph, 'field_padding_bottom'),
       'marginTop' => $this->getFieldValue($paragraph, 'field_margin_top'),
       'marginBottom' => $this->getFieldValue($paragraph, 'field_margin_bottom'),
-      'backgroundImageSrc' => $this->getMediaImageData($background_image),
-      'backgroundImageMobileSrc' => $this->getMediaImageData($background_image_mobile)
+      'backgroundImageSrc' => $this->getMediaData($background_image),
+      'backgroundImageMobileSrc' => $this->getMediaData($background_image_mobile)
     ];
 
     $variables['content_block_id'] = $id;

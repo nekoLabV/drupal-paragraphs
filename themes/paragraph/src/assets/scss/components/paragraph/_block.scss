@@ -1,9 +1,30 @@
+@use '../../var';
+
 .paragraph-theme-block {
   $container: #{&}__container;
 
   position: relative;
   color: var(--cmt-color);
   font-family: var(--cm-font-family-base);
+
+  &,
+  *,
+  ::after,
+  ::before {
+    box-sizing: border-box;
+  }
+
+  // padding, margin (sm, md, lg)
+  $types: (padding, margin);
+  @each $type in $types {
+    @each $size in var.$sizes {
+      @each $dir in var.$directions {
+        &--#{$type}-#{$dir}-#{$size} {
+          #{$type}-#{$dir}: var(--cm-container-#{$type}-#{$size});
+        }
+      }
+    }
+  }
 
   @each $align in (left, center, right) {
     &--align-#{$align} {

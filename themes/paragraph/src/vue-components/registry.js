@@ -3,6 +3,7 @@ import { inlineHtml } from '@/directives'
 
 const components = {
   // 'swiper': () => import('./paragraphs/Swiper.vue'),
+  'button': () => import('./paragraphs/Button.vue'),
   'countdown': () => import('./paragraphs/Countdown.vue'),
   'image': () => import('./paragraphs/Image.vue'),
   'timeline': () => import('./paragraphs/Timeline.vue'),

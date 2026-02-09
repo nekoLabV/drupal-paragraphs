@@ -20,7 +20,7 @@ class ImagePreprocessor extends BaseParagraphPreprocessor {
 
     // 收集数据
     $image_data = [
-      'image' => $this->getMediaImageData($media),
+      'image' => $this->getMediaData($media),
       'imageRatio' => $this->getFieldValue($paragraph, 'field_image_ratio'),
       'imageFit' => $this->getFieldValue($paragraph, 'field_image_fit'),
       'imageSize' => $this->getFieldValue($paragraph, 'field_image_size'),

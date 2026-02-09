@@ -4,10 +4,10 @@
     {{ content }}
   </div> #}
   {% if content_block_id is defined %}
-    <paragraph-block
+    <paragraph-content-block
       data-id="{{ content_block_id }}">
       {{ content }}
-    </paragraph-block>
+    </paragraph-content-block>
   {% else %}
     {# Fallback: 如果没有数据，显示原始内容 #}
     {{ content }}

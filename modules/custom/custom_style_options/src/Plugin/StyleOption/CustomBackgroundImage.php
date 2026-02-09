@@ -46,7 +46,6 @@ class CustomBackgroundImage extends BackgroundImage {
       ->toString();
 
     if ($this->getConfiguration('method') === 'css') {
-      // 👉 核心：输出 CSS 自定义属性
       if (!isset($build['#attributes']['style'])) {
         $build['#attributes']['style'] = [];
       }

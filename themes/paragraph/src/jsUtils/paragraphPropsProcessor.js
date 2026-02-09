@@ -1,7 +1,18 @@
+import { toKebabCase } from '@/jsUtils/string'
+
 export const modulePropsMap = {
+  contentBlock: content => ({
+    ...content,
+    theme: toKebabCase(content?.theme),
+    backgroundImageSrc: content?.backgroundImageSrc?.url,
+    backgroundImageMobileSrc: content?.backgroundImageMobileSrc?.url
+  }),
+  button: content => content,
+  buttons: content => content,
   swiper: content => ({
     ...content,
-    cols: content.cols || 3
+    cols: Number(content.cols) || 3,
+    rows: Number(content.rows)
   }),
   countdown: content => ({
     end: content,

@@ -1,0 +1,26 @@
+@use '../../var';
+
+.paragraph-theme-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  &--direction-row {
+    flex-direction: row;
+  }
+  &--direction-column {
+    flex-direction: column;
+  }
+
+  // padding, margin (sm, md, lg)
+  $types: (padding, margin);
+  @each $type in $types {
+    @each $size in var.$sizes {
+      @each $dir in var.$directions {
+        &--#{$type}-#{$dir}-#{$size} {
+          #{$type}-#{$dir}: var(--cm-container-#{$type}-#{$size});
+        }
+      }
+    }
+  }
+}

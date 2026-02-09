@@ -19,14 +19,12 @@ class SwiperPreprocessor extends BaseParagraphPreprocessor {
     // 收集数据
     $swiper_data = [
       // Swiper 列数
-      'cols' => Number_format($this->getFieldValue($paragraph, 'field_swiper_cols')),
+      'cols' => $this->getFieldValue($paragraph, 'field_swiper_cols'),
       // Swiper 行数
       'rows' => $this->getFieldValue($paragraph, 'field_swiper_rows')
     ];
 
     $variables['swiper_id'] = $id;
-    $variables['swiper_cols'] = $swiper_data['cols'];
-    $variables['swiper_rows'] = $swiper_data['rows'];
     $variables['#attached']['drupalSettings']['swiper'][$id] = $swiper_data;
   }
 }

@@ -1,0 +1,20 @@
+<div{{ attributes.addClass(classes) }}>
+  {# 隐藏原始字段渲染 #}
+  {# <div style="display: none;">
+    {{ content }}
+  </div> #}
+  {% if buttons_id is defined %}
+    <paragraph-buttons
+      data-id="{{ buttons_id }}">
+      {% for key, item in content.field_button %}
+        {# 在循环体内部进行过滤，跳过以 # 开头的元数据 #}
+        {% if key|first != '#' %}
+          {{ item }}
+        {% endif %}
+      {% endfor %}
+    </paragraph-buttons>
+  {% else %}
+    {# Fallback: 如果没有数据，显示原始内容 #}
+    {{ content }}
+  {% endif %}
+</div>

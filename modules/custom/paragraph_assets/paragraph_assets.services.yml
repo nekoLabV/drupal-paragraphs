@@ -8,6 +8,8 @@ services:
   #   exclude: '../src/Preprocess/Paragraph/BaseParagraphPreprocessor.php'
 
   Drupal\paragraph_assets\Preprocess\Paragraph\ContentBlockPreprocessor: ~
+  Drupal\paragraph_assets\Preprocess\Paragraph\ButtonPreprocessor: ~
+  Drupal\paragraph_assets\Preprocess\Paragraph\ButtonsPreprocessor: ~
   Drupal\paragraph_assets\Preprocess\Paragraph\CountdownPreprocessor: ~
   Drupal\paragraph_assets\Preprocess\Paragraph\ImagePreprocessor: ~
   Drupal\paragraph_assets\Preprocess\Paragraph\ImagesPreprocessor: ~
