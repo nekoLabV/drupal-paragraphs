@@ -2,10 +2,10 @@
 @use '../../mixins';
 
 .btn {
-  --btn-color: #{var.$body-color};
-  --btn-border-color: transparent;
-  --btn-border-width: 0px;
-  --btn-bg: transparent;
+  --btn-color: var(--btn-color-p, var(--cm-on-body), #000);
+  --btn-border-color: var(--btn-border-color-p, transparent);
+  --btn-border-width: var(--btn-border-width-p, 0px);
+  --btn-bg: var(--btn-bg-p, transparent);
   --btn-padding: calc(10px - var(--btn-border-width)) calc(16px - var(--btn-border-width));
   position: relative;
   display: inline-flex;
@@ -40,22 +40,38 @@
   }
   @each $c in (primary, secondary) {
     &--#{$c} {
+      --btn-color-p: #{var.$body-color};
+      --btn-border-color-p: transparent;
+      // --btn-border-width-p: 0;
+      --btn-bg-p: transparent;
       --btn-color: var(--cmt-btn-solid-#{$c}-color);
       --btn-border-color: var(--cmt-btn-solid-#{$c}-color);
       --btn-bg: var(--cmt-btn-solid-#{$c}-bg);
     }
     &--outline-#{$c} {
+      --btn-color-p: #{var.$body-color};
+      --btn-border-color-p: transparent;
+      --btn-border-width-p: 0;
+      --btn-bg-p: transparent;
       --btn-border-width: var(--cm-btn-border-width, 1px);
       --btn-color: var(--cmt-btn-outline-#{$c}-color);
       --btn-border-color: var(--cmt-btn-outline-#{$c}-color);
     }
     &--text-#{$c} {
+      --btn-color-p: #{var.$body-color};
+      --btn-border-color-p: transparent;
+      --btn-border-width-p: 0;
+      --btn-bg-p: transparent;
       --btn-padding: calc(10px - var(--btn-border-width)) 0;
       --btn-color: var(--cmt-btn-text-#{$c}-color);
     }
   }
   @each $c in (gradient1, gradient2) {
     &--#{$c} {
+      --btn-color-p: #{var.$body-color};
+      --btn-border-color-p: transparent;
+      --btn-border-width-p: 0;
+      --btn-bg-p: transparent;
       --btn-color: var(--cm-on-#{$c});
       --btn-bg: var(--cm-#{$c});
     }

@@ -19,6 +19,8 @@ class ButtonsPreprocessor extends BaseParagraphPreprocessor {
     // 收集数据
     $buttons_data = [
       'direction' => $this->getFieldValue($paragraph, 'field_direction'),
+      'btnStyle' => $this->getFieldValue($paragraph, 'field_button_style'),
+      'btnAlign' => $this->getFieldValue($paragraph, 'field_align'),
       'marginTop' => $this->getFieldValue($paragraph, 'field_margin_top'),
       'marginBottom' => $this->getFieldValue($paragraph, 'field_margin_bottom')
     ];

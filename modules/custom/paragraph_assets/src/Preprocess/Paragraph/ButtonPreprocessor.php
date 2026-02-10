@@ -20,7 +20,8 @@ class ButtonPreprocessor extends BaseParagraphPreprocessor {
     $button_data = [
       'text' => $this->getFieldValue($paragraph, 'field_button_label'),
       'type' => $this->getFieldValue($paragraph, 'field_click_event'),
-      'href' => ''
+      'href' => '',
+      'btnStyle' => $this->getFieldValue($paragraph, 'field_button_style')
     ];
 
     $link = $this->getLinkFieldValue($paragraph, 'field_click_link');

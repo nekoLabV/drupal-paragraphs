@@ -12,6 +12,44 @@
     flex-direction: column;
   }
 
+  @each $c in (primary, secondary) {
+    &--style-#{$c} {
+      --btn-color-p: var(--cmt-btn-solid-#{$c}-color);
+      --btn-border-color-p: var(--cmt-btn-solid-#{$c}-color);
+      --btn-bg-p: var(--cmt-btn-solid-#{$c}-bg);
+    }
+    &--style-outline-#{$c} {
+      --btn-border-width-p: var(--cm-btn-border-width, 1px);
+      --btn-color-p: var(--cmt-btn-outline-#{$c}-color);
+      --btn-border-color-p: var(--cmt-btn-outline-#{$c}-color);
+    }
+    &--style-text-#{$c} {
+      --btn-padding-p: calc(10px - var(--btn-border-width)) calc(16px - var(--btn-border-width));
+      --btn-color-p: var(--cmt-btn-text-#{$c}-color);
+    }
+  }
+  @each $c in (gradient1, gradient2) {
+    &--style-#{$c} {
+      --btn-color-p: var(--cm-on-#{$c});
+      --btn-bg-p: var(--cm-#{$c});
+    }
+  }
+
+  @each $align in (left, center, right) {
+    &--align-#{$align} {
+      @if $align == 'center' {
+        justify-content: center;
+        align-items: center;
+      } @else if $align == 'left' {
+        justify-content: start;
+        align-items: start;
+      } @else if $align == 'right' {
+        justify-content: end;
+        align-items: end;
+      }
+    }
+  }
+
   // padding, margin (sm, md, lg)
   $types: (padding, margin);
   @each $type in $types {

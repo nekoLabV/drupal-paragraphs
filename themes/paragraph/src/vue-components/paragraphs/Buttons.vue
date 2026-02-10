@@ -6,6 +6,14 @@ const props = defineProps({
     type: String,
     default: 'row' // 'row' | 'column'
   },
+  btnStyle: {
+    type: String,
+    default: 'outline-primary',
+  },
+  btnAlign: {
+    type: String,
+    default: 'center' // 'left' | 'center' | 'right'
+  },
   marginTop: {
     type: String,
     default: 'none'
@@ -19,6 +27,8 @@ const props = defineProps({
 const className = computed(() => {
   const rootBlock = 'paragraph-theme-buttons'
   let resultClassArr = [
+    `${rootBlock}--style-${props.btnStyle}`,
+    `${rootBlock}--align-${props.btnAlign}`,
     `${rootBlock}--margin-top-${props.marginTop}`,
     `${rootBlock}--margin-bottom-${props.marginBottom}`
   ]

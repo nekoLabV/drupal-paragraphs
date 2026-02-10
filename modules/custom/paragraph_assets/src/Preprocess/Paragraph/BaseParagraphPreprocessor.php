@@ -8,7 +8,7 @@ abstract class BaseParagraphPreprocessor {
   protected function getFieldValue($paragraph, string $field) {
     return ($paragraph->hasField($field) && !$paragraph->get($field)->isEmpty())
       ? $paragraph->get($field)->value
-      : null;
+      : '';
   }
 
   // 获取 Link 字段
@@ -25,7 +25,7 @@ abstract class BaseParagraphPreprocessor {
         ];
       }
     }
-    return null;
+    return '';
   }
 
   // 获取 Media 字段

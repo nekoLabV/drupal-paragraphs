@@ -22,7 +22,7 @@ const createComponent = (type, context, data) => {
   
   eles.forEach(el => {
     const id = el.getAttribute('data-id')
-    const handle = modulePropsMap?.[type] ?? modulePropsMap.default
+    const handle = modulePropsMap?.[type] || modulePropsMap.default
     const props = handle(data?.[id])
     mountComponent(type, el, props)
     el.setAttribute('data-once', 'true')
@@ -33,7 +33,7 @@ const customElementData = (type, context, data) => {
   const eles = context.querySelectorAll(`paragraph-${kebabCase(type)}`)
   eles.forEach(el => {
     const id = el.getAttribute('data-id')
-    const handle = modulePropsMap?.[type] ?? modulePropsMap.default
+    const handle = modulePropsMap?.[type] || modulePropsMap.default
     if (data) {
       const props = handle(data[id])
       for (const key in props) {

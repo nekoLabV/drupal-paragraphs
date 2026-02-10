@@ -25,13 +25,13 @@ export const camelCase = str => {
 }
 
 /**
- * 
+ * 将_命名转换为-命名
  * @param {string} str 
  * @returns {string}
  * @example
- * toKebabCase('block_align') // 'block-align'
+ * kebabCase2('block_align') // 'block-align'
  */
-export const toKebabCase = str => {
+export const kebabCase2 = (str = '') => {
   return str
     .replace(/_/g, '-')  // 先替换下划线
     .replace(/([a-z])([A-Z])/g, '$1-$2')  // 驼峰转连字符

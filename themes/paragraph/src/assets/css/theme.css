@@ -58,6 +58,10 @@
   --cm-border-radius-sm: 8px;
   --cm-border-radius-md: 12px;
   --cm-border-radius-lg: 24px;
+
+  --cm-btn-border-radius: 24px;
+  --cm-btn-border-width: 1px;
+  --cm-btn-font-weight: 700;
 }
 
 /* 全局默认主题配色 */
@@ -70,6 +74,15 @@ body {
   --cmt-strong-number-color: var(--cm-primary);
   /* --cmt-surface-bg: var(--cm-white); */
   --cmt-surface-bg: var(--cm-gray-100);
+
+  --cmt-btn-solid-primary-color: var(--cm-on-primary);
+  --cmt-btn-solid-primary-bg: var(--cm-primary);
+  --cmt-btn-outline-primary-color: var(--cm-primary);
+  --cmt-btn-text-primary-color: var(--cm-primary);
+  --cmt-btn-solid-secondary-color: var(--cm-on-secondary);
+  --cmt-btn-solid-secondary-bg: var(--cm-secondary);
+  --cmt-btn-outline-secondary-color: var(--cm-secondary);
+  --cmt-btn-text-secondary-color: var(--cm-secondary);
 
   --cmt-swiper-button-color: var(--cm-dark);
   --cmt-swiper-button-bg: var(--cm-white);
@@ -90,6 +103,15 @@ body {
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-gray-100);
 
+  --cmt-btn-solid-primary-color: var(--cm-on-primary);
+  --cmt-btn-solid-primary-bg: var(--cm-primary);
+  --cmt-btn-outline-primary-color: var(--cm-primary);
+  --cmt-btn-text-primary-color: var(--cm-primary);
+  --cmt-btn-solid-secondary-color: var(--cm-on-secondary);
+  --cmt-btn-solid-secondary-bg: var(--cm-secondary);
+  --cmt-btn-outline-secondary-color: var(--cm-secondary);
+  --cmt-btn-text-secondary-color: var(--cm-secondary);
+
   --cmt-swiper-button-color: var(--cm-dark);
   --cmt-swiper-button-bg: var(--cm-white);
   --cmt-swiper-button-hover-color: var(--cm-primary);
@@ -108,6 +130,15 @@ body {
   --cmt-surface-heading-color: var(--cm-secondary);
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-white);
+
+  --cmt-btn-solid-primary-color: var(--cm-on-primary);
+  --cmt-btn-solid-primary-bg: var(--cm-primary);
+  --cmt-btn-outline-primary-color: var(--cm-white);
+  --cmt-btn-text-primary-color: var(--cm-white);
+  --cmt-btn-solid-secondary-color: var(--cm-on-secondary);
+  --cmt-btn-solid-secondary-bg: var(--cm-secondary);
+  --cmt-btn-outline-secondary-color: var(--cm-white);
+  --cmt-btn-text-secondary-color: var(--cm-white);
 
   --cmt-swiper-button-color: var(--cm-dark);
   --cmt-swiper-button-bg: var(--cm-white);
@@ -128,6 +159,15 @@ body {
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-white);
 
+  --cmt-btn-solid-primary-color: var(--cm-primary);
+  --cmt-btn-solid-primary-bg: var(--cmt-color);
+  --cmt-btn-outline-primary-color: var(--cm-white);
+  --cmt-btn-text-primary-color: var(--cm-white);
+  --cmt-btn-solid-secondary-color: var(--cm-secondary);
+  --cmt-btn-solid-secondary-bg: var(--cmt-color);
+  --cmt-btn-outline-secondary-color: var(--cm-white);
+  --cmt-btn-text-secondary-color: var(--cm-white);
+
   --cmt-swiper-button-color: var(--cm-dark);
   --cmt-swiper-button-bg: var(--cm-white);
   --cmt-swiper-button-hover-color: var(--cm-primary);
@@ -146,6 +186,15 @@ body {
   --cmt-surface-heading-color: var(--cm-secondary);
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-white);
+
+  --cmt-btn-solid-primary-color: var(--cm-primary);
+  --cmt-btn-solid-primary-bg: var(--cmt-color);
+  --cmt-btn-outline-primary-color: var(--cm-white);
+  --cmt-btn-text-primary-color: var(--cm-white);
+  --cmt-btn-solid-secondary-color: var(--cm-secondary);
+  --cmt-btn-solid-secondary-bg: var(--cm-on-secondary);
+  --cmt-btn-outline-secondary-color: var(--cm-on-secondary);
+  --cmt-btn-text-secondary-color: var(--cm-on-secondary);
 
   --cmt-swiper-button-color: var(--cm-dark);
   --cmt-swiper-button-bg: var(--cm-white);
@@ -166,6 +215,15 @@ body {
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-white);
 
+  --cmt-btn-solid-primary-color: var(--cm-on-primary);
+  --cmt-btn-solid-primary-bg: var(--cm-primary);
+  --cmt-btn-outline-primary-color: var(--cm-primary);
+  --cmt-btn-text-primary-color: var(--cm-primary);
+  --cmt-btn-solid-secondary-color: var(--cm-on-secondary);
+  --cmt-btn-solid-secondary-bg: var(--cm-secondary);
+  --cmt-btn-outline-secondary-color: var(--cm-secondary);
+  --cmt-btn-text-secondary-color: var(--cm-secondary);
+
   --cmt-swiper-button-color: var(--cm-dark);
   --cmt-swiper-button-bg: var(--cm-white);
   --cmt-swiper-button-hover-color: var(--cm-primary);
@@ -184,6 +242,15 @@ body {
   --cmt-surface-heading-color: var(--cm-secondary);
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-white);
+
+  --cmt-btn-solid-primary-color: var(--cm-on-primary);
+  --cmt-btn-solid-primary-bg: var(--cm-primary);
+  --cmt-btn-outline-primary-color: var(--cm-white);
+  --cmt-btn-text-primary-color: var(--cm-white);
+  --cmt-btn-solid-secondary-color: var(--cm-on-secondary);
+  --cmt-btn-solid-secondary-bg: var(--cm-secondary);
+  --cmt-btn-outline-secondary-color: var(--cm-white);
+  --cmt-btn-text-secondary-color: var(--cm-white);
 
   --cmt-swiper-button-color: var(--cm-dark);
   --cmt-swiper-button-bg: var(--cm-white);
@@ -205,6 +272,15 @@ body {
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-white);
 
+  --cmt-btn-solid-primary-color: var(--cm-on-primary);
+  --cmt-btn-solid-primary-bg: var(--cm-primary);
+  --cmt-btn-outline-primary-color: var(--cm-primary);
+  --cmt-btn-text-primary-color: var(--cm-primary);
+  --cmt-btn-solid-secondary-color: var(--cm-on-secondary);
+  --cmt-btn-solid-secondary-bg: var(--cm-secondary);
+  --cmt-btn-outline-secondary-color: var(--cm-secondary);
+  --cmt-btn-text-secondary-color: var(--cm-secondary);
+
   --cmt-swiper-button-color: var(--cm-dark);
   --cmt-swiper-button-bg: var(--cm-white);
   --cmt-swiper-button-hover-color: var(--cm-primary);
@@ -224,6 +300,15 @@ body {
   --cmt-surface-heading-color: var(--cm-secondary);
   --cmt-strong-number-color: var(--cm-primary);
   --cmt-surface-bg: var(--cm-white);
+
+  --cmt-btn-solid-primary-color: var(--cm-on-primary);
+  --cmt-btn-solid-primary-bg: var(--cm-primary);
+  --cmt-btn-outline-primary-color: var(--cm-white);
+  --cmt-btn-text-primary-color: var(--cm-white);
+  --cmt-btn-solid-secondary-color: var(--cm-on-secondary);
+  --cmt-btn-solid-secondary-bg: var(--cm-secondary);
+  --cmt-btn-outline-secondary-color: var(--cm-white);
+  --cmt-btn-text-secondary-color: var(--cm-white);
 
   --cmt-swiper-button-color: var(--cm-dark);
   --cmt-swiper-button-bg: var(--cm-white);
