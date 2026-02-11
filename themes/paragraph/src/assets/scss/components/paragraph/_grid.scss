@@ -1,22 +1,38 @@
 @use '../../mixins';
 
-.paragraph-theme-block {
+// .paragraph-theme-block {
+//   --col: 2;
+//   $cols: (2, 3, 4);
+//   @each $col in $cols {
+//     &__grid-col-#{$col} {
+//       --col: #{$col};
+//     }
+//   }
+//   &__grid-container {
+//     display: grid;
+//     grid-template-columns: repeat(var(--col), 1fr);
+//     gap: var(--layout-grid-gutter);
+//     img {
+//       border-radius: var(--cm-border-radius);
+//     }
+//     @include mixins.media-breakpoint-down(md) {
+//       --col: 1;
+//     }
+//   }
+// }
+
+.paragraph-theme-grid {
+  display: grid;
   --col: 2;
   $cols: (2, 3, 4);
   @each $col in $cols {
-    &__grid-col-#{$col} {
+    &--col-#{$col} {
       --col: #{$col};
     }
   }
-  &__grid-container {
-    display: grid;
-    grid-template-columns: repeat(var(--col), 1fr);
-    gap: var(--layout-grid-gutter);
-    img {
-      border-radius: var(--cm-border-radius);
-    }
-    @include mixins.media-breakpoint-down(md) {
-      --col: 1;
-    }
+  grid-template-columns: repeat(var(--col), 1fr);
+  gap: var(--layout-grid-gutter);
+  @include mixins.media-breakpoint-down(md) {
+    --col: 1;
   }
 }

@@ -1,4 +1,5 @@
 @use '../../var';
+@use '../../mixins';
 
 .paragraph-theme-block {
   $container: #{&}__container;
@@ -35,6 +36,29 @@
         } @else {
           margin-#{if($align == 'left', 'right' , 'left')}: auto;
         }
+      }
+    }
+  }
+
+  // col width (100%, 80%, 60%)
+  &--col-width-100 {
+    #{$container} {
+      width: 100%;
+    }
+  }
+  &--col-width-80 {
+    #{$container} {
+      width: 80%;
+      @include mixins.media-breakpoint-down(md) {
+        width: 100%;
+      }
+    }
+  }
+  &--col-width-60 {
+    #{$container} {
+      width: 60%;
+      @include mixins.media-breakpoint-down(md) {
+        width: 100%;
       }
     }
   }

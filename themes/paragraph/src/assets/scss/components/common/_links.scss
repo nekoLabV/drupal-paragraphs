@@ -1,0 +1,12 @@
+.paragraph-theme-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  &--direction-column {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  &--direction-row {
+    flex-direction: row;
+  }
+}

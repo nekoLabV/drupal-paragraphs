@@ -30,7 +30,8 @@ class TimelinePreprocessor extends BaseParagraphPreprocessor {
           'title' => '',
           'subtitle' => '',
           'description' => '',
-          'tags' => []
+          'tags' => [],
+          'buttons' => []
         ];
         
         // 获取日期 - 使用更安全的方法
@@ -82,6 +83,9 @@ class TimelinePreprocessor extends BaseParagraphPreprocessor {
           }
           $item_data['tags'] = $tags;
         }
+
+        // 获取按钮
+        $item_data['buttons'] = $this->getButtons($item);
         
         $timeline_items[] = $item_data;
       }

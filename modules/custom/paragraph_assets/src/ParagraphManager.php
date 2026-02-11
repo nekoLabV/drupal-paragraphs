@@ -11,6 +11,7 @@ use Drupal\paragraph_assets\Preprocess\Paragraph\ImagesPreprocessor;
 use Drupal\paragraph_assets\Preprocess\Paragraph\TimelinePreprocessor;
 use Drupal\paragraph_assets\Preprocess\Paragraph\TextWithEmbedPreprocessor;
 use Drupal\paragraph_assets\Preprocess\Paragraph\SwiperPreprocessor;
+use Drupal\paragraph_assets\Preprocess\Paragraph\GridPreprocessor;
 
 /**
  * 段落预处理器管理器
@@ -33,6 +34,7 @@ class ParagraphManager {
     ImagePreprocessor $image,
     ImagesPreprocessor $images,
     SwiperPreprocessor $swiper,
+    GridPreprocessor $grid,
     TextWithEmbedPreprocessor $textWithEmbed,
     TimelinePreprocessor $timeline
   ) {
@@ -46,7 +48,8 @@ class ParagraphManager {
       'images' => $images,
       'timeline' => $timeline,
       'text_with_embedding' => $textWithEmbed,
-      'swiper' => $swiper
+      'swiper' => $swiper,
+      'paragraphs_grid' => $grid,
     ];
   }
 

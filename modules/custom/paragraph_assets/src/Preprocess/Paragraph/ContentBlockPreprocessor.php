@@ -23,7 +23,7 @@ class ContentBlockPreprocessor extends BaseParagraphPreprocessor {
     $content_block_data = [
       'theme' => $this->getFieldValue($paragraph, 'field_theme'),
       'blockAlign' => $this->getFieldValue($paragraph, 'field_block_align'),
-      'colWidth' => $this->getFieldValue($paragraph, 'field_col_width'),
+      'colWidth' => $this->getFieldValue($paragraph, 'field_block_col_width'),
       'paddingTop' => $this->getFieldValue($paragraph, 'field_padding_top'),
       'paddingBottom' => $this->getFieldValue($paragraph, 'field_padding_bottom'),
       'marginTop' => $this->getFieldValue($paragraph, 'field_margin_top'),

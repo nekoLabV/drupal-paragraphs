@@ -1,0 +1,10 @@
+{%
+  set classes = [
+    'paragraph-theme-grid',
+    'paragraph-theme-grid--col-' ~ grid_col
+  ]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+  {{ content }}
+</div>
