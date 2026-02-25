@@ -13,3 +13,11 @@ libraries:
   - paragraph/font
   - paragraph/style-options
   - paragraph/theme-components
+
+dependencies:
+  - field_group
+  - paragraphs
+  - layout_paragraphs
+  - mercury_editor
+  - custom_module:paragraph_assets
+  
