@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * General functions and hook implementations.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\lupus_decoupled_webform\CustomElementsWebformBlock;
+use Drupal\webform\WebformInterface;
+
+/**
+ * Implements hook_entity_operation().
+ */
+function lupus_decoupled_webform_entity_operation(WebformInterface|EntityInterface $entity) {
+  $operations = [];
+  $entityType = $entity->getEntityType();
+  // Only for entity node.
+  if ($entityType->id() === 'webform' && \Drupal::currentUser()->hasPermission('use api operation link')) {
+    // Build the url.
+    $apiBaseUrl = \Drupal::service('lupus_decoupled_ce_api.base_url_provider')
+      ->getApiBaseUrl();
+    $entityApiUrl = $entity->toUrl()->setOptions([
+      'base_url' => $apiBaseUrl,
+      'language' => $entity->language(),
+    ]);
+
+    $operations['view-api-output'] = [
+      'title' => t('View API Output'),
+      'weight' => 50,
+      'url' => $entityApiUrl,
+    ];
+  }
+  return $operations;
+}
+
+/**
+ * Implements hook_block_alter().
+ *
+ * Alter block plugin definitions.
+ */
+function lupus_decoupled_webform_block_alter(&$info) {
+  if (isset($info['webform_block']['class'])) {
+    $info['webform_block']['class'] = CustomElementsWebformBlock::class;
+  }
+}

@@ -1,0 +1,16 @@
+name: 'Lupus Decoupled Search Views Test Config'
+type: module
+description: 'Provides default config for Lupus Decoupled Search API integration for tests.'
+package: Testing
+dependencies:
+  - drupal:views
+  - lupus_decoupled:lupus_decoupled_views
+  - user:user
+  - search_api:search_api
+  - search_api:search_api_db
+  - search_api_exclude:search_api_exclude
+
+# Information added by Drupal.org packaging script on 2025-12-09
+version: '1.4.1'
+project: 'lupus_decoupled'
+datestamp: 1765271471

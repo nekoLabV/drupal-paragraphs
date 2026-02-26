@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.gallery.field_media_images
+    - media.type.gallery
+id: media.gallery.default
+targetEntityType: media
+bundle: gallery
+mode: default
+forceAutoProcessing: false
+customElementName: media-gallery
+content:
+  sources:
+    formatter: entity_ce_render
+    field_name: field_media_images
+    is_slot: false
+    weight: 0

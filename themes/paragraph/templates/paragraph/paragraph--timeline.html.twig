@@ -1,12 +1,9 @@
 <div{{ attributes.addClass(classes) }} style="width: 100%;">
-  {# 隐藏原始字段渲染 #}
-  <div style="display: none;">
-    {{ content }}
-  </div>
   {% if timeline_id is defined %}
   <div 
     data-id="{{ timeline_id }}"
     data-vue-component="timeline">
+    {{ content }}
   </div>
   {% else %}
     {# Fallback: 如果没有数据，显示原始内容 #}

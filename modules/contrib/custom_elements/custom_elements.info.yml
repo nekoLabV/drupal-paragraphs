@@ -1,0 +1,10 @@
+name: Custom Elements
+description: Renders content as custom elements.
+package: Other
+type: module
+core_version_requirement: ^10 || ^11
+
+# Information added by Drupal.org packaging script on 2026-02-04
+version: '3.3.3'
+project: 'custom_elements'
+datestamp: 1770224744

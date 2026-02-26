@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.quote.field_text
+    - paragraphs.paragraphs_type.quote
+id: paragraph.quote.default
+targetEntityType: paragraph
+bundle: quote
+mode: default
+forceAutoProcessing: false
+customElementName: paragraph-quote
+content:
+  default:
+    formatter: auto
+    field_name: field_text
+    is_slot: true
+    weight: 1

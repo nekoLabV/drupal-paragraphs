@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.text.field_text
+    - field.field.paragraph.text.field_title
+    - paragraphs.paragraphs_type.text
+id: paragraph.text.default
+targetEntityType: paragraph
+bundle: text
+mode: default
+forceAutoProcessing: false
+customElementName: paragraph-text
+content:
+  default:
+    formatter: auto
+    field_name: field_text
+    is_slot: true
+    weight: 1
+  title:
+    formatter: auto
+    field_name: field_title
+    is_slot: false
+    weight: 0

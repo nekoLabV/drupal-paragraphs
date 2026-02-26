@@ -1,0 +1,13 @@
+name: 'Lupus Decoupled CORS handling'
+description: 'Configures CORS to allow the frontend to use Drupal APIs from within the browser'
+type: module
+package: Lupus Decoupled Drupal
+
+core_version_requirement: ^10 || ^11
+dependencies:
+  - lupus_decoupled:lupus_decoupled_ce_api
+
+# Information added by Drupal.org packaging script on 2025-12-09
+version: '1.4.1'
+project: 'lupus_decoupled'
+datestamp: 1765271471

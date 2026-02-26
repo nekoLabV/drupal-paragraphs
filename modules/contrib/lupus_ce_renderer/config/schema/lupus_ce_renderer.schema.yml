@@ -1,0 +1,11 @@
+lupus_ce_renderer.settings:
+  type: config_object
+  label: 'Lupus Custom Elements Renderer settings'
+  mapping:
+    redirect_response:
+      type: mapping
+      label: 'Redirect response settings'
+      mapping:
+        add_drupal_messages:
+          type: boolean
+          label: 'Add Drupal messages to redirect API responses'

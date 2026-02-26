@@ -1,0 +1,11 @@
+services:
+  custom_elements_ui.subscriber:
+    class: Drupal\custom_elements_ui\Routing\RouteSubscriber
+    arguments: [ '@entity_type.manager' ]
+    tags:
+      - { name: event_subscriber }
+  access_check.custom_elements_ui.view_mode:
+    class: Drupal\custom_elements_ui\Access\CustomElementViewModeAccessCheck
+    arguments: [ '@entity_type.manager' ]
+    tags:
+      - { name: access_check, applies_to: _custom_elements_ui_view_mode_access }

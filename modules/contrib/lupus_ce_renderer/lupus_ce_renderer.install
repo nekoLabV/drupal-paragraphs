@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Update and install hooks for the module.
+ */
+
+/**
+ * Enable redirect_response.add_drupal_messages for existing installs.
+ *
+ * This ensures backwards compatibility: existing installs will continue to
+ * include drupal-messages in redirect API responses after updating.
+ */
+function lupus_ce_renderer_update_8001() {
+  \Drupal::configFactory()
+    ->getEditable('lupus_ce_renderer.settings')
+    ->set('redirect_response.add_drupal_messages', TRUE)
+    ->save();
+}

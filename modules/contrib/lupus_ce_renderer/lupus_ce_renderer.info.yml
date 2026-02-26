@@ -1,0 +1,12 @@
+name: 'Lupus Custom Elements Renderer'
+description: 'Renders main content using custom elements.'
+type: module
+core_version_requirement: ^9 || ^10 || ^11
+dependencies:
+  - metatag:metatag
+  - custom_elements:custom_elements
+
+# Information added by Drupal.org packaging script on 2025-05-23
+version: '2.5.0'
+project: 'lupus_ce_renderer'
+datestamp: 1747999799

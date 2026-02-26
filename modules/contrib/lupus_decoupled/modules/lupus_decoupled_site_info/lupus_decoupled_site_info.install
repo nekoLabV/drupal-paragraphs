@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ * Install, uninstall and update hooks for lupus_decoupled_site_info module.
+ */
+
+use Drupal\user\Entity\Role;
+
+/**
+ * Allow anonymous requests to /api/lupus/site-info.
+ */
+function lupus_decoupled_site_info_install($is_syncing) {
+  $config = \Drupal::configFactory()->getEditable('rest.resource.lupus_decoupled_site_info');
+  // Check if the configuration already exists and initialize if necessary.
+  // We cannot use config rewriting here since that fails if it's not there,
+  // but there are cases when it might be there.
+  if (!$config->get('id')) {
+    $config->set('status', TRUE);
+    $config->set('dependencies.module', ['lupus_decoupled_site_info', 'serialization', 'user']);
+    $config->set('id', 'lupus_decoupled_site_info');
+    $config->set('plugin_id', 'lupus_decoupled_site_info');
+    $config->set('granularity', 'resource');
+    $config->set('configuration.methods', ['GET']);
+    $config->set('configuration.formats', ['json']);
+    $config->set('configuration.authentication', ['cookie']);
+    $config->save();
+  }
+
+  // Do not mess with config during syncing.
+  if (!$is_syncing) {
+    // Grant permissions for accessing the API.
+    foreach (['anonymous', 'authenticated'] as $role_id) {
+      $role = Role::load($role_id);
+      if ($role) {
+        $role->grantPermission('restful get lupus_decoupled_site_info');
+        $role->save();
+      }
+    }
+  }
+}

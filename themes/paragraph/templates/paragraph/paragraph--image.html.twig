@@ -1,13 +1,10 @@
 <div{{ attributes.addClass(classes) }}>
-  {# 隐藏原始字段渲染 #}
-  <div style="display: none;">
-    {{ content }}
-  </div>
   {% if image_id is defined %}
     <div 
       style="display: flex; justify-content: center;"
       data-id="{{ image_id }}"
       data-vue-component="image">
+      {{ content }}
     </div>
   {% else %}
     {# Fallback: 如果没有数据，显示原始内容 #}

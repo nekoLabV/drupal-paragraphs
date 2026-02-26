@@ -1,0 +1,14 @@
+name: 'Lupus Decoupled Site Info'
+description: 'Expose basic site information.'
+type: module
+package: Lupus Decoupled Drupal
+
+core_version_requirement: ^10 || ^11
+dependencies:
+  - lupus_decoupled:lupus_decoupled_ce_api
+  - rest:rest
+
+# Information added by Drupal.org packaging script on 2025-12-09
+version: '1.4.1'
+project: 'lupus_decoupled'
+datestamp: 1765271471

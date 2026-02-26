@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for Lupus Decoupled CE API.
+ */
+
+/**
+ * Set default preview provider to 'markup'.
+ */
+function lupus_decoupled_ce_api_update_9001() {
+  $config = \Drupal::configFactory()->getEditable('lupus_decoupled_ce_api.settings');
+  if (!$config->get('preview_provider')) {
+    $config->set('preview_provider', 'markup');
+    $config->save();
+  }
+}

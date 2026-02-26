@@ -1,0 +1,14 @@
+name: 'REST menu items test'
+type: module
+description: 'Support module for REST menu items testing.'
+package: Testing
+core_version_requirement: ^10 || ^11
+dependencies:
+  - 'drupal:rest'
+  - 'drupal:serialization'
+  - 'rest_menu_items:rest_menu_items'
+
+# Information added by Drupal.org packaging script on 2026-02-07
+version: '3.0.6'
+project: 'rest_menu_items'
+datestamp: 1770471660

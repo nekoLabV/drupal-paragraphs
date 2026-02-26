@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Install file for Lupus Decoupled module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function lupus_decoupled_install() {
+  $module_handler = \Drupal::moduleHandler();
+  $module_extension_list = \Drupal::service('extension.list.module');
+  $install_modules = [];
+  if ($module_extension_list->exists('custom_elements_ui') && !$module_handler->moduleExists('custom_elements_ui')) {
+    $install_modules[] = 'custom_elements_ui';
+  }
+  // By default enable user forms for frontend login support.
+  $install_modules[] = 'lupus_decoupled_user_form';
+
+  // Enable optional modules when found in code-base.
+  // By default only enable the lupus_decoupled module, when the main module
+  // is already enabled. Enable both, e.g. for demo purposes, when
+  // LUPUS_DECOUPLED_AUTO_ENABLE is set.
+  foreach (['responsive_preview', 'rest_log', 'webform', 'schema_metatag', 'views', 'layout_builder'] as $module) {
+    if ($module_extension_list->exists($module) && (getenv('LUPUS_DECOUPLED_AUTO_ENABLE') || $module_handler->moduleExists($module))) {
+      $module_name = $module == 'rest_log' ? 'api_log' : $module;
+      $install_modules[] = 'lupus_decoupled_' . $module_name;
+    }
+  }
+
+  if ($install_modules) {
+    \Drupal::service('module_installer')->install($install_modules);
+  }
+
+}

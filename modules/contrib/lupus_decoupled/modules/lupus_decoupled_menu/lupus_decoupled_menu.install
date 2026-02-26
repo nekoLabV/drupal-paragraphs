@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @file
+ * Install, uninstall and update hooks for lupus_decoupled_menu module.
+ */
+
+use Drupal\user\Entity\Role;
+
+/**
+ * Add config for rest_menu_items.
+ */
+function lupus_decoupled_menu_install($is_syncing) {
+  $config = \Drupal::configFactory()->getEditable('rest.resource.rest_menu_item');
+  // Check if the configuration already exists and initialize if necessary.
+  if (!$config->get('id')) {
+    $config->set('status', TRUE);
+    $config->set('dependencies.module', ['rest_menu_items', 'serialization', 'user']);
+    $config->set('id', 'rest_menu_item');
+    $config->set('plugin_id', 'rest_menu_item');
+    $config->set('granularity', 'resource');
+    $config->set('configuration.methods', ['GET']);
+    $config->set('configuration.formats', ['json']);
+    $config->set('configuration.authentication', ['cookie']);
+    $config->save();
+  }
+
+  // The rest_menu_items module's default configuration is already correct.
+  // We no longer need to modify it since the default values match what we need:
+  // - output_values: includes all fields
+  // - add_fragment: 1
+  // - base_url: ''
+  // - allowed_menus: {} (empty allows all menus)
+  // Do not mess with config during syncing.
+  if (!$is_syncing) {
+    // Grant permissions for accessing the API.
+    foreach (['anonymous', 'authenticated'] as $role_id) {
+      $role = Role::load($role_id);
+      if ($role) {
+        $role->grantPermission('restful get rest_menu_item');
+        $role->save();
+      }
+    }
+  }
+}

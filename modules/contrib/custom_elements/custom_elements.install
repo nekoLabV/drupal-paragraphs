@@ -1,0 +1,149 @@
+<?php
+
+/**
+ * @file
+ * Module install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function custom_elements_install() {
+  // Make sure our module comes after layout_builder.
+  // @see custom_elements_module_implements_alter().
+  module_set_weight('custom_elements', 10);
+}
+
+/**
+ * Set module weight.
+ */
+function custom_elements_update_8201() {
+  // Make sure our module comes after layout_builder.
+  // @see custom_elements_module_implements_alter().
+  module_set_weight('custom_elements', 10);
+}
+
+/**
+ * Add new config settings.
+ */
+function custom_elements_update_8202() {
+  \Drupal::configFactory()
+    ->getEditable('custom_elements.settings')
+    ->setData(['markup_style' => 'web_component'])
+    ->save();
+}
+
+/**
+ * Outdated - no action.
+ */
+function custom_elements_update_8301() {
+}
+
+/**
+ * Install new entity type for CE display.
+ */
+function custom_elements_update_8302() {
+  // If the definition is not 'installed' yet (i.e. the schema repository does
+  // not know it, even though Drupal does and can work with it), install it.
+  if (!\Drupal::service('entity.last_installed_schema.repository')->getLastInstalledDefinition('entity_ce_display')) {
+    $definition = \Drupal::entityTypeManager()->getDefinition('entity_ce_display');
+    \Drupal::entityDefinitionUpdateManager()->installEntityType($definition);
+  }
+}
+
+/**
+ * Install Custom elements UI module.
+ */
+function custom_elements_update_8303() {
+  if (\Drupal::service('module_handler')->moduleExists('custom_elements_ui')) {
+    \Drupal::service('module_installer')->install(['custom_elements_ui']);
+  }
+}
+
+/**
+ * Clean up alpha format configuration.
+ */
+function custom_elements_update_8304() {
+  // Load all CE displays; there can't be extremely many yet.
+  $all_ids = \Drupal::entityQuery('entity_ce_display')
+    ->accessCheck(FALSE)
+    ->execute();
+  /** @var \Drupal\custom_elements\Entity\EntityCeDisplay[] $ce_displays */
+  $ce_displays = \Drupal::entityTypeManager()->getStorage('entity_ce_display')
+    ->loadMultiple($all_ids);
+  foreach ($ce_displays as $ce_display) {
+    $changed = FALSE;
+    // The 'hidden' property is not used at all in CE displays anymore. The
+    // default value (of the parent class property) is []. Version alpha1 saved
+    // it as null for a while. Reset it to []; so the null value is removed on
+    // save and cannot lead to obscure bugs in the future.
+    if ($ce_display->get('hidden') === NULL) {
+      $ce_display->set('hidden', []);
+      $changed = TRUE;
+    }
+    // Remove region from components; it's also not used and removed from the
+    // schema.
+    foreach ($ce_display->getComponents() as $key => $value) {
+      if (isset($value['region']) && $value['region'] === 'content') {
+        unset($value['region']);
+        $ce_display->setComponent($key, $value);
+        $changed = TRUE;
+      }
+    }
+
+    if ($changed) {
+      $ce_display->save();
+    }
+  }
+}
+
+/**
+ * Removes components from custom_elements displays with layout builder enabled.
+ *
+ * This resolves backwards compatibility issues for change notice
+ * https://www.drupal.org/node/3527493.
+ */
+function custom_elements_update_8310() {
+  $storage = \Drupal::entityTypeManager()->getStorage('entity_ce_display');
+
+  // Query only those CE displays with layout builder enabled.
+  $ids = \Drupal::entityQuery('entity_ce_display')
+    ->accessCheck(FALSE)
+    ->condition('useLayoutBuilder', 1)
+    ->execute();
+
+  if (!$ids) {
+    return t('No custom_elements displays with layout builder enabled found.');
+  }
+
+  /** @var \Drupal\custom_elements\Entity\EntityCeDisplay[] $entities */
+  $entities = $storage->loadMultiple($ids);
+  $count = 0;
+
+  foreach ($entities as $entity) {
+    // Remove all components/content if layout builder is enabled.
+    $components = $entity->getComponents();
+    if (!empty($components)) {
+      $entity->set('content', []);
+      $entity->save();
+      $count++;
+    }
+  }
+
+  // Clear config entity cache to ensure changes are picked up.
+  \Drupal::entityTypeManager()->getStorage('entity_ce_display')->resetCache();
+
+  return t('Removed components from @count custom_elements displays with layout builder enabled.', ['@count' => $count]);
+}
+
+/**
+ * Set JSON format to legacy for existing installations.
+ */
+function custom_elements_update_9401() {
+  \Drupal::configFactory()
+    ->getEditable('custom_elements.settings')
+    ->set('json_format', 'legacy')
+    ->save();
+
+  return t('Custom Elements JSON format set to "legacy" for backward compatibility.');
+}

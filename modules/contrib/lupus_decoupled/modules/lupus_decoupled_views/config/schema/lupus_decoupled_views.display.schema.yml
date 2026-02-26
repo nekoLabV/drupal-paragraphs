@@ -1,0 +1,88 @@
+# Schema for the views plugins of the lupus_decoupled_views module.
+
+views.style.custom_elements:
+  type: views_style
+  label: 'Custom elements style options'
+  mapping:
+    rows_wrapper:
+      type: string
+      label: 'Rows wrapper element'
+
+views.display.custom_elements_block:
+  type: views.display.block
+
+views.display_options.custom_elements_block:
+  type: views.display.block.display_options
+  mapping:
+    custom_element_name:
+      type: string
+      label: 'Custom element name'
+
+views.display_options.custom_elements_page:
+  type: views_display_path.display_options
+  mapping:
+    custom_element_name:
+      type: string
+      label: 'Custom element name'
+
+views.display.custom_elements_page:
+  type: views_display_path
+  label: 'Custom elements page display options'
+  mapping:
+    menu:
+      type: mapping
+      label: 'Menu'
+      mapping:
+        type:
+          type: string
+          label: 'Type'
+        title:
+          type: text
+          label: 'Title'
+        description:
+          type: text
+          label: 'Description'
+        weight:
+          type: weight
+          label: 'Weight'
+        enabled:
+          type: boolean
+          label: 'Enabled'
+        expanded:
+          type: boolean
+          label: 'Expanded'
+        menu_name:
+          type: string
+          label: 'Menu name'
+        parent:
+          type: string
+          label: 'Parent'
+        context:
+          type: string
+          label: 'Context'
+    tab_options:
+      type: mapping
+      label: 'Tab options'
+      mapping:
+        type:
+          type: string
+          label: 'Type'
+        title:
+          type: text
+          label: 'Title'
+        description:
+          type: text
+          label: 'Description'
+        weight:
+          type: weight
+          label: 'Weight'
+        menu_name:
+          type: string
+          label: 'Menu name'
+    use_admin_theme:
+      type: boolean
+      nullable: true
+      label: 'Use the administration theme when rendering the view page'
+    custom_element_name:
+      type: string
+      label: 'Custom element name'

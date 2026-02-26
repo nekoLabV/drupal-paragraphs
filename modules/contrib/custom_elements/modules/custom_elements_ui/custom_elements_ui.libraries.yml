@@ -1,0 +1,5 @@
+drupal.custom_elements_ui:
+  version: VERSION
+  css:
+    theme:
+      css/custom_elements_ui.admin.css: {}

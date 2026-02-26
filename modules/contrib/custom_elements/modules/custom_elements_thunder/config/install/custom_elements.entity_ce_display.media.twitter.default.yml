@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.twitter.field_author
+    - field.field.media.twitter.field_content
+    - field.field.media.twitter.field_url
+    - media.type.twitter
+id: media.twitter.default
+targetEntityType: media
+bundle: twitter
+mode: default
+forceAutoProcessing: false
+customElementName: media-twitter
+content:
+  src:
+    formatter: flattened
+    field_name: field_url
+    is_slot: false
+    weight: 0

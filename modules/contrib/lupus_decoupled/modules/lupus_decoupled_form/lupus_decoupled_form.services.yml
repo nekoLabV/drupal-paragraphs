@@ -1,0 +1,11 @@
+services:
+  lupus_decoupled_form.controller.entity_form:
+    class: '\Drupal\lupus_decoupled_form\Controller\CustomElementsEntityFormController'
+    parent: controller.entity_form
+  lupus_decoupled_form.controller.form:
+    class: '\Drupal\lupus_decoupled_form\Controller\CustomElementsFormController'
+    parent: controller.form
+  lupus_decoupled_form.route_theme_negotiator:
+    class: '\Drupal\lupus_decoupled_form\RouteThemeNegotiator'
+    tags:
+      - { name: theme_negotiator, priority: 100 }

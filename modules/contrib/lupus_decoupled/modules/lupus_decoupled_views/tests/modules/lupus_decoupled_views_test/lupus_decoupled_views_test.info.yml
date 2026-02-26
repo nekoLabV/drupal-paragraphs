@@ -1,0 +1,13 @@
+name: 'Lupus Decoupled Views Test Config'
+type: module
+description: 'Provides default lupus decoupled views for tests.'
+package: Testing
+dependencies:
+  - drupal:views
+  - lupus_decoupled:lupus_decoupled_views
+  - user:user
+
+# Information added by Drupal.org packaging script on 2025-12-09
+version: '1.4.1'
+project: 'lupus_decoupled'
+datestamp: 1765271471

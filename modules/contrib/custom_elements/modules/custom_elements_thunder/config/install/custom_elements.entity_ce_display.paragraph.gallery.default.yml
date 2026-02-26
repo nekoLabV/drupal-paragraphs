@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.gallery.field_media
+    - paragraphs.paragraphs_type.gallery
+id: paragraph.gallery.default
+targetEntityType: paragraph
+bundle: gallery
+mode: default
+forceAutoProcessing: false
+customElementName: paragraph-gallery
+content:
+  media:
+    formatter: entity_ce_render
+    field_name: field_media
+    is_slot: false
+    weight: 0
+    configuration:
+      mode: full
+      flatten: '1'

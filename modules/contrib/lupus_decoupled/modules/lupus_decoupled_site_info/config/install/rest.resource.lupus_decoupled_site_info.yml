@@ -1,0 +1,17 @@
+id: lupus_decoupled_site_info
+plugin_id: lupus_decoupled_site_info
+langcode: en
+status: true
+dependencies:
+  module:
+    - lupus_decoupled_site_info
+    - serialization
+    - user
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - json
+  authentication:
+    - cookie

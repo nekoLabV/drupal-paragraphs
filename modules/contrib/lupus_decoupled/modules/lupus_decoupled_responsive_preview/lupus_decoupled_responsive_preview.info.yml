@@ -1,0 +1,14 @@
+name: 'Lupus Decoupled Responsive Preview'
+description: 'Integrates the responsive preview module with the decoupled frontend.'
+type: module
+package: Lupus Decoupled Drupal
+
+core_version_requirement: ^10 || ^11
+dependencies:
+  - lupus_decoupled:lupus_decoupled_ce_api
+  - responsive_preview:responsive_preview
+
+# Information added by Drupal.org packaging script on 2025-12-09
+version: '1.4.1'
+project: 'lupus_decoupled'
+datestamp: 1765271471

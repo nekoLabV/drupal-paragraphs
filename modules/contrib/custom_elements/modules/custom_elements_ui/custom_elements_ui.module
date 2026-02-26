@@ -1,0 +1,102 @@
+<?php
+
+/**
+ * @file
+ * Provides hook implementations for Custom Elements UI.
+ */
+
+use Drupal\Core\Entity\Display\EntityDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\custom_elements_ui\Form\EntityCustomElementsDisplayEditForm;
+use Drupal\custom_elements_ui\Plugin\Derivative\CustomElementsUiLocalTask;
+
+/**
+ * Implements hook_form_FORM_ID_alter() for \Drupal\field_ui\Form\EntityViewDisplayEditForm.
+ */
+function custom_elements_ui_form_entity_view_display_edit_form_alter(&$form, FormStateInterface $form_state) {
+  /** @var \Drupal\Core\Entity\Entity\EntityViewDisplay $display_entity */
+  $display_entity = $form_state->getFormObject()->getEntity();
+  $is_enabled = $display_entity->getThirdPartySetting('custom_elements', 'enabled', FALSE);
+
+  $form['custom_elements'] = [
+    '#type' => 'details',
+    '#open' => TRUE,
+    '#title' => t('Custom Element'),
+    '#tree' => TRUE,
+  ];
+  $form['custom_elements']['enabled'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Force rendering as custom element'),
+    '#default_value' => $is_enabled,
+    '#description' => t('Enable, to always render an entity as custom element. When disabled, the entity is only rendered as custom element whenever a module explicitly asks for it.'),
+  ];
+  $form['#entity_builders'][] = '_custom_elements_ui_entity_view_display_edit_form_builder';
+}
+
+/**
+ * Form entity-builder for entity_view_display_edit_form.
+ *
+ * @see custom_elements_ui_form_entity_view_display_edit_form_alter()
+ */
+function _custom_elements_ui_entity_view_display_edit_form_builder($entity_type_id, EntityDisplayInterface $entity, $form, FormStateInterface $form_state) {
+  $enabled = (bool) $form_state->getValue(['custom_elements', 'enabled']);
+  $entity->setThirdPartySetting('custom_elements', 'enabled', $enabled);
+}
+
+/**
+ * Implements hook_entity_type_build().
+ */
+function custom_elements_ui_entity_type_build(array &$entity_types) {
+  /** @var \Drupal\Core\Entity\EntityTypeInterface[] $entity_types */
+  $entity_types['entity_ce_display']->setFormClass('edit', EntityCustomElementsDisplayEditForm::class);
+}
+
+/**
+ * Implements hook_entity_operation().
+ */
+function custom_elements_ui_entity_operation(EntityInterface $entity) {
+  $operations = [];
+  $info = $entity->getEntityType();
+  // Add custom element display link if this entity type is the bundle of
+  // another and that type has field UI enabled.
+  if (($bundle_of = $info->getBundleOf()) && \Drupal::entityTypeManager()->getDefinition($bundle_of)->get('field_ui_base_route')) {
+    if (\Drupal::currentUser()->hasPermission('administer ' . $bundle_of . ' custom elements display')) {
+      $operations['manage-ce-display'] = [
+        'title' => t('Manage custom element'),
+        'weight' => 25,
+        'url' => Url::fromRoute("entity.entity_ce_display.{$bundle_of}.default", [
+          $entity->getEntityTypeId() => $entity->id(),
+        ]),
+      ];
+    }
+  }
+
+  return $operations;
+}
+
+/**
+ * Implements hook_local_tasks_alter().
+ */
+function custom_elements_ui_local_tasks_alter(&$local_tasks) {
+  $container = \Drupal::getContainer();
+  $local_task = CustomElementsUiLocalTask::create($container, 'custom_elements_ui.local_tasks');
+  $local_task->alterLocalTasks($local_tasks);
+}
+
+/**
+ * Implements hook_menu_links_discovered_alter().
+ *
+ * @see \Drupal\custom_elements_ui\Plugin\Derivative\CustomElementsUiLocalTask::getDerivativeDefinitions()
+ */
+function custom_elements_ui_menu_links_discovered_alter(&$links) {
+  if (\Drupal::moduleHandler()->moduleExists('admin_toolbar_tools')) {
+    // Sets the weight of "Manage permissions" links to keep correct order.
+    foreach ($links as $key => $link) {
+      if (str_starts_with($key, 'admin_toolbar_tools.extra_links:entity.entity_permissions_form.')) {
+        $links[$key]['weight'] = 4;
+      }
+    }
+  }
+}

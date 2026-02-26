@@ -1,12 +1,9 @@
 <div{{ attributes.addClass(classes) }}>
-  {# 隐藏原始字段渲染 #}
-  <div style="display: none;">
-    {{ content }}
-  </div>
   {% if countdown_id is defined %}
     <div
       data-id="{{ countdown_id }}"
       data-vue-component="countdown">
+      {{ content }}
     </div>
   {% else %}
     {# Fallback: 如果没有数据，显示原始内容 #}

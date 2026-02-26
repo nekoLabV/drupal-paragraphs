@@ -1,0 +1,13 @@
+name: Lupus Decoupled Schema Metatag
+description: 'Adds support for JSON-LD via Schema Metatag module.'
+type: module
+core_version_requirement: ^10 || ^11
+dependencies:
+  - 'schema_metatag:schema_metatag'
+  - 'lupus_ce_renderer:lupus_ce_renderer'
+package: Lupus Decoupled Drupal
+
+# Information added by Drupal.org packaging script on 2025-12-09
+version: '1.4.1'
+project: 'lupus_decoupled'
+datestamp: 1765271471

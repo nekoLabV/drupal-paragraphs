@@ -1,0 +1,13 @@
+name: 'Lupus Decoupled Contact Forms'
+description: 'Integrates Drupal contact forms with the decoupled frontend.'
+package: 'Lupus Decoupled Drupal'
+type: module
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:contact
+  - lupus_decoupled:lupus_decoupled_form
+
+# Information added by Drupal.org packaging script on 2025-12-09
+version: '1.4.1'
+project: 'lupus_decoupled'
+datestamp: 1765271471

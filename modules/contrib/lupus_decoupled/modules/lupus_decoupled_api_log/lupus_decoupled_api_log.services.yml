@@ -1,0 +1,6 @@
+services:
+  lupus_decoupled.api_log:
+    class: Drupal\lupus_decoupled_api_log\ApiLogRouteCheck
+    arguments: ['@request_stack']
+    tags:
+      - { name: rest_log.route_check }

@@ -1,0 +1,4 @@
+expose:
+  - 'system.site:name'
+  - 'system.site:slogan'
+  - 'system.site:mail'

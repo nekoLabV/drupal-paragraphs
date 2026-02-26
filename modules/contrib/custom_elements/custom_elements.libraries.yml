@@ -1,0 +1,14 @@
+main:
+  version: VERSION
+  css: []
+  js: []
+
+nuxt_preview:
+  version: VERSION
+  js:
+    js/nuxt-preview.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+    - system/base

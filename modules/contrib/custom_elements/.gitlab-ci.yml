@@ -1,0 +1,84 @@
+################
+# GitLabCI template for Drupal projects.
+#
+# This template is designed to give any Contrib maintainer everything they need to test, without requiring modification.
+# It is also designed to keep up to date with Core Development automatically through the use of include files that can be centrally maintained.
+# As long as you include the project, ref and three files below, any future updates added by the Drupal Association will be used in your
+# pipelines automatically. However, you can modify this template if you have additional needs for your project.
+# The full documentation is on https://project.pages.drupalcode.org/gitlab_templates/
+################
+
+################
+# Includes
+#
+# Additional configuration can be provided through includes.
+# One advantage of include files is that if they are updated upstream, the changes affect all pipelines using that include.
+#
+# Includes can be overridden by re-declaring anything provided in an include, here in gitlab-ci.yml
+# https://docs.gitlab.com/ee/ci/yaml/includes.html#override-included-configuration-values
+################
+include:
+  ################
+  # DrupalCI includes:
+  # As long as you include this, any future includes added by the Drupal Association will be accessible to your pipelines automatically.
+  # View these include files at https://git.drupalcode.org/project/gitlab_templates/
+  ################
+  - project: $_GITLAB_TEMPLATES_REPO
+    ref: $_GITLAB_TEMPLATES_REF
+    file:
+      - '/includes/include.drupalci.main.yml'
+      - '/includes/include.drupalci.variables.yml'
+      - '/includes/include.drupalci.workflows.yml'
+
+################
+# Pipeline configuration variables
+#
+# These are the variables provided to the Run Pipeline form that a user may want to override.
+#
+# Docs at https://git.drupalcode.org/project/gitlab_templates/-/blob/main/includes/include.drupalci.variables.yml
+################
+variables:
+  SKIP_CSPELL: 1
+  OPT_IN_TEST_CURRENT: 1
+  OPT_IN_TEST_PREVIOUS_MAJOR: 1
+  OPT_IN_TEST_PREVIOUS_MINOR: 1
+  OPT_IN_TEST_NEXT_MINOR: 1
+  OPT_IN_TEST_NEXT_MAJOR: 1
+  OPT_IN_TEST_MAX_PHP: 1
+
+################
+# Custom overrides for Canvas compatibility
+#
+# Canvas requires Drupal 11.2+ and PHP 8.3+, so we need to
+# remove it from composer require-dev for previous versions.
+################
+
+# Remove Canvas before composer install for incompatible versions
+composer (previous minor):
+  before_script:
+    # Canvas requires Drupal 11.2+, remove it for 11.1 testing
+    - composer remove drupal/canvas --dev --no-update || true
+    - composer remove drupal/canvas_extjs --dev --no-update || true
+
+composer (previous major):
+  before_script:
+    # Canvas requires PHP 8.3+ and Drupal 11.2+, remove it for D10 testing
+    - composer remove drupal/canvas --dev --no-update || true
+    - composer remove drupal/canvas_extjs --dev --no-update || true
+
+# Skip Canvas-specific tests in PHPUnit for these variants
+phpunit (previous minor):
+  before_script:
+    # Remove Canvas integration test file to avoid PHP fatal errors from missing traits.
+    - rm -f web/modules/custom/custom_elements/tests/src/Kernel/CanvasIntegrationTest.php
+
+phpunit (previous major):
+  before_script:
+    # Remove Canvas integration test file to avoid PHP fatal errors from missing traits.
+    - rm -f web/modules/custom/custom_elements/tests/src/Kernel/CanvasIntegrationTest.php
+
+# Skip Canvas-specific tests in PHPStan for these variants
+phpstan (previous major):
+  before_script:
+    # Remove Canvas integration test file to avoid PHPStan errors from missing Canvas classes.
+    - rm -f web/modules/custom/custom_elements/tests/src/Kernel/CanvasIntegrationTest.php

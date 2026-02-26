@@ -1,0 +1,19 @@
+includes:
+  - phar://phpstan.phar/conf/bleedingEdge.neon
+
+parameters:
+  level: 3
+  paths:
+    - .
+  reportUnmatchedIgnoredErrors: false
+  ignoreErrors:
+    # new static() is a best practice in Drupal; ignore for now.
+    - "#^Unsafe usage of new static#"
+    - '#Method .+ should return .+ but returns .+#'
+    # ExtensionList is marked as @internal but widely used in Drupal contrib.
+    # This occurs in Drupal 11 but not in Drupal 10.
+    - '#Call to method (exists|getPath)\(\) of internal class Drupal\\Core\\Extension\\ExtensionList#'
+    # NodeForm is not found by phpstan but we use instanceof check.
+    # This occurs in Drupal 11 but not in Drupal 10.
+    - '#Class Drupal\\node\\NodeForm not found#'
+    - '#Call to method preview\(\) on an unknown class Drupal\\node\\NodeForm#'

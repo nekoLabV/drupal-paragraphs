@@ -1,0 +1,13 @@
+name: Lupus Decoupled Block
+type: module
+description: Adds integration with block layouts.
+package: Lupus Decoupled Drupal
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:block
+  - lupus_ce_renderer:lupus_ce_renderer
+
+# Information added by Drupal.org packaging script on 2025-12-09
+version: '1.4.1'
+project: 'lupus_decoupled'
+datestamp: 1765271471

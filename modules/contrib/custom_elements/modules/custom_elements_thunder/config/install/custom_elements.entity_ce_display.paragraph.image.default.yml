@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.image.field_image
+    - paragraphs.paragraphs_type.image
+id: paragraph.image.default
+targetEntityType: paragraph
+bundle: image
+mode: default
+forceAutoProcessing: false
+customElementName: paragraph-image
+content:
+  image:
+    formatter: entity_ce_render
+    field_name: field_image
+    is_slot: false
+    weight: 0
+    configuration:
+      mode: default
+      flatten: '1'

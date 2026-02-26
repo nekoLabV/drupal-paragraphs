@@ -1,0 +1,7 @@
+custom_elements.settings:
+  path: '/admin/config/system/custom-elements'
+  defaults:
+    _form: '\Drupal\custom_elements\Form\SettingsForm'
+    _title: 'Custom Elements settings'
+  requirements:
+    _permission: 'administer site configuration'

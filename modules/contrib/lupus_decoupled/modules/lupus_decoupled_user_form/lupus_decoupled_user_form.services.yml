@@ -1,0 +1,8 @@
+services:
+  lupus_decoupled_user_form.route_subscriber:
+    class: '\Drupal\lupus_decoupled_user_form\Routing\RouteSubscriber'
+    tags:
+      - { name: event_subscriber }
+  lupus_decoupled_user_form.session_configuration:
+    class: Drupal\lupus_decoupled_user_form\LupusSessionConfiguration
+    arguments: ['%session.storage.options%']

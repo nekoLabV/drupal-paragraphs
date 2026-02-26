@@ -1,0 +1,11 @@
+services:
+  lupus_decoupled_webform.route_subscriber:
+    class: Drupal\lupus_decoupled_webform\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }
+  lupus_decoupled_webform.breadcrumb.webform:
+    class: Drupal\lupus_decoupled_webform\WebformPathBasedBreadcrumbBuilder
+    arguments: [ '@router.request_context', '@access_manager', '@router', '@path_processor_manager', '@config.factory',  '@title_resolver', '@current_user', '@path.current', '@path.matcher' ]
+    tags:
+      # Priority 1003 to be called before WebformBreadcrumbBuilder.
+      - { name: breadcrumb_builder, priority: 1003 }

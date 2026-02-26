@@ -1,0 +1,43 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.full
+    - field.field.media.image.field_copyright
+    - field.field.media.image.field_description
+    - field.field.media.image.field_image
+    - field.field.media.image.field_source
+    - field.field.media.image.field_tags
+    - media.type.image
+id: media.image.full
+targetEntityType: media
+bundle: image
+mode: full
+forceAutoProcessing: false
+customElementName: media-image-full
+content:
+  copyright:
+    formatter: flattened
+    field_name: field_copyright
+    is_slot: false
+    weight: 3
+  description:
+    formatter: 'field:text_default'
+    field_name: field_description
+    is_slot: false
+    weight: 2
+  image:
+    formatter: file
+    field_name: field_image
+    is_slot: false
+    weight: 0
+  source:
+    formatter: flattened
+    field_name: field_source
+    is_slot: false
+    weight: 4
+  thumbnail:
+    formatter: file
+    field_name: thumbnail
+    is_slot: false
+    weight: 1

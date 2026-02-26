@@ -1,0 +1,10 @@
+lupus_decoupled_site_info.settings:
+  type: config_object
+  label: 'Lupus Decoupled Site Info Settings'
+  mapping:
+    expose:
+      type: sequence
+      label: 'List of exposed config names and keys'
+      sequence:
+        type: string
+        label: 'Config name and key'

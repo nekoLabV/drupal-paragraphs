@@ -1,0 +1,20 @@
+# Schema for the configuration files of the DWO Timeline module.
+
+rest_menu_items.config:
+  type: config_entity
+  label: 'REST menu items settings'
+  mapping:
+    allowed_menus:
+      type: sequence
+      sequence:
+        type: string
+    add_fragment:
+      type: integer
+      label: ''
+    base_url:
+      type: string
+      label: ''
+    output_values:
+      type: sequence
+      sequence:
+        type: string

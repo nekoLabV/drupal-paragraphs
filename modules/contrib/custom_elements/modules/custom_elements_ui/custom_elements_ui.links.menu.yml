@@ -1,0 +1,3 @@
+custom_elements_ui.menu_link:
+  deriver: \Drupal\custom_elements_ui\Plugin\Derivative\CustomElementsUiMenuLink
+  menu_name: admin

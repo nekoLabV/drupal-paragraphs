@@ -1,0 +1,13 @@
+name: Custom Elements UI
+description: 'Provides a user interface for the Custom Elements module.'
+package: Other
+type: module
+core_version_requirement: ^10 || ^11
+dependencies:
+  - custom_elements:custom_elements
+  - drupal:field_ui
+
+# Information added by Drupal.org packaging script on 2026-02-04
+version: '3.3.3'
+project: 'custom_elements'
+datestamp: 1770224744

@@ -1,0 +1,6 @@
+custom_elements.settings:
+  title: 'Custom Elements'
+  description: 'Configure custom elements markup and JSON serialization settings.'
+  route_name: custom_elements.settings
+  parent: system.admin_config_system
+  weight: 100

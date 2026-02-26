@@ -1,0 +1,10 @@
+type: module
+name: Trusted Redirect Entity Edit
+description: Allows to redirect to entity based on uuid instead of id.
+package: Trusted redirect
+core_version_requirement: ^9 || ^10 || ^11
+
+# Information added by Drupal.org packaging script on 2024-10-01
+version: '8.x-1.13'
+project: 'trusted_redirect'
+datestamp: 1727788999

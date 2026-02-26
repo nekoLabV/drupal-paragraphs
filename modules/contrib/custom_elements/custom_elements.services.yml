@@ -1,0 +1,71 @@
+services:
+  custom_elements.generator:
+    class: Drupal\custom_elements\CustomElementGenerator
+    arguments: ['@module_handler', '@entity.repository', '@entity_type.manager']
+    tags:
+      - { name: service_collector, tag: custom_elements_processor, call: addProcessor }
+  custom_elements.plugin.manager.field.custom_element_formatter:
+    class: Drupal\custom_elements\CustomElementsFieldFormatterPluginManager
+    arguments: ['@container.namespaces', '@cache.discovery', '@module_handler', '@plugin.manager.field.field_type']
+  custom_elements.normalizer:
+    class: Drupal\custom_elements\CustomElementNormalizer
+    arguments: ['@config.factory']
+  custom_elements.canvas_render_converter:
+    class: Drupal\custom_elements\RenderConverter\CanvasRenderConverter
+
+  custom_elements.preview_resolver:
+    class: Drupal\custom_elements\PreviewProvider\CustomElementsPreviewResolver
+    arguments:
+      - !tagged_iterator custom_elements.preview_provider
+      - '@request_stack'
+  # Register the JSON preview provider with lowest priority.
+  custom_elements.preview_provider.json:
+    class: Drupal\custom_elements\Plugin\CustomElementsPreviewProvider\JsonPreviewProvider
+    factory: ['@plugin.manager.custom_elements_preview_provider', 'createInstance']
+    arguments: ['json']
+    tags:
+      - { name: custom_elements.preview_provider, priority: -110 }
+  # Register the markup preview provider as a fallback provider, with a low priority,
+  # so that other preview providers can take precedence if they are available.
+  custom_elements.preview_provider.default:
+    class: Drupal\custom_elements\Plugin\CustomElementsPreviewProvider\MarkupPreviewProvider
+    factory: ['@plugin.manager.custom_elements_preview_provider', 'createInstance']
+    arguments: ['markup']
+    tags:
+      - { name: custom_elements.preview_provider, priority: -100 }
+  plugin.manager.custom_elements_preview_provider:
+    class: Drupal\custom_elements\PreviewProvider\CustomElementsPreviewProviderManager
+    arguments: ['@container.namespaces', '@cache.discovery', '@module_handler']
+
+  custom_elements.processor.default_content_entity:
+    class: Drupal\custom_elements\Processor\DefaultContentEntityProcessor
+    arguments: ['@custom_elements.generator']
+    tags:
+      - { name: custom_elements_processor, priority: -100 }
+  custom_elements.processor.default_field_item_list:
+    class: Drupal\custom_elements\Processor\DefaultFieldItemListProcessor
+    tags:
+      - { name: custom_elements_processor, priority: -100 }
+  custom_elements.processor.default_field_item:
+    class: Drupal\custom_elements\Processor\DefaultFieldItemProcessor
+    tags:
+      - { name: custom_elements_processor, priority: -100 }
+  custom_elements.processor.file_reference_field_item_list:
+    class: Drupal\custom_elements\Processor\FileReferenceFieldItemListProcessor
+    tags:
+      - { name: custom_elements_processor, priority: -50 }
+  custom_elements.processor.media_reference_field_item:
+    class: Drupal\custom_elements\Processor\MediaReferenceFieldItemProcessor
+    tags:
+      - { name: custom_elements_processor, priority: -50 }
+  custom_elements.processor.paragraph_field_item:
+    class: Drupal\custom_elements\Processor\ParagraphFieldItemProcessor
+    tags:
+      - { name: custom_elements_processor, priority: -50 }
+  custom_elements.processor.text_field_item:
+    class: Drupal\custom_elements\Processor\TextFieldItemProcessor
+    tags:
+      - { name: custom_elements_processor, priority: -50 }
+  custom_elements.render_helper:
+    class: Drupal\custom_elements\CustomElementRenderHelper
+    arguments: ['@request_stack', '@config.factory']

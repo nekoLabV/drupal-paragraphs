@@ -1,0 +1,86 @@
+services:
+  lupus_decoupled_ce_api.middleware.backendapi:
+    class: Drupal\lupus_decoupled_ce_api\BackendApiRequest
+    # Note that kernel argument is automatically added for the middleware.
+    arguments: ['%lupus_decoupled_ce_api.api_prefix%', '%lupus_decoupled_ce_api.content_format%']
+    tags:
+      - { name: http_middleware, priority: 150 }
+  lupus_decoupled_ce_api.base_url_provider:
+    class: Drupal\lupus_decoupled_ce_api\BaseUrlProvider
+    arguments: [ '@config.factory', '@language_manager', '%lupus_decoupled_ce_api.api_prefix%', '%lupus_decoupled_ce_api.frontend_base_urls%' ]
+  lupus_decoupled_ce_api.event_subscriber:
+    class: Drupal\lupus_decoupled_ce_api\EventSubscriber\FrontendRedirectSubscriber
+    arguments: [ '@config.factory', '%lupus_decoupled_ce_api.frontend_routes%' ]
+    tags:
+      - { name: event_subscriber }
+  lupus_decoupled_ce_api.current_user_response_subscriber:
+    class: Drupal\lupus_decoupled_ce_api\EventSubscriber\CurrentUserResponseSubscriber
+    arguments: ['@current_user']
+    tags:
+      - { name: event_subscriber }
+  lupus_decoupled_ce_api.frontend_path_processor:
+    class: Drupal\lupus_decoupled_ce_api\PathProcessor\LupusFrontendPathProcessor
+    arguments: [ '%lupus_decoupled_ce_api.frontend_paths%', '@path_alias.manager' ]
+    tags:
+      - { name: path_processor_outbound, priority: 310 }
+  lupus_decoupled_ce_api.keep_frontend_path_processor:
+    class: Drupal\lupus_decoupled_ce_api\PathProcessor\LupusKeepFrontendPathProcessor
+    arguments:
+      - '%lupus_decoupled_ce_api.frontend.keep_frontend_paths%'
+    tags:
+      - { name: path_processor_outbound, priority: 300 }
+  lupus_decoupled_ce_api.preview_path_processor:
+    class: Drupal\lupus_decoupled_ce_api\PathProcessor\LupusPreviewPathProcessor
+    tags:
+      - { name: path_processor_outbound, priority: 500 }
+  lupus_decoupled_ce_api.file_url_generator:
+    class: Drupal\lupus_decoupled_ce_api\File\FileUrlGenerator
+    decorates: file_url_generator
+    arguments:
+      - '@lupus_decoupled_ce_api.file_url_generator.inner'
+      - '@config.factory'
+      - '@request_stack'
+      - '%lupus_decoupled_ce_api.api_prefix%'
+  lupus_decoupled_ce_api.preview_provider_factory:
+    class: Drupal\lupus_decoupled_ce_api\LupusDecoupledPreviewProviderFactory
+    arguments:
+      - '@config.factory'
+      - '@plugin.manager.custom_elements_preview_provider'
+      - '@lupus_decoupled_ce_api.base_url_provider'
+  lupus_decoupled_ce_api.preview_provider:
+    class: Drupal\custom_elements\PreviewProvider\CustomElementsPreviewProviderInterface
+    factory: ['@lupus_decoupled_ce_api.preview_provider_factory', 'create']
+    tags:
+      - { name: custom_elements.preview_provider, priority: 100 }
+
+parameters:
+  # Allows customizing api prefix per project.
+  lupus_decoupled_ce_api.api_prefix: '/ce-api'
+  # Sets the content_format of lupus_ce_renderer to json. Also supports 'markup'
+  lupus_decoupled_ce_api.content_format: 'json'
+  # Set frontend routes to make the routes frontend-only. This is achieved by
+  # force-redirecting the routes to the  frontend when opened in the backend.
+  # It's a good idea to set the route as frontend-path as well, in order to
+  # avoid unnecessary redirects. Projects may customize this parameter.
+  # @todo Remove frontend routes and only use frontend paths only.
+  lupus_decoupled_ce_api.frontend_routes:
+    - entity.node.canonical
+    - entity.node.preview
+    - entity.node.revision
+    - view.frontpage.page_1
+  # Set frontend paths that are processed such that the URLs point to the
+  # frontend, not the backend. This makes the generated URLs absolute.
+  lupus_decoupled_ce_api.frontend_paths:
+    # "/" lets 'Home' links in the backend point to the frontend front page.
+    - '/'
+    - '/node'
+    - '/node/{node}'
+    - '/node/preview/{node_preview}/{view_mode_id}'
+  # Set route paths which should not point back to the backend, when linked to
+  # in a frontend-facing page. This is great for routes that should work#
+  # in both, backend and frontend.
+  lupus_decoupled_ce_api.frontend.keep_frontend_paths:
+    - '/user'
+    - '/user/{user}'
+  # For one or more frontend sites that connect to the same backend.
+  lupus_decoupled_ce_api.frontend_base_urls: null

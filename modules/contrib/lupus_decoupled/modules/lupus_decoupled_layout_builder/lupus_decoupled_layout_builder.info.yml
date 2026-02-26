@@ -1,0 +1,14 @@
+name: 'Lupus Decoupled Layout Builder'
+description: 'Provides the layout builder base setup.'
+type: module
+package: Lupus Decoupled Drupal
+
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:layout_builder
+  - custom_elements:custom_elements
+
+# Information added by Drupal.org packaging script on 2025-12-09
+version: '1.4.1'
+project: 'lupus_decoupled'
+datestamp: 1765271471

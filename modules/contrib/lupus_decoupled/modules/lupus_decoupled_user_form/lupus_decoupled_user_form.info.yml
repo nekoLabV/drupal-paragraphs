@@ -1,0 +1,14 @@
+name: 'Lupus Decoupled User Forms'
+description: 'Enables using Drupal user login and user password reset forms in the frontend.'
+package: Lupus Decoupled Drupal
+type: module
+core_version_requirement: ^10 || ^11
+dependencies:
+  - lupus_decoupled:lupus_decoupled_ce_api
+  - lupus_decoupled:lupus_decoupled_form
+  - user:user
+
+# Information added by Drupal.org packaging script on 2025-12-09
+version: '1.4.1'
+project: 'lupus_decoupled'
+datestamp: 1765271471
