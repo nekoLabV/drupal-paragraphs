@@ -1,0 +1,31 @@
+@use '../../utils/typography' as t;
+
+.paragraph-theme-media {
+  margin: 0;
+  color: var(--cmt-surface-color);
+  // background: var(--cmt-surface-bg);
+  overflow: hidden;
+  &__resources {
+    .el-video-player {
+      border-radius: var(--cm-border-radius);
+    }
+  }
+  img {
+    position: static;
+    display: block;
+    margin: auto;
+    width: auto;
+    height: auto;
+    border-radius: var(--cm-border-radius);
+  }
+  &__caption {
+    color: #666666;
+    font-size: .875rem;
+    font-weight: normal;
+    line-height: 1.25rem;
+    letter-spacing: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    // @include t.typography(caption);
+  }
+}

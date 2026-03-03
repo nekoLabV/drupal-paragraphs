@@ -183,7 +183,7 @@ class MediaLibrarySelectForm extends FieldPluginBase implements WorkspaceSafeFor
    * {@inheritdoc}
    */
   public function viewsFormValidate(array &$form, FormStateInterface $form_state) {
-    $selected = array_filter($form_state->getValue($this->options['id']));
+    $selected = array_filter($form_state->getValue($this->options['id'], []));
     if (empty($selected)) {
       $form_state->setErrorByName('', $this->t('No items selected.'));
     }

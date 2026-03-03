@@ -8,6 +8,7 @@ use Drupal\paragraph_assets\Preprocess\Paragraph\ButtonsPreprocessor;
 use Drupal\paragraph_assets\Preprocess\Paragraph\CountdownPreprocessor;
 use Drupal\paragraph_assets\Preprocess\Paragraph\ImagePreprocessor;
 use Drupal\paragraph_assets\Preprocess\Paragraph\ImagesPreprocessor;
+use Drupal\paragraph_assets\Preprocess\Paragraph\VideoPreprocessor;
 use Drupal\paragraph_assets\Preprocess\Paragraph\TimelinePreprocessor;
 use Drupal\paragraph_assets\Preprocess\Paragraph\TextWithEmbedPreprocessor;
 use Drupal\paragraph_assets\Preprocess\Paragraph\SwiperPreprocessor;
@@ -33,6 +34,7 @@ class ParagraphManager {
     CountdownPreprocessor $countdown,
     ImagePreprocessor $image,
     ImagesPreprocessor $images,
+    VideoPreprocessor $video,
     SwiperPreprocessor $swiper,
     GridPreprocessor $grid,
     TextWithEmbedPreprocessor $textWithEmbed,
@@ -46,6 +48,7 @@ class ParagraphManager {
       'count_down' => $countdown,
       'image' => $image,
       'images' => $images,
+      'video' => $video,
       'timeline' => $timeline,
       'text_with_embedding' => $textWithEmbed,
       'swiper' => $swiper,

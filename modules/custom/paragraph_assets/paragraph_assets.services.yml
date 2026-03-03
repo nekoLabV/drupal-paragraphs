@@ -13,6 +13,7 @@ services:
   Drupal\paragraph_assets\Preprocess\Paragraph\CountdownPreprocessor: ~
   Drupal\paragraph_assets\Preprocess\Paragraph\ImagePreprocessor: ~
   Drupal\paragraph_assets\Preprocess\Paragraph\ImagesPreprocessor: ~
+  Drupal\paragraph_assets\Preprocess\Paragraph\VideoPreprocessor: ~
   Drupal\paragraph_assets\Preprocess\Paragraph\SwiperPreprocessor: ~
   Drupal\paragraph_assets\Preprocess\Paragraph\GridPreprocessor: ~
   Drupal\paragraph_assets\Preprocess\Paragraph\TextWithEmbedPreprocessor: ~

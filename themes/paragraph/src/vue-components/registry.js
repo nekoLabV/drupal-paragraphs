@@ -1,11 +1,12 @@
 import { createApp, h } from 'vue'
-import { inlineHtml } from '@/directives'
+import { inlineHtml, lazySrc } from '@/directives'
 
 const components = {
   'button': () => import('./paragraphs/Button.vue'),
   'countdown': () => import('./paragraphs/Countdown.vue'),
   'image': () => import('./paragraphs/Image.vue'),
   'timeline': () => import('./paragraphs/Timeline.vue'),
+  'media': () => import('./paragraphs/Media.vue'),
   'textWithEmbed': () => import('./paragraphs/TextWithEmbed.vue')
 }
 
@@ -34,6 +35,7 @@ export const mountComponent = async (componentName, element, props = {}, slots =
 
   // 自定义指令
   app.directive('inline-html', inlineHtml)
+  app.directive('lazy-src', lazySrc)
 
   app.mount(element)
   

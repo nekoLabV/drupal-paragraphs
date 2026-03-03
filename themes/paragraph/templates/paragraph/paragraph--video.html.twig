@@ -1,0 +1,12 @@
+<div{{ attributes.addClass(classes) }} style="width: 100%;">
+  {% if video_id is defined %}
+  <div 
+    data-id="{{ video_id }}"
+    data-vue-component="media">
+    {{ content }}
+  </div>
+  {% else %}
+    {# Fallback: 如果没有数据，显示原始内容 #}
+    {{ content }}
+  {% endif %}
+</div>

@@ -100,4 +100,10 @@ const customElementData = (type, context, data) => {
     }
   }
 
+  Drupal.behaviors.video = {
+    attach: function(context, settings) {
+      createComponent('media', context, settings.video)
+    }
+  }
+
 })(Drupal, drupalSettings)

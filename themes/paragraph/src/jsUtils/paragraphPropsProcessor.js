@@ -25,6 +25,11 @@ export const modulePropsMap = {
     text: '天|时|分|秒'
   }),
   image: content => content,
+  media: content => ({
+    type: 'video',
+    videoSrc: content?.src?.url,
+    caption: content?.caption
+  }),
   textWithEmbed: content => content,
   timeline: content => ({
     items: content

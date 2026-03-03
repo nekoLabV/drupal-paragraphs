@@ -1,0 +1,18 @@
+@use '../../var' as var;
+@use '../../../css/library/plyr.css';
+
+.plyr {
+  --plyr-color-main: #{var.$primary};
+  --plyr-video-control-background-hover: #{var.$primary};
+  user-select: none;
+  &--stopped {
+    .plyr__controls {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(100%);
+    }
+  }
+  &__poster {
+    will-change: opacity;
+  }
+}
