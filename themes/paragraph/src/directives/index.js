@@ -2,7 +2,6 @@ export * from './inline-html'
 
 export const lazySrc = {
   mounted(el, binding) {
-    // SSR兼容性检查
     if (typeof window === 'undefined') return
     const observer = new IntersectionObserver(
       entries => {
